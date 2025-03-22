@@ -1,0 +1,17 @@
+---
+interface Props {
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+---
+
+
+  <iframe 
+    src="https://negotiations.substack.com/embed" 
+    width="100%" 
+    height={compact ? "250" : "320"} 
+    style="border:1px solid #333; background:#1e1629;" 
+    frameborder="0" 
+    scrolling="no"
+  ></iframe>

@@ -1,0 +1,89 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import { getSubstackArticles } from '../utils/substack.js';
+
+// Fetch articles from Substack
+const articles = await getSubstackArticles();
+
+// Set the first article as featured, or you can set this based on other criteria
+if (articles.length > 0) {
+  articles[0].featured = true;
+}
+
+const featuredArticle = articles.find(article => article.featured);
+const regularArticles = articles.filter(article => !article.featured);
+---
+
+<Layout title="Newsletter - Games & Negotiations by Ahmed K. Hafsi">
+  <Hero 
+    title="Games & Negotiations" 
+    subtitle="Strategic insights on game theory and negotiation" 
+  />
+  
+  <div class="max-w-4xl mx-auto mt-12">
+    <div class="grid grid-cols-1 gap-8">
+      <div>
+        <h2 class="text-2xl font-semibold mb-6 font-serif">Latest Articles</h2>
+        
+        <!-- Featured Post -->
+        {featuredArticle && (
+          <div class="bg-gray-900 p-6 rounded-lg border border-gray-800 mb-8">
+            <h3 class="text-xl font-semibold mb-3 font-serif">{featuredArticle.title}</h3>
+            <p class="text-sm text-gray-400 mb-3">{featuredArticle.displayDate}</p>
+            <p class="text-gray-300 mb-4">
+              {featuredArticle.excerpt}
+            </p>
+            <a href={featuredArticle.url} class="text-accent hover:underline">Read full article →</a>
+          </div>
+        )}
+        
+        <!-- Recent Posts Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+          {regularArticles.slice(0, 4).map(article => (
+            <div class="bg-gray-900 p-5 rounded-lg border border-gray-800">
+              <h3 class="text-lg font-semibold mb-2 font-serif">{article.title}</h3>
+              <p class="text-sm text-gray-400 mb-2">{article.displayDate}</p>
+              <p class="text-gray-300 mb-3 text-sm">
+                {article.excerpt}
+              </p>
+              <a href={article.url} class="text-accent hover:underline text-sm">Read more →</a>
+            </div>
+          ))}
+        </div>
+        
+        <div class="text-center">
+          <a href="https://negotiations.substack.com" class="inline-block bg-accent text-white px-6 py-3 rounded-md hover:bg-accent/90 transition-colors">
+            View All Articles
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Structured Data for Blog Posts -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Games & Negotiations",
+    "url": "https://yourdomain.com/newsletter",
+    "description": "Strategic insights on game theory and negotiation",
+    "publisher": {
+      "@type": "Person",
+      "name": "Ahmed K. Hafsi",
+      "url": "https://yourdomain.com"
+    },
+    "blogPost": articles.map(article => ({
+      "@type": "BlogPosting",
+      "headline": article.title,
+      "datePublished": article.date.toISOString(),
+      "url": article.url,
+      "description": article.excerpt,
+      "author": {
+        "@type": "Person",
+        "name": "Ahmed K. Hafsi"
+      }
+    }))
+  })}>
+  </script>
+</Layout> 
