@@ -1,4 +1,4 @@
-import fetch from 'node-fetch';
+// import fetch from 'node-fetch';
 import { parseStringPromise } from 'xml2js';
 
 // Simple in-memory cache
@@ -14,8 +14,13 @@ export async function getSubstackArticles() {
   }
 
   try {
-    // Fetch the RSS feed from Substack
-    const response = await fetch('https://negotiations.substack.com/feed');
+    // Use native fetch instead of node-fetch
+    // Add a cache-busting parameter to avoid CORS issues with GitHub Pages caching
+    const response = await fetch(`https://negotiations.substack.com/feed?t=${Date.now()}`, {
+      headers: {
+        'Accept': 'application/rss+xml, application/xml, text/xml',
+      }
+    });
     
     if (!response.ok) {
       throw new Error(`Failed to fetch RSS feed: ${response.status} ${response.statusText}`);
