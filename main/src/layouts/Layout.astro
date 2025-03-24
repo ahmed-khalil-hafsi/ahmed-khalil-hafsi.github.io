@@ -40,7 +40,7 @@ const { title = "Ahmed K. Hafsi - Negotiation Strategist" } = Astro.props;
 					<ul class="flex gap-6">
 						<li><a href="/" class="text-gray-300 hover:text-white transition-colors">Home</a></li>
 						<li><a href="/services" class="text-gray-300 hover:text-white transition-colors">Services</a></li>
-						<li><a href="/newsletter" class="text-gray-300 hover:text-white transition-colors">Newsletter</a></li>
+						<li><a href="/newsletter" class="text-gray-300 hover:text-white transition-colors">Games & Negotiations</a></li>
 						<li><a href="/about" class="text-gray-300 hover:text-white transition-colors">About</a></li>
 						<li><a href="/contact" class="text-gray-300 hover:text-white transition-colors">Contact</a></li>
 					</ul>
@@ -55,8 +55,8 @@ const { title = "Ahmed K. Hafsi - Negotiation Strategist" } = Astro.props;
 				<div class="flex flex-col md:flex-row justify-between items-center gap-4">
 					<p class="text-sm text-gray-400">© 2025 Ahmed K. Hafsi. All Rights Reserved.</p>
 					<div class="flex gap-4">
-						<a href="https://negotiations.substack.com" class="text-gray-400 hover:text-white transition-colors">Substack</a>
-						<a href="https://linkedin.com/in/ahmedhafsi" class="text-gray-400 hover:text-white transition-colors">LinkedIn</a>
+						<a href="https://negotiations.substack.com" target="_blank" rel="noopener" class="text-gray-400 hover:text-white transition-colors">Substack</a>
+						<a href="https://linkedin.com/in/ahmedkhalilhafsi" target="_blank" rel="noopener" class="text-gray-400 hover:text-white transition-colors">LinkedIn</a>
 					</div>
 				</div>
 			</div>
@@ -68,10 +68,10 @@ const { title = "Ahmed K. Hafsi - Negotiation Strategist" } = Astro.props;
 				"@context": "https://schema.org",
 				"@type": "Person",
 				"name": "Ahmed K. Hafsi",
-				"url": "https://yourdomain.com",
+				"url": "https://ahmedhafsi.com,
 				"sameAs": [
 					"https://negotiations.substack.com",
-					"https://linkedin.com/in/ahmedhafsi"
+					"https://linkedin.com/in/ahmedkhalilhafsi"
 				],
 				"jobTitle": "Negotiation Strategist",
 				"worksFor": {
@@ -80,6 +80,16 @@ const { title = "Ahmed K. Hafsi - Negotiation Strategist" } = Astro.props;
 				},
 				"description": "Expert in game theory and negotiation strategy with over a decade of experience."
 			}
+		</script>
+		<script>
+			// Initialize AOS
+			document.addEventListener('DOMContentLoaded', () => {
+				AOS.init({
+					duration: 800,
+					easing: 'ease-out',
+					once: true
+				});
+			});
 		</script>
 	</body>
 </html>
