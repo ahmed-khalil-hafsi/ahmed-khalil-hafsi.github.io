@@ -5,20 +5,20 @@ import Hero from '../components/Hero.astro';
 
 <Layout title="Services - Ahmed K. Hafsi">
   
-  <div class="max-w-6xl mx-auto mt-20 px-4 sm:px-6">
+  <div class="max-w-6xl mx-auto mt-8 md:mt-20 px-4 sm:px-6">
     <!-- Service Introduction -->
-    <div class="text-center mb-16">
-      <h2 class="text-5xl md:text-4xl font-serif font-semibold text-white mb-6 relative inline-block">
+    <div class="text-center mb-12 md:mb-16">
+      <h2 class="text-3xl md:text-5xl font-serif font-semibold text-white mb-6 relative inline-block">
         <span class="relative z-10">Win the Negotiation War</span>
         <span class="absolute -bottom-2 left-0 w-full h-1 bg-accent opacity-70"></span>
       </h2>
-      <p class="text-gray-300 max-w-5xl mx-auto text-lg">
+      <p class="text-gray-300 max-w-5xl mx-auto text-base md:text-lg">
         In manufacturing, every day is a battlefield. Whether you're producing precision components, assembling cutting-edge electronics, or supplying the automotive industry, you're fighting the same war. From my base in Singapore, I've witnessed these battles across Asia Pacific and North America, where industry veterans like you face the same ruthless challenges:
       </p>
     </div>
 
     <!-- Pain Points Section -->
-    <div class="mb-12">
+    <div class="mb-8 md:mb-12">
       <!-- Dynamic visual separator -->
       <div class="relative h-16 mb-12">
         <div class="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-accent/30 to-transparent"></div>
@@ -185,7 +185,7 @@ import Hero from '../components/Hero.astro';
       </div>
       
       <!-- Barbell Negotiations Section -->
-      <div class="relative py-16">
+      <div class="relative py-8 md:py-16">
         <!-- Subtle background line -->
         <div class="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-gray-700/50 to-transparent"></div>
         
@@ -205,11 +205,11 @@ import Hero from '../components/Hero.astro';
           <!-- Conservative Side -->
           <div class="mb-16">
             <div class="flex items-center justify-start mb-8">
-              <div class="w-32 h-px bg-gradient-to-r from-transparent to-gray-700"></div>
-              <span class="text-gray-500 text-sm uppercase tracking-widest ml-4">The Conservative Core</span>
+              <div class="hidden md:block w-32 h-px bg-gradient-to-r from-transparent to-gray-700"></div>
+              <span class="text-gray-500 text-sm uppercase tracking-widest md:ml-4">The Conservative Core</span>
             </div>
-            <h4 class="text-3xl font-serif text-white mb-4 pl-36">Protect the Downside</h4>
-            <div class="pl-36">
+            <h4 class="text-3xl font-serif text-white mb-4 md:pl-36">Protect the Downside</h4>
+            <div class="md:pl-36">
               <p class="text-xl text-gray-300 mb-8 font-light">
                 Shield your margins and secure your supply chain with robust, conservative strategies that protect against chaos.
               </p>
@@ -222,13 +222,13 @@ import Hero from '../components/Hero.astro';
           </div>
 
           <!-- Aggressive Side -->
-          <div class="text-right">
-            <div class="flex items-center justify-end mb-8">
-              <span class="text-accent/80 text-sm uppercase tracking-widest mr-4">The Aggressive Edge</span>
-              <div class="w-32 h-px bg-gradient-to-l from-transparent to-accent/50"></div>
+          <div class="text-left md:text-right">
+            <div class="flex items-center justify-start md:justify-end mb-8">
+              <span class="text-accent/80 text-sm uppercase tracking-widest md:mr-4">The Aggressive Edge</span>
+              <div class="hidden md:block w-32 h-px bg-gradient-to-l from-transparent to-accent/50"></div>
             </div>
-            <h4 class="text-3xl font-serif text-white mb-4 pr-36">Exploit the Upside</h4>
-            <div class="pr-36">
+            <h4 class="text-3xl font-serif text-white mb-4 md:pr-36">Exploit the Upside</h4>
+            <div class="md:pr-36">
               <p class="text-xl text-gray-300 mb-8 font-light">
                 Target opportunities with limited downside but massive upside potential that put you ahead of competition.
               </p>
@@ -253,7 +253,7 @@ import Hero from '../components/Hero.astro';
       </div>
       
       <!-- Take Control Section -->
-      <div class="relative py-16 mt-16 bg-gradient-to-b from-gray-900 via-gray-900 to-black">
+      <div class="relative py-8 md:py-16 mt-8 md:mt-16">
         <!-- Subtle grid overlay -->
         <div class="absolute inset-0 bg-[linear-gradient(to_right,#1f2937_1px,transparent_1px),linear-gradient(to_bottom,#1f2937_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
         
@@ -265,12 +265,12 @@ import Hero from '../components/Hero.astro';
           <div class="relative">
             <!-- Large background text -->
             <div class="absolute -top-20 left-0 right-0 text-center select-none pointer-events-none">
-              <span class="text-[120px] font-bold font-serif text-white/[0.03] leading-none">CONTROL</span>
+              <span class="text-[80px] md:text-[120px] font-bold font-serif text-white/[0.03] leading-none">CONTROL</span>
             </div>
 
             <!-- Main content -->
             <div class="relative z-10 flex flex-col items-center">
-              <h3 class="text-5xl md:text-6xl font-serif text-white mb-8 text-center max-w-4xl">
+              <h3 class="text-3xl md:text-5xl lg:text-6xl font-serif text-white mb-6 md:mb-8 text-center max-w-4xl">
                 Take Control 
                 <span class="relative inline-block">
                   Now
@@ -278,7 +278,7 @@ import Hero from '../components/Hero.astro';
                 </span>
               </h3>
               
-              <p class="text-2xl text-gray-300 font-light mb-12 text-center max-w-2xl">
+              <p class="text-xl md:text-2xl text-gray-300 font-light mb-8 md:mb-12 text-center max-w-2xl px-4">
                 You're done getting crushed by negotiations. With Barbell Negotiations, you'll outmaneuver the giants, tame your suppliers, and leave competitors in the dust. From Singapore to North America, I've got your back.
               </p>
 
@@ -294,11 +294,11 @@ import Hero from '../components/Hero.astro';
               </div>
 
               <!-- Secondary offer -->
-              <div class="flex items-center space-x-8 text-gray-400 font-light">
+              <div class="flex flex-col md:flex-row items-center md:space-x-8 space-y-4 md:space-y-0 text-gray-400 font-light px-4 md:px-0">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
-                <span class="text-lg">
+                <span class="text-lg text-center md:text-left">
                   Download your blueprint — 
                   <a href="#" class="text-white hover:text-accent transition-colors duration-300 border-b border-gray-700 hover:border-accent">
                     "The Manufacturer's Playbook: 5 Counter-Tactics Against Industry Giants"

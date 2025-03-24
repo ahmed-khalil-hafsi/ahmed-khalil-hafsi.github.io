@@ -17,7 +17,7 @@ const regularArticles = articles.filter(article => !article.featured);
 
 <Layout title="Newsletter - Games & Negotiations by Ahmed K. Hafsi">
   <!-- Newsletter Header Image -->
-  <div class="max-w-md mx-auto mt-6 mb-2">
+  <div class="max-w-md mx-auto mt-4 md:mt-6 mb-2 px-4">
     <img 
       src="/Newsletter_head.webp" 
       alt="Games & Negotiations Newsletter" 
@@ -30,15 +30,15 @@ const regularArticles = articles.filter(article => !article.featured);
     subtitle="Thoughts on negotiation, game theory, technology, geopolitics & everything in between." 
   />
   
-  <div class="text-center -mt-8 mb-6">
+  <div class="text-center -mt-6 md:-mt-8 mb-6 px-4">
     <p class="text-gray-300 mb-4">By <span class="font-medium">Ahmed K. Hafsi</span> · Launched over 3 years ago</p>
     <a href="https://negotiations.substack.com/subscribe" class="inline-block bg-accent text-white px-6 py-2 rounded-md hover:bg-accent/90 transition-colors font-medium">
       Get Insights
     </a>
   </div>
   
-  <div class="max-w-4xl mx-auto mt-0">
-    <div class="grid grid-cols-1 gap-8">
+  <div class="max-w-4xl mx-auto mt-0 px-4">
+    <div class="grid grid-cols-1 gap-6 md:gap-8">
       <div>
         <h2 class="text-2xl font-semibold mb-6 font-serif">Latest Articles</h2>
         
@@ -55,7 +55,7 @@ const regularArticles = articles.filter(article => !article.featured);
         )}
         
         <!-- Recent Posts Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 mb-8">
           {regularArticles.slice(0, 4).map(article => (
             <div class="bg-gray-900 p-5 rounded-lg border border-gray-800">
               <h3 class="text-lg font-semibold mb-2 font-serif">{article.title}</h3>
