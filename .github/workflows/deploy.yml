@@ -16,11 +16,18 @@ jobs:
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
+        
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+        
       - name: Install, build, and upload your site
         uses: withastro/action@v1
         with:
           path: main
           package-manager: npm
+          
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
 
   deploy:
     needs: build
