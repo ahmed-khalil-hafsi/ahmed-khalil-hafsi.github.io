@@ -6,7 +6,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://ahmedhafsi.com', // Replace with your domain
+  site: 'https://ahmed-khalil-hafsi.github.io',
   integrations: [
     tailwind({
       config: {
