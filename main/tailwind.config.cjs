@@ -7,10 +7,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        dark: '#14101b',      // Updated to match your blog
+        dark: '#2E1A47',      // Updated to your requested color
         primary: '#e6e6e6',   // Light text color
         accent: '#6b7fd7',    // Accent color for links/buttons
-        card: '#1e1629',      // New color for card backgrounds
+        card: '#3D2B56',      // New color for card backgrounds
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],

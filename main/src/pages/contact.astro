@@ -54,45 +54,68 @@ import Hero from '../components/Hero.astro';
         <div class="mt-10">
           <h4 class="text-xl font-semibold mb-4 font-serif">Areas of Expertise</h4>
           <div class="flex flex-wrap gap-2">
-            <span class="px-3 py-1 bg-gray-800 rounded-full text-sm">Negotiation</span>
-            <span class="px-3 py-1 bg-gray-800 rounded-full text-sm">Game Theory</span>
-            <span class="px-3 py-1 bg-gray-800 rounded-full text-sm">Behavioral Economics</span>
-            <span class="px-3 py-1 bg-gray-800 rounded-full text-sm">Procurement Strategy</span>
-            <span class="px-3 py-1 bg-gray-800 rounded-full text-sm">Sales Strategy</span>
-            <span class="px-3 py-1 bg-gray-800 rounded-full text-sm">Operations</span>
-    
+            <span class="px-3 py-1 bg-card rounded-full text-sm">Negotiation</span>
+            <span class="px-3 py-1 bg-card rounded-full text-sm">Game Theory</span>
+            <span class="px-3 py-1 bg-card rounded-full text-sm">Behavioral Economics</span>
+            <span class="px-3 py-1 bg-card rounded-full text-sm">Procurement Strategy</span>
+            <span class="px-3 py-1 bg-card rounded-full text-sm">Sales Strategy</span>
+            <span class="px-3 py-1 bg-card rounded-full text-sm">Operations</span>
           </div>
         </div>
       </div>
       
       <div>
         <h3 class="text-xl md:text-2xl font-semibold mb-4 md:mb-6 font-serif">Send a Message</h3>
-        <form class="space-y-4" action="https://formspree.io/f/your-id" method="POST">
+        <p class="text-gray-300 mb-6">Fill out the form below and click "Send Email" to open your email client with a pre-filled message.</p>
+        
+        <form id="email-form" class="space-y-4">
           <div>
             <label for="name" class="block text-sm font-medium text-gray-300 mb-1">Name</label>
-            <input type="text" id="name" name="name" required class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-md focus:ring-accent focus:border-accent text-white" />
+            <input type="text" id="name" name="name" required class="w-full px-4 py-2 bg-card border border-gray-700 rounded-md focus:ring-accent focus:border-accent text-white" />
           </div>
           
           <div>
-            <label for="email" class="block text-sm font-medium text-gray-300 mb-1">Email</label>
-            <input type="email" id="email" name="email" required class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-md focus:ring-accent focus:border-accent text-white" />
+            <label for="email" class="block text-sm font-medium text-gray-300 mb-1">Your Email</label>
+            <input type="email" id="email" name="email" required class="w-full px-4 py-2 bg-card border border-gray-700 rounded-md focus:ring-accent focus:border-accent text-white" />
           </div>
           
           <div>
             <label for="subject" class="block text-sm font-medium text-gray-300 mb-1">Subject</label>
-            <input type="text" id="subject" name="subject" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-md focus:ring-accent focus:border-accent text-white" />
+            <input type="text" id="subject" name="subject" required class="w-full px-4 py-2 bg-card border border-gray-700 rounded-md focus:ring-accent focus:border-accent text-white" />
           </div>
           
           <div>
             <label for="message" class="block text-sm font-medium text-gray-300 mb-1">Message</label>
-            <textarea id="message" name="message" rows="4" required class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-md focus:ring-accent focus:border-accent text-white"></textarea>
+            <textarea id="message" name="message" rows="4" required class="w-full px-4 py-2 bg-card border border-gray-700 rounded-md focus:ring-accent focus:border-accent text-white"></textarea>
           </div>
           
           <button type="submit" class="w-full bg-accent text-white px-6 py-3 rounded-md hover:bg-accent/90 transition-colors">
-            Send Message
+            Send Email
           </button>
         </form>
       </div>
     </div>
   </div>
-</Layout> 
+</Layout>
+
+<script>
+  // Client-side script that will be included in the final HTML
+  document.addEventListener('DOMContentLoaded', () => {
+    const emailForm = document.getElementById('email-form');
+    
+    if (emailForm) {
+      emailForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const subject = document.getElementById('subject').value;
+        const message = document.getElementById('message').value;
+        
+        const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
+        
+        window.location.href = `mailto:mail@ahmedhafsi.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      });
+    }
+  });
+</script> 
