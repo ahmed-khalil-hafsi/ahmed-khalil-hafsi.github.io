@@ -1,20 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
-import { getSubstackArticles } from '../utils/substack.js';
 import { Image } from 'astro:assets';
 import newsletterHeader from '../assets/Newsletter_head.webp';
 
-// Fetch articles from Substack
-const articles = await getSubstackArticles();
 
-// Set the first article as featured, or you can set this based on other criteria
-if (articles.length > 0) {
-  articles[0].featured = true;
-}
 
-const featuredArticle = articles.find(article => article.featured);
-const regularArticles = articles.filter(article => !article.featured);
 ---
 
 <Layout title="Newsletter - Games & Negotiations by Ahmed K. Hafsi">
@@ -124,29 +115,4 @@ const regularArticles = articles.filter(article => !article.featured);
     </div>
   </div>
   
-  <!-- Structured Data for Blog Posts -->
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Blog",
-    "name": "Games & Negotiations",
-    "url": "https://yourdomain.com/newsletter",
-    "description": "Strategic insights on game theory and negotiation",
-    "publisher": {
-      "@type": "Person",
-      "name": "Ahmed K. Hafsi",
-      "url": "https://yourdomain.com"
-    },
-    "blogPost": articles.map(article => ({
-      "@type": "BlogPosting",
-      "headline": article.title,
-      "datePublished": article.date.toISOString(),
-      "url": article.url,
-      "description": article.excerpt,
-      "author": {
-        "@type": "Person",
-        "name": "Ahmed K. Hafsi"
-      }
-    }))
-  })}>
-  </script>
 </Layout> 

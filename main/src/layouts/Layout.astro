@@ -95,23 +95,7 @@ const { title = "Ahmed K. Hafsi - Negotiation Strategist" } = Astro.props;
 				"description": "Expert in game theory and negotiation strategy with over a decade of experience."
 			}
 		</script>
-		<script>
-			// Initialize AOS
-			document.addEventListener('DOMContentLoaded', () => {
-				AOS.init({
-					duration: 800,
-					easing: 'ease-out',
-					once: true
-				});
-			});
-
-			const menuBtn = document.getElementById('menuBtn');
-			const mobileNav = document.getElementById('mobileNav');
-			
-			menuBtn?.addEventListener('click', () => {
-				mobileNav?.classList.toggle('hidden');
-			});
-		</script>
+		
 	</body>
 </html>
 

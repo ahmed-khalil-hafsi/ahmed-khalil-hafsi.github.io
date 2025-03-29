@@ -1,13 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import NewsletterSignup from '../components/NewsletterSignup.astro';
-import { getSubstackArticles } from '../utils/substack.js';
+
 import { Image } from 'astro:assets';
 import profileImage from '../assets/profile.webp';
 
-// Fetch the latest article
-const articles = await getSubstackArticles();
-const latestArticle = articles.length > 0 ? articles[0] : null;
+
 ---
 
 <Layout>
@@ -82,24 +80,7 @@ const latestArticle = articles.length > 0 ? articles[0] : null;
 		<div class="mt-16">
 			<h2 class="text-2xl font-semibold mb-6 font-serif">Games and Negotiations Newsletter</h2>
 			<div class="bg-card p-8 rounded-lg border border-gray-800 shadow-lg hover:border-accent/50 transition-all duration-300">
-				{latestArticle && (
-					<div class="mb-8 pb-8 border-b border-gray-700">
-						<div class="flex items-center mb-3">
-							<div class="w-1 h-6 bg-accent mr-3 rounded-full"></div>
-							<h3 class="text-xl font-semibold font-serif">Latest: {latestArticle.title}</h3>
-						</div>
-						<p class="text-sm text-gray-400 mb-4">{latestArticle.displayDate}</p>
-						<p class="text-gray-300 mb-5 leading-relaxed">
-							{latestArticle.excerpt}
-						</p>
-						<a href={latestArticle.url} class="text-accent hover:underline inline-flex items-center group">
-							Read full article 
-							<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-							</svg>
-						</a>
-					</div>
-				)}
+				
 				
 				<div class="flex flex-col md:flex-row items-center justify-between gap-6">
 					<div class="max-w-lg">

@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.astro';
+import { Image } from 'astro:assets';
+import profileImage from '../assets/profile.webp';
 ---
 
 <Layout title="About - Ahmed K. Hafsi">
@@ -8,7 +9,14 @@ import Hero from '../components/Hero.astro';
   
   <div class="max-w-3xl mx-auto mt-6 md:mt-10 px-4 space-y-6">
     <div class="flex flex-col items-center gap-6 md:gap-8 mb-8">
-      <img src="/profile.jpg" alt="Ahmed K. Hafsi" class="rounded-full w-32 h-32 md:w-48 md:h-48 object-cover shadow-lg" />
+      <Image 
+        src={profileImage} 
+        alt="Ahmed K. Hafsi" 
+        class="rounded-full w-32 h-32 md:w-48 md:h-48 object-cover shadow-lg"
+        width={192}
+        height={192}
+        quality={90}
+      />
       <div class="prose prose-invert prose-sm md:prose-base lg:prose-lg">
         <p>
           I’m Ahmed K. Hafsi, a negotiation and supply chain specialist with over a decade of experience helping manufacturing companies strengthen their procurement and sales. My approach combines game theory, behavioral insights, and data to deliver practical results—lower costs, reliable suppliers, faster deals, and lasting customer relationships.
