@@ -2,6 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import { getSubstackArticles } from '../utils/substack.js';
+import { Image } from 'astro:assets';
+import newsletterHeader from '../assets/Newsletter_head.webp';
 
 // Fetch articles from Substack
 const articles = await getSubstackArticles();
@@ -18,10 +20,13 @@ const regularArticles = articles.filter(article => !article.featured);
 <Layout title="Newsletter - Games & Negotiations by Ahmed K. Hafsi">
   <!-- Newsletter Header Image -->
   <div class="max-w-md mx-auto mt-4 md:mt-6 mb-2 px-4">
-    <img 
-      src="/Newsletter_head.webp" 
+    <Image 
+      src={newsletterHeader} 
       alt="Games & Negotiations Newsletter" 
       class="w-full rounded-lg"
+      width={800}
+      height={400}
+      quality={90}
     />
   </div>
 

@@ -2,6 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import NewsletterSignup from '../components/NewsletterSignup.astro';
 import { getSubstackArticles } from '../utils/substack.js';
+import { Image } from 'astro:assets';
+import profileImage from '../assets/profile.webp';
 
 // Fetch the latest article
 const articles = await getSubstackArticles();
@@ -14,10 +16,13 @@ const latestArticle = articles.length > 0 ? articles[0] : null;
 	<section class="mt-4 max-w-7xl mx-auto">
 		<div class="flex flex-col md:flex-row gap-8 items-center mb-10">
 			<div class="w-48 h-48 flex-shrink-0">
-				<img 
-					src="/profile.jpg" 
+				<Image 
+					src={profileImage} 
 					alt="Ahmed K. Hafsi" 
 					class="w-full h-full object-cover rounded-full border-2 border-accent"
+					width={192}
+					height={192}
+					quality={90}
 				/>
 			</div>
 			<div class="prose prose-invert lg:prose-xl max-w-none">
@@ -30,7 +35,7 @@ const latestArticle = articles.length > 0 ? articles[0] : null;
 				  </p>
 				  
 				  <p class="text-lg leading-relaxed">
-					Using game theory, behavioral science, and advanced analytics, I create practical negotiation frameworks that deliver results. Explore my <a href="https://negotiations.substack.com" class="text-accent hover:underline" target="_blank" rel="noopener noreferrer">Substack blog</a> for insights or my <a href="https://github.com/ahmed-khalil-hafsi" class="text-accent hover:underline" target="_blank" rel="noopener noreferrer">open-source tools</a> to see how I make strategic decision-making accessible. Ready to transform your procurement and sales? Let’s connect.
+					Using game theory, behavioral science, and advanced analytics, I create practical negotiation frameworks that deliver results. Explore my <a href="https://negotiations.substack.com" class="text-accent hover:underline" target="_blank" rel="noopener noreferrer">Substack blog</a> for insights or my <a href="https://github.com/ahmed-khalil-hafsi" class="text-accent hover:underline" target="_blank" rel="noopener noreferrer">open-source tools</a> to see how I make strategic decision-making accessible. Ready to transform your procurement and sales? Let's connect.
 				  </p>
 				
 				<div class="flex gap-4 mt-4">
