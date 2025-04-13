@@ -113,47 +113,62 @@ const { title = "Ahmed K. Hafsi - Negotiation Strategist" } = Astro.props;
 				const menuBtn = document.getElementById('menuBtn');
 				const mobileNav = document.getElementById('mobileNav');
 				
-				menuBtn?.addEventListener('click', () => {
-					mobileNav?.classList.toggle('hidden');
-				});
+				if (menuBtn && mobileNav) {
+					menuBtn.addEventListener('click', () => {
+						mobileNav.classList.toggle('hidden');
+					});
+				} else {
+					if (!menuBtn) console.error("Mobile menu button ('menuBtn') not found.");
+					if (!mobileNav) console.error("Mobile navigation container ('mobileNav') not found.");
+				}
 				
-				// Services dropdown for mobile
-				const servicesGroup = document.querySelector('.group');
-				const servicesDropdownBtn = document.querySelector('nav button');
+				// Services dropdown logic
+				const servicesGroup = document.querySelector('.group'); // The <li> element
+				const servicesDropdownBtn = servicesGroup?.querySelector('button'); // The <button> inside the li
+				const servicesDropdown = servicesGroup?.querySelector('.absolute'); // The dropdown div
 				
-				// Toggle active class instead of directly manipulating the dropdown
-				servicesDropdownBtn?.addEventListener('click', (e) => {
-					if (window.innerWidth < 768) {
-						e.preventDefault();
-						servicesGroup?.classList.toggle('active');
-						const dropdown = servicesDropdownBtn.nextElementSibling;
-						dropdown?.classList.toggle('hidden');
-					}
-				});
+				// Handle mobile dropdown click
+				if (servicesGroup && servicesDropdownBtn) {
+					servicesDropdownBtn.addEventListener('click', (e) => {
+						// Only apply click logic for mobile view
+						if (window.innerWidth < 768) {
+							e.preventDefault(); // Prevent any default button behavior
+							// Toggle the 'active' class on the parent <li> (.group)
+							// The CSS will handle showing/hiding the dropdown based on this class
+							servicesGroup.classList.toggle('active');
+						}
+					});
+				} else {
+					if (!servicesGroup) console.error("Services group element ('.group') not found.");
+					if (!servicesDropdownBtn) console.error("Services dropdown button not found within .group.");
+				}
 				
-				// Add hover intent to make dropdown more robust on desktop
-				if (window.innerWidth >= 768) {
+				// Add hover intent for desktop view
+				if (window.innerWidth >= 768 && servicesGroup && servicesDropdown) {
 					let timeout;
-					const dropdown = document.querySelector('.group .absolute');
 					
-					servicesGroup?.addEventListener('mouseenter', () => {
+					servicesGroup.addEventListener('mouseenter', () => {
 						clearTimeout(timeout);
-						dropdown?.classList.remove('hidden');
+						// Ensure 'active' class is removed if lingering from mobile
+						servicesGroup.classList.remove('active');
+						// Use Tailwind's 'hidden' class for desktop hover control
+						servicesDropdown.classList.remove('hidden');
 					});
 					
-					servicesGroup?.addEventListener('mouseleave', () => {
+					servicesGroup.addEventListener('mouseleave', () => {
 						timeout = setTimeout(() => {
-							dropdown?.classList.add('hidden');
-						}, 200);
+							servicesDropdown.classList.add('hidden');
+						}, 200); // Delay before hiding
 					});
 					
-					dropdown?.addEventListener('mouseenter', () => {
+					// Keep dropdown open if hovering over it directly
+					servicesDropdown.addEventListener('mouseenter', () => {
 						clearTimeout(timeout);
 					});
 					
-					dropdown?.addEventListener('mouseleave', () => {
+					servicesDropdown.addEventListener('mouseleave', () => {
 						timeout = setTimeout(() => {
-							dropdown?.classList.add('hidden');
+							servicesDropdown.classList.add('hidden');
 						}, 200);
 					});
 				}
