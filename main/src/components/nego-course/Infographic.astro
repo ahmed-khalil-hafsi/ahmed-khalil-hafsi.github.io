@@ -1,0 +1,60 @@
+---
+---
+
+<div class="infographic-container">
+  <div class="infographic-header">
+    <h3 class="infographic-title">{Astro.props.title}</h3>
+    {Astro.props.description && <p class="infographic-description">{Astro.props.description}</p>}
+  </div>
+  <div class="infographic-content">
+    <slot />
+  </div>
+  {Astro.props.source && <div class="infographic-source">Source: {Astro.props.source}</div>}
+</div>
+
+<style>
+  .infographic-container {
+    background-color: var(--white);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    padding: var(--space-lg);
+    margin-bottom: var(--space-xl);
+    overflow: hidden;
+  }
+  
+  .infographic-header {
+    margin-bottom: var(--space-md);
+    text-align: center;
+  }
+  
+  .infographic-title {
+    color: var(--primary);
+    margin-bottom: var(--space-sm);
+  }
+  
+  .infographic-description {
+    color: var(--neutral);
+    font-style: italic;
+  }
+  
+  .infographic-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  .infographic-source {
+    font-size: 0.8rem;
+    color: var(--neutral);
+    text-align: right;
+    margin-top: var(--space-md);
+    font-style: italic;
+  }
+  
+  @media (max-width: 768px) {
+    .infographic-container {
+      padding: var(--space-md);
+    }
+  }
+</style>

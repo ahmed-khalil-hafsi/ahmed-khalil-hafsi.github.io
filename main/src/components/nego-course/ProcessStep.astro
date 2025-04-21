@@ -1,0 +1,74 @@
+---
+---
+
+<div class="process-step">
+  <div class="process-step-number">{Astro.props.number}</div>
+  <div class="process-step-content">
+    <h4 class="process-step-title">{Astro.props.title}</h4>
+    <div class="process-step-description">
+      <slot />
+    </div>
+  </div>
+</div>
+
+<style>
+  .process-step {
+    display: flex;
+    background-color: var(--neutral-light);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    position: relative;
+    transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+  }
+  
+  .process-step:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+  }
+  
+  .process-step-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: var(--secondary);
+    color: var(--white);
+    border-radius: 50%;
+    font-weight: 700;
+    margin-right: var(--space-md);
+    flex-shrink: 0;
+  }
+  
+  .process-step-content {
+    flex-grow: 1;
+  }
+  
+  .process-step-title {
+    color: var(--primary);
+    margin-bottom: var(--space-sm);
+  }
+  
+  @media (min-width: 768px) {
+    .process-step {
+      width: calc(50% - var(--space-md));
+    }
+    
+    .process-step:nth-child(odd):after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: -20px;
+      width: 20px;
+      height: 2px;
+      background-color: var(--secondary);
+      display: block;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .process-step {
+      width: calc(33.333% - var(--space-md));
+    }
+  }
+</style>

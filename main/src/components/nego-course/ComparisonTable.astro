@@ -1,0 +1,87 @@
+---
+---
+
+<div class="comparison-table-container">
+  <h3 class="comparison-table-title">{Astro.props.title}</h3>
+  {Astro.props.description && <p class="comparison-table-description">{Astro.props.description}</p>}
+  <div class="comparison-table-wrapper">
+    <table class="comparison-table">
+      <slot />
+    </table>
+  </div>
+  {Astro.props.source && <div class="comparison-table-source">Source: {Astro.props.source}</div>}
+</div>
+
+<style>
+  .comparison-table-container {
+    background-color: var(--white);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    padding: var(--space-lg);
+    margin-bottom: var(--space-xl);
+    overflow: hidden;
+  }
+  
+  .comparison-table-title {
+    color: var(--primary);
+    margin-bottom: var(--space-sm);
+    text-align: center;
+  }
+  
+  .comparison-table-description {
+    color: var(--neutral);
+    font-style: italic;
+    text-align: center;
+    margin-bottom: var(--space-md);
+  }
+  
+  .comparison-table-wrapper {
+    overflow-x: auto;
+  }
+  
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+  
+  .comparison-table th {
+    background-color: var(--primary-light);
+    color: var(--white);
+    padding: var(--space-md);
+    text-align: left;
+    font-weight: 600;
+  }
+  
+  .comparison-table td {
+    padding: var(--space-md);
+    border-bottom: 1px solid var(--neutral-light);
+  }
+  
+  .comparison-table tr:nth-child(even) {
+    background-color: var(--neutral-light);
+  }
+  
+  .comparison-table tr:hover {
+    background-color: rgba(52, 152, 219, 0.1);
+  }
+  
+  .comparison-table-source {
+    font-size: 0.8rem;
+    color: var(--neutral);
+    text-align: right;
+    margin-top: var(--space-md);
+    font-style: italic;
+  }
+  
+  @media (max-width: 768px) {
+    .comparison-table-container {
+      padding: var(--space-md);
+    }
+    
+    .comparison-table th,
+    .comparison-table td {
+      padding: var(--space-sm);
+    }
+  }
+</style>

@@ -1,0 +1,155 @@
+---
+// src/layouts/CourseLayout.astro
+import Header from '../components/nego-course/Header.astro'; // Adjust path if needed
+import Footer from '../components/nego-course/Footer.astro'; // Adjust path if needed
+
+// Props passed from the page using this layout
+const { title, description, breadcrumb } = Astro.props;
+---
+<html lang="en" class="bg-slate-900">
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="generator" content={Astro.generator} />
+  <title>{title || 'Negotiation Course'}</title>
+  <meta name="description" content={description} />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="course-layout min-h-screen text-white">
+  <div class="flex flex-col min-h-screen">
+    <Header breadcrumb={breadcrumb} />
+    <main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="max-w-6xl mx-auto space-y-12">
+        <slot />
+      </div>
+    </main>
+    <Footer />
+  </div>
+</body>
+</html>
+
+<style is:global>
+  /* ====== CSS Variables ====== */
+  :root {
+    --color-primary: 196 181 253;    /* #c4b5fd */
+    --color-secondary: 165 180 252;  /* #a5b4fc */
+    --color-bg: 15 23 42;            /* #0f172a (slate-900) */
+    --color-card: 30 30 45;
+    --color-card-border: 255 255 255 / 0.1;
+    --color-text: 255 255 255;
+    --color-text-muted: 148 163 184; /* slate-400 */
+  }
+
+  /* ====== Base Reset ====== */
+  html {
+    background-color: rgb(var(--color-bg));
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+  }
+
+  body {
+    color: rgb(var(--color-text));
+    background: linear-gradient(
+      to bottom right,
+      rgb(var(--color-bg)),
+      rgb(76 29 149 / 0.4),  /* purple-900 with opacity */
+      rgb(var(--color-bg))
+    );
+  }
+
+  /* ====== Typography Hierarchy ====== */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Source Serif Pro', serif;
+    font-weight: 600;
+    line-height: 1.2;
+    margin: 1.5em 0 0.75em;
+  }
+
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 2rem; }
+  h3 { font-size: 1.75rem; }
+
+  /* ====== Card System ====== */
+  .bg-card {
+    background: rgb(var(--color-card) / 0.95);
+    border: 1px solid rgb(var(--color-card-border));
+    backdrop-filter: blur(8px);
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 12px rgb(0 0 0 / 0.2);
+  }
+
+  .bg-card:hover {
+    box-shadow: 0 8px 24px rgb(0 0 0 / 0.3);
+    transform: translateY(-2px);
+  }
+
+  /* ====== Interactive Elements ====== */
+  button, .button {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    background: rgb(var(--color-primary) / 0.9);
+    color: rgb(var(--color-bg));
+  }
+
+  button:hover:not(:disabled) {
+    background: rgb(var(--color-primary));
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgb(var(--color-primary) / 0.2);
+  }
+
+  /* ====== Responsive Overrides ====== */
+  @media (max-width: 640px) {
+    html { font-size: 14px; }
+    
+    .bg-card {
+      padding: 1.5rem;
+      margin-left: -1rem;
+      margin-right: -1rem;
+      border-radius: 0;
+      border-left: none;
+      border-right: none;
+    }
+  }
+
+  /* ====== Utility Classes ====== */
+  .text-accent { color: rgb(var(--color-primary)) }
+  .text-muted { color: rgb(var(--color-text-muted)) }
+
+  /* Target only elements within course layout */
+  .course-layout {
+    background: linear-gradient(
+      to bottom right,
+      #0f172a,  /* slate-900 */
+      rgba(76, 29, 149, 0.4),  /* purple-900 with opacity */
+      #0f172a
+    );
+  }
+
+  .course-layout .bg-card {
+    background: rgba(30, 30, 45, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+  }
+
+  .course-layout h1,
+  .course-layout h2,
+  .course-layout h3 {
+    font-family: 'Source Serif Pro', serif;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  .course-layout .text-accent {
+    color: #c4b5fd;
+  }
+</style>

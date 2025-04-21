@@ -1,0 +1,50 @@
+---
+---
+
+<div class="chart-container">
+  <h3 class="chart-title">{Astro.props.title}</h3>
+  <div class="chart-content">
+    <canvas id={Astro.props.id}></canvas>
+  </div>
+  <div class="chart-legend" id={`${Astro.props.id}-legend`}></div>
+</div>
+
+<script define:vars={{ chartId: Astro.props.id, chartType: Astro.props.type, chartData: Astro.props.data, chartOptions: Astro.props.options }}>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Load Chart.js from CDN
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/chart.js';
+    script.onload = initializeChart;
+    document.head.appendChild(script);
+    
+    function initializeChart() {
+      const ctx = document.getElementById(chartId).getContext('2d');
+      
+      // Create the chart
+      const chart = new Chart(ctx, {
+        type: chartType,
+        data: chartData,
+        options: chartOptions || {
+          responsive: true,
+          maintainAspectRatio: true,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: {
+                font: {
+                  family: "'Open Sans', sans-serif",
+                  size: 12
+                }
+              }
+            }
+          }
+        }
+      });
+      
+      // If custom legend container is provided
+      if (document.getElementById(`${chartId}-legend`)) {
+        document.getElementById(`${chartId}-legend`).innerHTML = chart.generateLegend();
+      }
+    }
+  });
+</script>
