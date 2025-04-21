@@ -1,257 +1,350 @@
 ---
-// Use the CourseLayout
-import CourseLayout from '../../layouts/CourseLayout.astro'; 
-// Removed Header and Footer imports as they are in the layout
+// Define the layout properly in the frontmatter
+layout: "../../layouts/CourseLayout.astro"
+title: "Bilateral Negotiations Mastery Course | Expert Training Program"
+description: "Develop advanced negotiation skills with our comprehensive course focusing on behavioral tactics, cultural aspects, and structured preparation using Harvard's 7 Element Framework."
+
+// Import components
 import Chart from '../../components/nego-course/Chart.astro';
 import Infographic from '../../components/nego-course/Infographic.astro';
 import ComparisonTable from '../../components/nego-course/ComparisonTable.astro';
 import ProcessDiagram from '../../components/nego-course/ProcessDiagram.astro';
 import ProcessStep from '../../components/nego-course/ProcessStep.astro';
 
-// Add layout property and define props for the layout
-layout: CourseLayout
-title: "Bilateral Negotiations Mastery Course"
-description: "Develop advanced negotiation skills with our comprehensive course focusing on behavioral tactics, cultural aspects, and structured preparation using Harvard's 7 Element Framework."
+// SEO metadata
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": "Bilateral Negotiations Mastery Course",
+  "description": "Develop advanced negotiation skills with our comprehensive course focusing on behavioral tactics, cultural aspects, and structured preparation using Harvard's 7 Element Framework.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Ahmed K. Hafsi - Negotiation Strategist"
+  },
+  "courseCode": "NEGO-101",
+  "coursePrerequisites": "None - suitable for beginners and professionals",
+  "skillLevel": "All Levels"
+};
+
+// Make sure image paths are correct - adjust if needed
+const patternBgPath = "/images/nego-pattern.svg";
+const sampleChartPath = "/images/sample-chart.png";
+
+// Define accent color class in case it's not consistently available
+const accentColor = "text-purple-600"; // Ensure consistency with layout's primary
 ---
-{/* Removed html, head, body, Header, Footer tags - handled by layout */}
 
-{/* Wrap content sections */}
-<div class="container mx-auto px-4">
-  <section class="hero py-24 text-center">
-    <div class="container">
-      <h1>Master Bilateral Negotiations</h1>
-      <p class="max-w-3xl mx-auto">Develop advanced negotiation skills with our comprehensive course focusing on behavioral tactics, cultural aspects, and structured preparation using Harvard's 7 Element Framework.</p>
-      <div class="hero-buttons mt-10">
-        <a href="/nego-course/behavioral-tactics" class="bg-accent hover:bg-accent/90 text-black font-bold py-3 px-6 rounded-lg mr-4 text-lg transition-colors duration-200">Start Learning</a>
-        <a href="/nego-course/assessment" class="bg-transparent hover:bg-card text-white font-semibold hover:text-white py-3 px-6 border border-white hover:border-transparent rounded-lg text-lg transition-colors duration-200">Take Assessment</a>
-      </div>
-    </div>
-  </section>
+<!-- SEO: Schema.org JSON-LD -->
+<script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
 
-  <section class="features py-20">
-    <div class="features-heading text-center mb-16">
-      <h2 class="text-3xl font-serif font-bold mb-4">Course Features</h2>
-      <p class="text-lg text-gray-400 max-w-2xl mx-auto">Comprehensive training designed for practical application in real-world negotiations</p>
-    </div>
-    <div class="row">
-      <div class="col col-12 col-md-6 col-lg-4 mb-8">
-        <div class="card bg-card p-6 rounded-lg shadow-lg h-full flex flex-col border border-gray-800 hover:border-accent/50 transition-all duration-300">
-          <div class="card-content flex-grow">
-            <div class="feature-icon text-accent text-4xl mb-4">
-              <i class="fas fa-brain"></i>
-            </div>
-            <h3 class="card-title text-xl font-serif font-semibold mb-3">Behavioral Tactics & Influence</h3>
-            <p class="card-text text-gray-300 mb-4 flex-grow">Master psychological principles and influence strategies to achieve better outcomes while maintaining relationships.</p>
-          </div>
-          <a href="/nego-course/behavioral-tactics" class="mt-auto self-start bg-transparent hover:bg-accent text-accent font-semibold hover:text-white py-2 px-4 border border-accent hover:border-transparent rounded transition-colors duration-200">Learn More</a>
-        </div>
-      </div>
-
-      <div class="col col-12 col-md-6 col-lg-4 mb-8">
-        <div class="card bg-card p-6 rounded-lg shadow-lg h-full flex flex-col border border-gray-800 hover:border-accent/50 transition-all duration-300">
-          <div class="card-content flex-grow">
-            <div class="feature-icon text-accent text-4xl mb-4">
-              <i class="fas fa-globe-americas"></i>
-            </div>
-            <h3 class="card-title text-xl font-serif font-semibold mb-3">Cultural Aspects</h3>
-            <p class="card-text text-gray-300 mb-4 flex-grow">Navigate cross-cultural negotiations with confidence by understanding key differences between US, German, Chinese, Japanese, and Southeast Asian approaches.</p>
-          </div>
-          <a href="/nego-course/cultural-aspects" class="mt-auto self-start bg-transparent hover:bg-accent text-accent font-semibold hover:text-white py-2 px-4 border border-accent hover:border-transparent rounded transition-colors duration-200">Learn More</a>
-        </div>
-      </div>
-
-      <div class="col col-12 col-md-6 col-lg-4 mb-8">
-        <div class="card bg-card p-6 rounded-lg shadow-lg h-full flex flex-col border border-gray-800 hover:border-accent/50 transition-all duration-300">
-          <div class="card-content flex-grow">
-            <div class="feature-icon text-accent text-4xl mb-4">
-              <i class="fas fa-clipboard-list"></i>
-            </div>
-            <h3 class="card-title text-xl font-serif font-semibold mb-3">Harvard's 7 Element Framework</h3>
-            <p class="card-text text-gray-300 mb-4 flex-grow">Apply a structured approach to negotiation preparation that focuses on interests, options, legitimacy, and other key elements.</p>
-          </div>
-          <a href="/nego-course/harvard-framework" class="mt-auto self-start bg-transparent hover:bg-accent text-accent font-semibold hover:text-white py-2 px-4 border border-accent hover:border-transparent rounded transition-colors duration-200">Learn More</a>
+<!-- Use layout's default background (gray-50), add specific classes if needed -->
+<div class="nego-course-content">
+  <!-- Hero Section - Keep gradient, ends in gray-50 -->
+  <section class="hero py-20 md:py-28 px-4 bg-gradient-to-b from-white to-gray-50"> {/* Removed border */}
+    <div class="container mx-auto">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-serif font-semibold mb-6 text-gray-900">Master Bilateral Negotiations</h1>
+        {/* Slightly lighter description text */}
+        <p class="text-lg md:text-xl text-gray-600 mb-10 leading-relaxed">A comprehensive program on advanced negotiation techniques, behavioral tactics, and cross-cultural dynamics.</p>
+        <div class="flex flex-wrap justify-center gap-4">
+          {/* Use global button styles */}
+          <a href="/nego-course/behavioral-tactics" class="btn btn-primary">Start Learning</a>
+          <a href="/nego-course/assessment" class="btn btn-secondary">Take Assessment</a>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="modules py-20">
-    <div class="modules-heading text-center mb-16">
-       <h2 class="text-3xl font-serif font-bold mb-4">Interactive Learning Experience</h2>
-       <p class="text-lg text-gray-400 max-w-2xl mx-auto">Engage with practical exercises and simulations to develop your negotiation skills</p>
+  <!-- Core Features - White background for contrast -->
+  <section class="py-16 md:py-24 bg-white"> {/* Set explicit white BG */}
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-serif font-semibold mb-16 text-gray-900 text-center">Course Features</h2>
+
+        <!-- Feature Cards - Refined -->
+        <div class="space-y-8">
+          {/* Card 1: Behavioral Tactics */}
+          <div class="feature-card">
+            <div class="flex flex-col sm:flex-row items-start gap-5"> {/* Slightly reduced gap */}
+              <div class="feature-icon">
+                <i class="fas fa-brain text-purple-600"></i>
+              </div>
+              <div class="flex-grow">
+                <h3 class="text-xl font-serif font-semibold mb-2 text-gray-800">Behavioral Tactics & Influence</h3> {/* Slightly darker heading */}
+                <p class="text-gray-500 mb-4">Master psychological principles and influence strategies to achieve better outcomes while maintaining relationships.</p> {/* Lighter description */}
+                <a href="/nego-course/behavioral-tactics" class="text-purple-600 hover:text-purple-700 font-medium inline-flex items-center group text-sm"> {/* Smaller link text */}
+                  Learn more <span aria-hidden="true" class="ml-1 transition-transform group-hover:translate-x-1">→</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Card 2: Cultural Aspects */}
+          <div class="feature-card">
+            <div class="flex flex-col sm:flex-row items-start gap-5">
+              <div class="feature-icon">
+                <i class="fas fa-globe-americas text-purple-600"></i>
+              </div>
+              <div class="flex-grow">
+                <h3 class="text-xl font-serif font-semibold mb-2 text-gray-800">Cultural Aspects</h3>
+                <p class="text-gray-500 mb-4">Navigate cross-cultural negotiations with confidence by understanding key differences in global business approaches.</p>
+                <a href="/nego-course/cultural-aspects" class="text-purple-600 hover:text-purple-700 font-medium inline-flex items-center group text-sm">
+                   Learn more <span aria-hidden="true" class="ml-1 transition-transform group-hover:translate-x-1">→</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Card 3: Harvard Framework */}
+          <div class="feature-card">
+            <div class="flex flex-col sm:flex-row items-start gap-5">
+              <div class="feature-icon">
+                <i class="fas fa-clipboard-list text-purple-600"></i>
+              </div>
+              <div class="flex-grow">
+                <h3 class="text-xl font-serif font-semibold mb-2 text-gray-800">Harvard's 7 Element Framework</h3>
+                <p class="text-gray-500 mb-4">Apply a structured approach to negotiation preparation that focuses on interests, options, legitimacy, and other key elements.</p>
+                <a href="/nego-course/harvard-framework" class="text-purple-600 hover:text-purple-700 font-medium inline-flex items-center group text-sm">
+                   Learn more <span aria-hidden="true" class="ml-1 transition-transform group-hover:translate-x-1">→</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="row">
-      <div class="col col-12 col-md-6 mb-8">
-       <Infographic title="Negotiation Styles Comparison">
-          <div class="negotiation-styles-grid grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="style-card bg-card p-4 rounded-lg shadow border border-gray-800">
-              <h4 class="text-lg font-semibold mb-2 text-accent">Competing</h4>
-              <p class="text-sm text-gray-300 mb-3">Focus on achieving own goals, often at the expense of relationships</p>
-              <div class="style-traits flex flex-wrap gap-2">
-                <span class="bg-gray-700 text-xs text-gray-200 px-2 py-1 rounded-full">Assertive</span>
-                <span class="bg-gray-700 text-xs text-gray-200 px-2 py-1 rounded-full">Direct</span>
-                <span class="bg-gray-700 text-xs text-gray-200 px-2 py-1 rounded-full">Goal-oriented</span>
+  </section>
+
+  <!-- Interactive Learning Section (Based on original 'modules' section) -->
+  <section class="py-16 md:py-24 bg-gray-50"> {/* Alternate background */}
+      <div class="container mx-auto px-4">
+          <div class="text-center mb-16">
+              <h2 class="text-3xl font-serif font-semibold mb-4 text-gray-900">Interactive Learning Experience</h2>
+              <p class="text-lg text-gray-600">Engage with practical exercises and frameworks.</p>
+          </div>
+
+          {/* Grid for Infographic and ProcessDiagram */}
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-12">
+              {/* Apply styling wrapper if needed, or style components internally */}
+              <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                  <Infographic title="Negotiation Styles Comparison">
+                      {/* Content moved inside the component or passed via props/slots */}
+                      {/* Assuming Infographic component handles its content display */}
+                      {/* Example: Pass content via named slots if component supports it */}
+                      <div class="negotiation-styles-grid" slot="content">
+                          {/* Style Cards using Tailwind or component's styles */}
+                           <div class="style-card">
+                               <h4>Competing</h4>
+                               <p>Focus on achieving own goals, often at the expense of relationships</p>
+                               <div class="style-traits"><span>Assertive</span><span>Direct</span><span>Goal-oriented</span></div>
+                           </div>
+                           <div class="style-card">
+                               <h4>Accommodating</h4>
+                               <p>Prioritize relationships over substantive outcomes</p>
+                               <div class="style-traits"><span>Relationship-focused</span><span>Generous</span><span>Yielding</span></div>
+                           </div>
+                           <div class="style-card">
+                               <h4>Avoiding</h4>
+                               <p>Postpone or sidestep conflicts and difficult conversations</p>
+                               <div class="style-traits"><span>Withdrawing</span><span>Delaying</span><span>Sidestepping</span></div>
+                           </div>
+                           <div class="style-card">
+                               <h4>Collaborating</h4>
+                               <p>Seek solutions that satisfy all parties' interests</p>
+                               <div class="style-traits"><span>Creative</span><span>Integrative</span><span>Win-win focused</span></div>
+                           </div>
+                           <div class="style-card">
+                               <h4>Compromising</h4>
+                               <p>Find middle ground solutions through mutual concessions</p>
+                               <div class="style-traits"><span>Pragmatic</span><span>Balanced</span><span>Expedient</span></div>
+                           </div>
+                      </div>
+                  </Infographic>
               </div>
-            </div>
-            <div class="style-card bg-card p-4 rounded-lg shadow border border-gray-800">
-              <h4 class="text-lg font-semibold mb-2 text-accent">Accommodating</h4>
-              <p class="text-sm text-gray-300 mb-3">Prioritize relationships over substantive outcomes</p>
-              <div class="style-traits flex flex-wrap gap-2">
-                 <span class="bg-gray-700 text-xs text-gray-200 px-2 py-1 rounded-full">Relationship-focused</span>
-                 <span class="bg-gray-700 text-xs text-gray-200 px-2 py-1 rounded-full">Generous</span>
-                 <span class="bg-gray-700 text-xs text-gray-200 px-2 py-1 rounded-full">Yielding</span>
+
+              <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                   <ProcessDiagram title="Harvard's 7 Element Framework">
+                        {/* Assuming ProcessDiagram uses ProcessStep internally or via slots */}
+                        <ProcessStep number="1" title="Interests"> Focus on underlying needs, concerns, and motivations. </ProcessStep>
+                        <ProcessStep number="2" title="Alternatives"> Identify your BATNA and work to improve it. </ProcessStep>
+                        <ProcessStep number="3" title="Options"> Generate creative solutions for mutual gain. </ProcessStep>
+                        <ProcessStep number="4" title="Legitimacy"> Use objective standards and fair procedures. </ProcessStep>
+                        <ProcessStep number="5" title="Communication"> Engage in effective two-way communication. </ProcessStep>
+                        <ProcessStep number="6" title="Relationship"> Build a working relationship independent of issues. </ProcessStep>
+                        <ProcessStep number="7" title="Commitments"> Reach clear, realistic, operational agreements. </ProcessStep>
+                   </ProcessDiagram>
               </div>
-            </div>
-            <div class="style-card bg-card p-4 rounded-lg shadow border border-gray-800">
-               <h4 class="text-lg font-semibold mb-2 text-accent">Avoiding</h4>
-               <p class="text-sm text-gray-300 mb-3">Postpone or sidestep conflicts and difficult conversations</p>
-               <div class="style-traits flex flex-wrap gap-2">
-                  <span class="bg-gray-700 text-xs text-gray-200 px-2 py-1 rounded-full">Withdrawing</span>
-                  <span class="bg-gray-700 text-xs text-gray-200 px-2 py-1 rounded-full">Delaying</span>
-                  <span class="bg-gray-700 text-xs text-gray-200 px-2 py-1 rounded-full">Sidestepping</span>
-               </div>
-            </div>
-            <div class="style-card bg-card p-4 rounded-lg shadow border border-gray-800">
-               <h4 class="text-lg font-semibold mb-2 text-accent">Collaborating</h4>
-               <p class="text-sm text-gray-300 mb-3">Seek solutions that satisfy all parties' interests</p>
-               <div class="style-traits flex flex-wrap gap-2">
-                  <span class="bg-gray-700 text-xs text-gray-200 px-2 py-1 rounded-full">Creative</span>
-                  <span class="bg-gray-700 text-xs text-gray-200 px-2 py-1 rounded-full">Integrative</span>
-                  <span class="bg-gray-700 text-xs text-gray-200 px-2 py-1 rounded-full">Win-win focused</span>
-               </div>
-            </div>
-            <div class="style-card bg-card p-4 rounded-lg shadow border border-gray-800">
-               <h4 class="text-lg font-semibold mb-2 text-accent">Compromising</h4>
-               <p class="text-sm text-gray-300 mb-3">Find middle ground solutions through mutual concessions</p>
-               <div class="style-traits flex flex-wrap gap-2">
-                  <span class="bg-gray-700 text-xs text-gray-200 px-2 py-1 rounded-full">Pragmatic</span>
-                  <span class="bg-gray-700 text-xs text-gray-200 px-2 py-1 rounded-full">Balanced</span>
-                  <span class="bg-gray-700 text-xs text-gray-200 px-2 py-1 rounded-full">Expedient</span>
-               </div>
+          </div>
+
+          {/* Comparison Table */}
+          <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+               <ComparisonTable title="Cultural Approaches to Negotiation">
+                   {/* Assuming ComparisonTable handles its content */}
+                    {/* Example: Pass data via props or use slots */}
+                    {/* This might require adjusting the ComparisonTable component */}
+                    <thead slot="head">
+                        <tr><th>Aspect</th><th>United States</th><th>Germany</th><th>China</th><th>Japan</th><th>Southeast Asia</th></tr>
+                    </thead>
+                    <tbody slot="body">
+                        <tr><td><strong>Communication</strong></td><td>Direct, explicit</td><td>Very direct, factual</td><td>Indirect, implicit</td><td>Indirect, subtle</td><td>Indirect, contextual</td></tr>
+                        <tr><td><strong>Time Orientation</strong></td><td>Short to medium-term</td><td>Medium to long-term</td><td>Long-term</td><td>Long-term</td><td>Variable, often relationship-dependent</td></tr>
+                        <tr><td><strong>Decision Making</strong></td><td>Relatively quick, individual</td><td>Methodical, thorough</td><td>Slow, hierarchical</td><td>Slow, consensus-based</td><td>Hierarchical, often relationship-influenced</td></tr>
+                        <tr><td><strong>Relationship Focus</strong></td><td>Deal-focused first</td><td>Task before relationship</td><td>Relationship essential (guanxi)</td><td>Harmony (wa) and relationship</td><td>Strong relationship emphasis</td></tr>
+                        <tr><td><strong>Emotional Expression</strong></td><td>Moderate</td><td>Limited, controlled</td><td>Limited in business settings</td><td>Very limited, controlled</td><td>Controlled, with emphasis on saving face</td></tr>
+                    </tbody>
+               </ComparisonTable>
+          </div>
+      </div>
+  </section>
+
+  <!-- Assessment Section - Combine original text with placeholder -->
+  <section class="py-16 md:py-24 bg-white"> {/* White background */}
+    <div class="container mx-auto px-4">
+      <div class="max-w-5xl mx-auto">
+         <div class="text-center mb-16">
+              <h2 class="text-3xl font-serif font-semibold mb-4 text-gray-900">Discover Your Negotiation Style</h2>
+              <p class="text-lg text-gray-600">Take our assessment to understand your approach and receive personalized recommendations.</p>
+         </div>
+
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          {/* Textual Description Card */}
+          <div class="bg-gray-50 p-8 rounded-lg border border-gray-200"> {/* Slightly different bg */}
+            <h3 class="text-xl font-serif font-semibold mb-4 text-gray-800">Negotiator Style Assessment</h3>
+            <p class="text-gray-600 mb-4">Our research-based assessment evaluates your approach across five key negotiation styles: Competing, Accommodating, Avoiding, Collaborating, and Compromising.</p>
+            <p class="text-gray-600 mb-6">Understand your strengths, potential blind spots, and receive tailored recommendations for development.</p>
+            <a href="/nego-course/assessment" class="btn btn-primary">
+              Take the Assessment →
+            </a>
+          </div>
+
+          {/* Placeholder Icon Area - Enhanced */}
+          <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 flex items-center justify-center aspect-square">
+             <div class="text-center">
+                  {/* More visually engaging placeholder SVG */}
+                  <svg class="w-20 h-20 text-purple-400 mx-auto mb-4" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 10 A 40 40 0 0 1 90 50" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>
+                    <path d="M90 50 A 40 40 0 0 1 50 90" stroke="currentColor" stroke-width="8" stroke-linecap="round" opacity="0.6"/>
+                    <path d="M50 90 A 40 40 0 0 1 10 50" stroke="currentColor" stroke-width="8" stroke-linecap="round" opacity="0.4"/>
+                    <path d="M10 50 A 40 40 0 0 1 50 10" stroke="currentColor" stroke-width="8" stroke-linecap="round" opacity="0.8"/>
+                    <circle cx="50" cy="50" r="15" fill="currentColor" opacity="0.2"/>
+                  </svg>
+                  <p class="text-sm text-gray-500">Visualize Your Negotiation Style</p> {/* Updated text */}
              </div>
           </div>
-        </Infographic>
-      </div>
-      <div class="col col-12 col-md-6 mb-8">
-         <ProcessDiagram title="Harvard's 7 Element Framework">
-           <ProcessStep number="1" title="Interests">
-              <p class="text-sm text-gray-300">Focus on underlying needs, concerns, and motivations rather than stated positions.</p>
-           </ProcessStep>
-            <ProcessStep number="2" title="Alternatives">
-               <p class="text-sm text-gray-300">Identify your BATNA (Best Alternative To a Negotiated Agreement) and work to improve it.</p>
-            </ProcessStep>
-            <ProcessStep number="3" title="Options">
-               <p class="text-sm text-gray-300">Generate creative solutions that could satisfy both parties' interests.</p>
-            </ProcessStep>
-            <ProcessStep number="4" title="Legitimacy">
-               <p class="text-sm text-gray-300">Use objective standards and fair procedures to justify proposals.</p>
-            </ProcessStep>
-            <ProcessStep number="5" title="Communication">
-               <p class="text-sm text-gray-300">Engage in effective two-way communication with active listening.</p>
-            </ProcessStep>
-            <ProcessStep number="6" title="Relationship">
-               <p class="text-sm text-gray-300">Build a working relationship independent of the substantive issues.</p>
-            </ProcessStep>
-            <ProcessStep number="7" title="Commitments">
-               <p class="text-sm text-gray-300">Reach clear, realistic, and operational agreements that all parties will implement.</p>
-            </ProcessStep>
-          </ProcessDiagram>
-      </div>
-    </div>
-    <div class="row mt-12">
-      <div class="col col-12">
-        <ComparisonTable title="Cultural Approaches to Negotiation">
-          <thead class="bg-card">
-            <tr>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Aspect</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">United States</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Germany</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">China</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Japan</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Southeast Asia</th>
-            </tr>
-          </thead>
-          <tbody class="bg-dark divide-y divide-gray-700">
-            <tr>
-              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white"><strong>Communication</strong></td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">Direct, explicit</td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">Very direct, factual</td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">Indirect, implicit</td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">Indirect, subtle</td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">Indirect, contextual</td>
-             </tr>
-             <tr>
-                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white"><strong>Time Orientation</strong></td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">Short to medium-term</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">Medium to long-term</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">Long-term</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">Long-term</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">Variable, often relationship-dependent</td>
-              </tr>
-              <tr>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white"><strong>Decision Making</strong></td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">Relatively quick, individual</td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">Methodical, thorough</td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">Slow, hierarchical</td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">Slow, consensus-based</td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">Hierarchical, often relationship-influenced</td>
-                </tr>
-                <tr>
-                   <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white"><strong>Relationship Focus</strong></td>
-                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">Deal-focused first</td>
-                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">Task before relationship</td>
-                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">Relationship essential (guanxi)</td>
-                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">Harmony (wa) and relationship</td>
-                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">Strong relationship emphasis</td>
-                 </tr>
-                 <tr>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white"><strong>Emotional Expression</strong></td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">Moderate</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">Limited, controlled</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">Limited in business settings</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">Very limited, controlled</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">Controlled, with emphasis on saving face</td>
-                 </tr>
-            </tbody>
-          </ComparisonTable>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="assessment py-20 bg-card rounded-lg my-20">
-    <div class="assessment-heading text-center mb-12">
-       <h2 class="text-3xl font-serif font-bold mb-4">Discover Your Negotiation Style</h2>
-       <p class="text-lg text-gray-400 max-w-2xl mx-auto">Take our comprehensive assessment to understand your natural approach and receive personalized development recommendations</p>
-    </div>
-    <div class="row items-center">
-      <div class="col col-12 col-md-6 mb-8 md:mb-0 flex">
-        <div class="p-8 flex flex-col">
-          <div class="card-content flex-grow">
-             <h3 class="card-title text-xl font-serif font-semibold mb-3">Negotiator Style Assessment</h3>
-             <p class="card-text text-gray-300 mb-4 flex-grow">Our research-based assessment evaluates your approach across five key negotiation styles: Competing, Accommodating, Avoiding, Collaborating, and Compromising.</p>
-             <p class="card-text text-gray-300 mb-6 flex-grow">Understand your strengths, potential blind spots, and receive tailored recommendations for development.</p>
-          </div>
-          <a href="/nego-course/assessment" class="mt-auto self-start bg-accent hover:bg-accent/90 text-black font-bold py-2 px-4 rounded transition-colors duration-200">Take Assessment</a>
+  <!-- CTA Section - Keep as refined -->
+  <section class="py-20 md:py-28 bg-gray-50"> {/* Gray background */}
+    <div class="container mx-auto px-4">
+      <div class="max-w-2xl mx-auto text-center">
+        <h2 class="text-3xl font-serif font-semibold mb-6 text-gray-900">Ready to Transform Your Skills?</h2>
+        <p class="text-lg text-gray-600 mb-10">Start your journey to becoming a more effective negotiator today.</p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="/nego-course/behavioral-tactics" class="btn btn-primary">Begin Course</a>
+          <a href="/nego-course/assessment" class="btn btn-secondary">Take Assessment First</a> {/* Adjusted text */}
         </div>
-      </div>
-      <div class="col col-12 col-md-6 flex items-center justify-center">
-         <div class="chart-container text-center">
-            <h3 class="chart-title text-xl font-semibold mb-4">Sample Negotiation Style Profile</h3>
-            <div class="chart-placeholder p-6 bg-dark rounded-lg shadow-inner">
-               <img src="/images/sample-chart.png" alt="Sample negotiation style radar chart" class="max-w-full h-auto mx-auto rounded">
-            </div>
-          </div>
       </div>
     </div>
   </section>
-
-<section class="cta py-24 text-center">
-    <h2 class="text-3xl font-serif font-bold mb-4">Ready to Transform Your Negotiation Skills?</h2>
-    <p class="text-lg text-gray-400 mb-10 max-w-xl mx-auto">Start your journey to becoming a more effective negotiator today.</p>
-    <div class="cta-buttons">
-       <a href="/nego-course/behavioral-tactics" class="bg-accent hover:bg-accent/90 text-black font-bold py-3 px-6 rounded-lg mr-4 text-lg transition-colors duration-200">Begin Course</a>
-       <a href="/nego-course/assessment" class="bg-transparent hover:bg-card text-white font-semibold hover:text-white py-3 px-6 border border-white hover:border-transparent rounded-lg text-lg transition-colors duration-200">Take Assessment First</a>
-     </div>
-</section>
 </div>
+
+<style>
+/* Minimal page-specific styles - rely more on layout and utility classes */
+.nego-course-content {
+  color: var(--color-text); /* Use global text color */
+  font-family: var(--font-sans);
+}
+
+/* Typography defined in layout */
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+/* Buttons now use global styles .btn, .btn-primary, .btn-secondary */
+
+/* Feature Cards - Further refined */
+.feature-card {
+  /* Lighter border, subtle shadow */
+  @apply p-6 bg-white rounded-lg border border-gray-200 shadow-sm transition-shadow duration-300 hover:shadow-md;
+}
+
+.feature-icon {
+   /* Lighter background, larger padding for icon */
+  @apply flex-shrink-0 text-2xl w-12 h-12 flex items-center justify-center rounded-full bg-purple-50 p-3;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) { /* Corresponds to sm breakpoint */
+  .feature-card {
+    @apply p-5; /* Slightly smaller padding */
+  }
+  .feature-icon {
+    @apply w-11 h-11 text-xl mb-4 sm:mb-0; /* Adjust size and margin for column layout */
+  }
+}
+
+/* Styles for components - adapt or move into components */
+.feature-card-alt {
+  /* Styles for the 3 feature cards if different from .feature-card */
+  @apply p-6 bg-white rounded-lg border border-gray-200/80 shadow-sm transition-shadow hover:shadow-md;
+}
+.feature-icon-alt {
+  /* Styles for the centered icons in the feature cards */
+  @apply flex-shrink-0 text-3xl w-16 h-16 flex items-center justify-center rounded-full bg-purple-50;
+}
+
+/* Styles for content within Infographic component */
+.negotiation-styles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Responsive grid */
+    gap: theme('spacing.4'); /* Equivalent to gap-4 */
+}
+
+.style-card {
+    background-color: theme('colors.gray.50'); /* bg-gray-50 */
+    border-radius: theme('borderRadius.lg'); /* rounded-lg */
+    padding: theme('spacing.4'); /* p-4 */
+    border: 1px solid theme('colors.gray.200'); /* border border-gray-200 */
+    @apply transition-all duration-200 ease-in-out; /* Add transition */
+}
+
+/* Add hover effect for style cards */
+.style-card:hover {
+    @apply shadow-md border-gray-300 transform -translate-y-1;
+}
+
+.style-card h4 {
+    color: theme('colors.purple.600'); /* text-purple-600 */
+    font-weight: 600; /* font-semibold */
+    margin-bottom: theme('spacing.2'); /* mb-2 */
+    font-size: theme('fontSize.base'); /* text-base */
+}
+.style-card p {
+    font-size: theme('fontSize.sm'); /* text-sm */
+    color: theme('colors.gray.600'); /* text-gray-600 */
+    margin-bottom: theme('spacing.3'); /* mb-3 */
+}
+
+.style-traits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: theme('spacing.2'); /* gap-2 */
+    margin-top: theme('spacing.3'); /* mt-3 */
+}
+
+.style-traits span {
+    background-color: theme('colors.purple.100'); /* bg-purple-100 */
+    color: theme('colors.purple.700'); /* text-purple-700 */
+    padding: 2px 10px;
+    border-radius: 9999px; /* rounded-full */
+    font-size: 0.75rem; /* text-xs */
+    font-weight: 500; /* font-medium */
+}
+
+/* Add styles for ProcessDiagram/ProcessStep and ComparisonTable if needed */
+/* Or ensure those components are styled internally */
+
+</style>

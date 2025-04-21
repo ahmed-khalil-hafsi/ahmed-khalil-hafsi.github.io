@@ -5,499 +5,314 @@ description: "Discover your natural negotiation style and learn how to adapt str
 moduleNumber: 5
 ---
 
-<div class="module-header">
-  <h1>Negotiator Style Assessment</h1>
-  <p class="module-description">Discover your natural negotiation style and learn how to adapt strategically for different situations</p>
+{/* Use standard container and spacing */}
+<div class="container mx-auto px-4 py-12 md:py-16 space-y-12 md:space-y-16">
+
+  {/* Module Header */}
+  <header class="text-center max-w-3xl mx-auto space-y-4">
+    <h1 class="text-4xl md:text-5xl font-serif font-semibold text-gray-900">
+      {Astro.props.title}
+    </h1>
+    <p class="text-lg md:text-xl text-gray-600">
+      {Astro.props.description}
+    </p>
+  </header>
+
+  {/* Introduction Section */}
+  <section class="bg-white p-6 md:p-8 rounded-lg shadow-sm border border-gray-200">
+    <h2 class="text-2xl font-serif font-semibold text-gray-800 mb-6">Introduction</h2>
+    <div class="prose prose-lg max-w-none text-gray-600 space-y-4">
+      <p>
+        Effective negotiation requires self-awareness about your natural tendencies and the ability to adapt. This assessment helps you understand your default style, strengths, weaknesses, and develop strategies for flexibility.
+      </p>
+      <p>
+        Gain insights into how you typically approach negotiations, how others perceive you, and how to leverage your style while developing complementary skills.
+      </p>
+    </div>
+
+    <div class="mt-8 pt-6 border-t border-gray-200">
+      <h3 class="text-xl font-serif font-semibold text-gray-700 mb-4">Learning Objectives</h3>
+      <ul class="list-disc list-inside space-y-2 text-gray-600">
+        <li>Identify your primary and secondary negotiation styles</li>
+        <li>Understand strengths and limitations of different approaches</li>
+        <li>Recognize how your style affects interactions</li>
+        <li>Develop strategies to adapt your style</li>
+        <li>Create a personal development plan</li>
+      </ul>
+    </div>
+  </section>
+
+  {/* Overview Section */}
+  <section class="bg-white p-6 md:p-8 rounded-lg shadow-sm border border-gray-200">
+     <h2 class="text-2xl font-serif font-semibold text-gray-800 mb-6">Understanding Negotiation Styles</h2>
+     <div class="prose prose-lg max-w-none text-gray-600 space-y-4 mb-8">
+       <p>
+         Negotiation styles are patterns in how individuals approach conflict and interaction. Your style is influenced by personality, experience, culture, and context.
+       </p>
+       <p>
+         While most have a dominant style, effective negotiators adapt. This assessment identifies your tendencies and helps build flexibility.
+       </p>
+     </div>
+
+     <h3 class="text-xl font-serif font-semibold text-gray-700 mb-6">The Five Negotiation Styles</h3>
+     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {[
+          { title: 'Competing', approach: 'Assertive, uncooperative', effective: 'Crisis, unpopular actions', drawbacks: 'Damages relationships, resistance' },
+          { title: 'Accommodating', approach: 'Unassertive, cooperative', effective: 'Issue more important to other, preserve harmony', drawbacks: 'Sacrifice interests, exploitation' },
+          { title: 'Avoiding', approach: 'Unassertive, uncooperative', effective: 'Trivial issues, high emotions, need info', drawbacks: 'Issues unresolved, frustration' },
+          { title: 'Collaborating', approach: 'Assertive, cooperative', effective: 'Concerns too important to compromise, creative solutions possible', drawbacks: 'Time-consuming, inappropriate for simple issues' },
+          { title: 'Compromising', approach: 'Moderate assertiveness/cooperation', effective: 'Moderately important goals, equal power, limited time', drawbacks: 'Suboptimal solutions, focus on positions' },
+        ].map(item => (
+          <div class="bg-gray-50 p-5 rounded-md border border-gray-200 flex flex-col">
+            <h4 class="text-lg font-serif font-semibold text-purple-700 mb-2">{item.title}</h4>
+            <p class="text-sm text-gray-600 mb-1"><strong class="font-medium text-gray-700">Approach:</strong> {item.approach}</p>
+            <p class="text-xs text-gray-500 mt-auto pt-2"><strong class="font-medium">Use When:</strong> {item.effective}<br/><strong class="font-medium">Drawbacks:</strong> {item.drawbacks}</p>
+          </div>
+        ))}
+     </div>
+  </section>
+
+   {/* Instructions Section */}
+   <section class="bg-white p-6 md:p-8 rounded-lg shadow-sm border border-gray-200">
+     <h2 class="text-2xl font-serif font-semibold text-gray-800 mb-6">Assessment Instructions</h2>
+     <div class="prose prose-lg max-w-none text-gray-600 space-y-4">
+       <p>
+         This assessment consists of 30 statements. For each, indicate how accurately it describes your typical approach using the scale provided.
+       </p>
+       <p>
+         For accurate results:
+       </p>
+       <ul class="list-disc list-inside">
+         <li>Answer based on actual behavior, not ideal behavior</li>
+         <li>Consider general tendencies</li>
+         <li>Complete in one sitting (10-15 mins)</li>
+         <li>Be honest—no right/wrong styles</li>
+       </ul>
+     </div>
+     <div class="mt-8 text-center">
+        {/* Link to the form section below */}
+       <a href="#assessment-questionnaire" class="btn btn-primary">Begin Assessment</a>
+     </div>
+   </section>
+
+   {/* Questionnaire Section */}
+   <section id="assessment-questionnaire" class="bg-white p-6 md:p-8 rounded-lg shadow-sm border border-gray-200 scroll-mt-20"> {/* scroll-mt adds offset for fixed header */}
+      <h2 class="text-2xl font-serif font-semibold text-gray-800 mb-6">Negotiator Style Assessment</h2>
+      <p class="text-gray-600 mb-2">For each statement, select the option that best describes your typical behavior.</p>
+      <p class="text-sm text-gray-500 mb-8"><strong>Scale:</strong> 1=Never | 2=Rarely | 3=Sometimes | 4=Often | 5=Always</p>
+
+      <form id="negotiation-style-form" class="space-y-8">
+          {/* Group questions for structure if desired */}
+          {[
+            { q: 1, text: "I try to avoid situations where conflict might arise." },
+            { q: 2, text: "I stand firm on my position when I believe I'm right." },
+            { q: 3, text: "I look for creative solutions that satisfy both parties' interests." },
+            { q: 4, text: "I'm willing to give up some of my goals to maintain relationships." },
+            { q: 5, text: "I seek middle ground to resolve disagreements." },
+            { q: 6, text: "I express my views directly and clearly." },
+            { q: 7, text: "I listen carefully to understand others' perspectives." },
+            { q: 8, text: "I avoid discussing sensitive issues that might cause disagreement." },
+            // Add remaining questions (9-30) here following the same pattern
+            // ...
+             { q: 9, text: "I'm comfortable with silence and pauses in negotiations." },
+             { q: 10, text: "I ask probing questions to understand underlying interests." },
+             // ... up to 30 questions
+          ].slice(0, 10).map(item => ( // Showing first 10 for brevity
+            <div class="question-item border-b border-gray-200 pb-4">
+               <p class="question mb-3 text-gray-700 font-medium">{item.q}. {item.text}</p>
+               {/* Improved Radio Buttons */}
+               <div class="rating-scale flex flex-wrap gap-x-4 gap-y-2">
+                  {[1, 2, 3, 4, 5].map(val => (
+                    <label class="flex items-center gap-2 cursor-pointer text-sm text-gray-600 hover:text-gray-900">
+                      <input type="radio" name={`q${item.q}`} value={val} required
+                             class="form-radio h-4 w-4 text-purple-600 border-gray-300 focus:ring-purple-500">
+                      <span>{val}</span>
+                    </label>
+                  ))}
+               </div>
+            </div>
+          ))}
+
+          {/* Submit Button */}
+          <div class="pt-6 text-center">
+              <button type="submit" class="btn btn-primary">Calculate My Style</button>
+          </div>
+      </form>
+   </section>
+
+   {/* Results Section (Hidden Initially) */}
+   <section id="results-section" class="bg-white p-6 md:p-8 rounded-lg shadow-sm border border-gray-200 scroll-mt-20" style="display: none;">
+      <h2 class="text-2xl font-serif font-semibold text-gray-800 mb-8">Your Negotiation Style Profile</h2>
+
+      {/* Chart Placeholder */}
+       <div class="mb-8 text-center">
+         <div class="bg-gray-100 p-6 rounded-md border border-gray-200 inline-block">
+           <i class="fas fa-chart-bar text-5xl text-gray-400 mb-3"></i>
+           <p class="text-gray-500">Style Chart Placeholder</p>
+           {/* Placeholder for style scores */}
+           <div id="style-scores" class="mt-4 text-xs text-gray-500"></div>
+         </div>
+       </div>
+
+      {/* Style Descriptions */}
+       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+           <div class="primary-style">
+             <h3 class="text-xl font-serif font-semibold text-purple-700 mb-3">Primary Style: <span id="primary-style" class="text-gray-800">--</span></h3>
+             <p id="primary-style-description" class="text-gray-600 text-sm">Description of primary style...</p>
+           </div>
+           <div class="secondary-style">
+             <h3 class="text-xl font-serif font-semibold text-purple-700 mb-3">Secondary Style: <span id="secondary-style" class="text-gray-800">--</span></h3>
+             <p id="secondary-style-description" class="text-gray-600 text-sm">Description of secondary style...</p>
+           </div>
+       </div>
+
+        {/* Strengths & Challenges */}
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+           <div>
+               <h3 class="text-lg font-serif font-semibold text-gray-700 mb-3">Strengths</h3>
+               <ul id="strengths-list" class="list-disc list-inside space-y-1 text-sm text-gray-600"><li>Strength 1...</li><li>Strength 2...</li></ul>
+           </div>
+            <div>
+                <h3 class="text-lg font-serif font-semibold text-gray-700 mb-3">Potential Challenges</h3>
+                <ul id="challenges-list" class="list-disc list-inside space-y-1 text-sm text-gray-600"><li>Challenge 1...</li><li>Challenge 2...</li></ul>
+            </div>
+        </div>
+
+         {/* Adaptation & Development */}
+          <div class="mb-8">
+              <h3 class="text-lg font-serif font-semibold text-gray-700 mb-3">Adaptation Strategies</h3>
+              <p id="adaptation-strategies" class="text-sm text-gray-600">Adaptation advice based on styles...</p>
+          </div>
+          <div>
+              <h3 class="text-lg font-serif font-semibold text-gray-700 mb-3">Development Plan</h3>
+              <p id="development-recommendations" class="text-sm text-gray-600 mb-3">Development areas based on profile...</p>
+              <h4 class="text-sm font-medium text-gray-700 mb-2">Suggested Actions:</h4>
+              <ul id="development-actions" class="list-disc list-inside space-y-1 text-sm text-gray-600"><li>Action 1...</li><li>Action 2...</li></ul>
+          </div>
+
+          {/* Save/Print Buttons */}
+           <div class="mt-10 pt-6 border-t border-gray-200 text-center space-x-4">
+             <button class="btn btn-secondary" id="save-results">Save Results (PDF)</button>
+             <button class="btn btn-outline" id="print-results">Print Results</button>
+           </div>
+   </section>
+
+    {/* Interaction Section */}
+    <section class="bg-white p-6 md:p-8 rounded-lg shadow-sm border border-gray-200">
+        <h2 class="text-2xl font-serif font-semibold text-gray-800 mb-6">Negotiating with Different Styles</h2>
+         <p class="text-gray-600 mb-8">Understanding style interactions helps you adapt:</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {[
+            { title: 'Meeting a Competing Style', chars: 'Direct, assertive, focus on own goals', strats: 'Be direct, use objective criteria, don\'t yield to pressure, focus on problem-solving' },
+            { title: 'Meeting an Accommodating Style', chars: 'Focus on relationship, yields easily', strats: 'Build rapport, appreciate flexibility, help them articulate interests, don\'t exploit' },
+            { title: 'Meeting an Avoiding Style', chars: 'Reluctant to engage, postpones', strats: 'Create safe environment, use indirect methods initially, break down issues, be patient' },
+            { title: 'Meeting a Collaborating Style', chars: 'Seeks understanding, creative, shares info', strats: 'Engage thoroughly, share interests, bring ideas, allow time' },
+            { title: 'Meeting a Compromising Style', chars: 'Seeks middle ground, pragmatic', strats: 'Create value before compromising, use objective criteria, have fallbacks' },
+          ].map(item => (
+             <div class="bg-gray-50 p-5 rounded-md border border-gray-200 flex flex-col">
+               <h3 class="text-lg font-serif font-semibold text-purple-700 mb-3">{item.title}</h3>
+               <div class="text-sm text-gray-600 space-y-3">
+                 <p><strong class="font-medium text-gray-700">Characteristics:</strong> {item.chars}</p>
+                 <p><strong class="font-medium text-gray-700">Strategies:</strong> {item.strats}</p>
+               </div>
+             </div>
+          ))}
+        </div>
+         <div class="prose max-w-none text-gray-600 mt-8">
+           <h3 class="text-lg font-serif font-semibold text-gray-700 mb-3">Becoming Style-Flexible</h3>
+           <p>Adapt based on context: high stakes (collaborate), time pressure (compromise), power imbalance (prepare more), culture (research!), high emotion (avoid temporarily).</p>
+         </div>
+    </section>
+
+   {/* Conclusion/Navigation */}
+   <section class="text-center mt-12">
+     <div class="flex flex-wrap justify-between gap-4">
+       <a href="/nego-course/cultural-aspects" class="btn btn-secondary">← Previous Module</a>
+       {/* Link to next logical step, maybe course overview or a final summary */}
+       <a href="/nego-course" class="btn btn-primary">Return to Course Overview →</a>
+     </div>
+   </section>
+
 </div>
 
-<section class="module-introduction">
-  <div class="container">
-    <h2>Introduction</h2>
-    <p>
-      Effective negotiation requires self-awareness about your natural tendencies and the ability to adapt your approach to different situations. This assessment will help you understand your default negotiation style, identify your strengths and weaknesses, and develop strategies for greater flexibility.
-    </p>
-    <p>
-      By completing this assessment, you'll gain insights into how you typically approach negotiations, how others might perceive you, and how you can leverage your natural style while developing complementary skills.
-    </p>
-    
-    <div class="learning-objectives">
-      <h3>Learning Objectives</h3>
-      <ul>
-        <li>Identify your primary and secondary negotiation styles</li>
-        <li>Understand the strengths and limitations of different negotiation approaches</li>
-        <li>Recognize how your style affects your interactions with different counterparts</li>
-        <li>Develop strategies to adapt your style for various negotiation contexts</li>
-        <li>Create a personal development plan to enhance your negotiation effectiveness</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section class="assessment-overview">
-  <div class="container">
-    <h2>Understanding Negotiation Styles</h2>
-    <p>
-      Negotiation styles represent patterns in how individuals approach conflict, make decisions, and interact with others during negotiations. Your style is influenced by your personality, experiences, cultural background, and the specific context of each negotiation.
-    </p>
-    <p>
-      While most people have a dominant style they default to, effective negotiators can adapt their approach based on the situation, relationship, and counterpart. This assessment will help you identify your natural tendencies and develop greater flexibility.
-    </p>
-    
-    <div class="style-framework">
-      <h3>The Five Negotiation Styles</h3>
-      <p>This assessment is based on a framework that identifies five distinct negotiation styles:</p>
-      
-      <div class="styles-grid">
-        <div class="style-card">
-          <h4>Competing</h4>
-          <p><strong>Approach:</strong> Assertive and uncooperative, focused on achieving own goals</p>
-          <p><strong>When effective:</strong> Crisis situations, when unpopular actions are necessary, when quick decisions are needed</p>
-          <p><strong>Potential drawbacks:</strong> May damage relationships, overlook creative solutions, create resistance</p>
-        </div>
-        
-        <div class="style-card">
-          <h4>Accommodating</h4>
-          <p><strong>Approach:</strong> Unassertive and cooperative, focused on preserving relationships</p>
-          <p><strong>When effective:</strong> When the issue is more important to the other party, when preserving harmony is critical</p>
-          <p><strong>Potential drawbacks:</strong> May sacrifice important interests, create resentment, encourage exploitation</p>
-        </div>
-        
-        <div class="style-card">
-          <h4>Avoiding</h4>
-          <p><strong>Approach:</strong> Unassertive and uncooperative, focused on postponing or sidestepping conflict</p>
-          <p><strong>When effective:</strong> When issues are trivial, when emotions are high, when more information is needed</p>
-          <p><strong>Potential drawbacks:</strong> May leave important issues unresolved, create frustration, miss opportunities</p>
-        </div>
-        
-        <div class="style-card">
-          <h4>Collaborating</h4>
-          <p><strong>Approach:</strong> Assertive and cooperative, focused on finding solutions that satisfy all parties</p>
-          <p><strong>When effective:</strong> When both sets of concerns are too important to compromise, when creative solutions are possible</p>
-          <p><strong>Potential drawbacks:</strong> May be time-consuming, inappropriate for simple issues or urgent situations</p>
-        </div>
-        
-        <div class="style-card">
-          <h4>Compromising</h4>
-          <p><strong>Approach:</strong> Moderately assertive and cooperative, focused on finding middle ground</p>
-          <p><strong>When effective:</strong> When goals are moderately important, when parties have equal power, when time is limited</p>
-          <p><strong>Potential drawbacks:</strong> May result in suboptimal solutions, focus on positions rather than interests</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="assessment-instructions">
-  <div class="container">
-    <h2>Assessment Instructions</h2>
-    <p>
-      This assessment consists of 30 statements about negotiation situations and behaviors. For each statement, indicate how accurately it describes your typical approach using the scale provided.
-    </p>
-    <p>
-      For the most accurate results:
-    </p>
-    <ul>
-      <li>Answer based on how you actually behave, not how you think you should behave</li>
-      <li>Consider your general tendencies across different negotiation contexts</li>
-      <li>Complete the assessment in one sitting (approximately 10-15 minutes)</li>
-      <li>Be honest with yourself—there are no "right" or "wrong" styles</li>
-    </ul>
-    
-    <div class="assessment-button">
-      <a href="#assessment-questionnaire" class="btn btn-primary">Begin Assessment</a>
-    </div>
-  </div>
-</section>
-
-<section id="assessment-questionnaire" class="assessment-questionnaire">
-  <div class="container">
-    <h2>Negotiator Style Assessment Questionnaire</h2>
-    <p>
-      For each statement, select the option that best describes how you typically behave in negotiation situations.
-    </p>
-    <p class="scale-description">
-      1 = Never true of me | 2 = Rarely true of me | 3 = Sometimes true of me | 4 = Often true of me | 5 = Always true of me
-    </p>
-    
-    <form id="negotiation-style-form" class="assessment-form">
-      <div class="question-group">
-        <h3>Approach to Conflict</h3>
-        
-        <div class="question-item">
-          <p class="question">1. I try to avoid situations where conflict might arise.</p>
-          <div class="rating-scale">
-            <label><input type="radio" name="q1" value="1"> 1</label>
-            <label><input type="radio" name="q1" value="2"> 2</label>
-            <label><input type="radio" name="q1" value="3"> 3</label>
-            <label><input type="radio" name="q1" value="4"> 4</label>
-            <label><input type="radio" name="q1" value="5"> 5</label>
-          </div>
-        </div>
-        
-        <div class="question-item">
-          <p class="question">2. I stand firm on my position when I believe I'm right.</p>
-          <div class="rating-scale">
-            <label><input type="radio" name="q2" value="1"> 1</label>
-            <label><input type="radio" name="q2" value="2"> 2</label>
-            <label><input type="radio" name="q2" value="3"> 3</label>
-            <label><input type="radio" name="q2" value="4"> 4</label>
-            <label><input type="radio" name="q2" value="5"> 5</label>
-          </div>
-        </div>
-        
-        <div class="question-item">
-          <p class="question">3. I look for creative solutions that satisfy both parties' interests.</p>
-          <div class="rating-scale">
-            <label><input type="radio" name="q3" value="1"> 1</label>
-            <label><input type="radio" name="q3" value="2"> 2</label>
-            <label><input type="radio" name="q3" value="3"> 3</label>
-            <label><input type="radio" name="q3" value="4"> 4</label>
-            <label><input type="radio" name="q3" value="5"> 5</label>
-          </div>
-        </div>
-        
-        <div class="question-item">
-          <p class="question">4. I'm willing to give up some of my goals to maintain relationships.</p>
-          <div class="rating-scale">
-            <label><input type="radio" name="q4" value="1"> 1</label>
-            <label><input type="radio" name="q4" value="2"> 2</label>
-            <label><input type="radio" name="q4" value="3"> 3</label>
-            <label><input type="radio" name="q4" value="4"> 4</label>
-            <label><input type="radio" name="q4" value="5"> 5</label>
-          </div>
-        </div>
-        
-        <div class="question-item">
-          <p class="question">5. I seek middle ground to resolve disagreements.</p>
-          <div class="rating-scale">
-            <label><input type="radio" name="q5" value="1"> 1</label>
-            <label><input type="radio" name="q5" value="2"> 2</label>
-            <label><input type="radio" name="q5" value="3"> 3</label>
-            <label><input type="radio" name="q5" value="4"> 4</label>
-            <label><input type="radio" name="q5" value="5"> 5</label>
-          </div>
-        </div>
-      </div>
-      
-      <div class="question-group">
-        <h3>Communication Style</h3>
-        
-        <div class="question-item">
-          <p class="question">6. I express my views directly and clearly.</p>
-          <div class="rating-scale">
-            <label><input type="radio" name="q6" value="1"> 1</label>
-            <label><input type="radio" name="q6" value="2"> 2</label>
-            <label><input type="radio" name="q6" value="3"> 3</label>
-            <label><input type="radio" name="q6" value="4"> 4</label>
-            <label><input type="radio" name="q6" value="5"> 5</label>
-          </div>
-        </div>
-        
-        <div class="question-item">
-          <p class="question">7. I listen carefully to understand others' perspectives.</p>
-          <div class="rating-scale">
-            <label><input type="radio" name="q7" value="1"> 1</label>
-            <label><input type="radio" name="q7" value="2"> 2</label>
-            <label><input type="radio" name="q7" value="3"> 3</label>
-            <label><input type="radio" name="q7" value="4"> 4</label>
-            <label><input type="radio" name="q7" value="5"> 5</label>
-          </div>
-        </div>
-        
-        <div class="question-item">
-          <p class="question">8. I avoid discussing sensitive issues that might cause disagreement.</p>
-          <div class="rating-scale">
-            <label><input type="radio" name="q8" value="1"> 1</label>
-            <label><input type="radio" name="q8" value="2"> 2</label>
-            <label><input type="radio" name="q8" value="3"> 3</label>
-            <label><input type="radio" name="q8" value="4"> 4</label>
-            <label><input type="radio" name="q8" value="5"> 5</label>
-          </div>
-        </div>
-        
-        <div class="question-item">
-          <p class="question">9. I'm comfortable with silence and pauses in negotiations.</p>
-          <div class="rating-scale">
-            <label><input type="radio" name="q9" value="1"> 1</label>
-            <label><input type="radio" name="q9" value="2"> 2</label>
-            <label><input type="radio" name="q9" value="3"> 3</label>
-            <label><input type="radio" name="q9" value="4"> 4</label>
-            <label><input type="radio" name="q9" value="5"> 5</label>
-          </div>
-        </div>
-        
-        <div class="question-item">
-          <p class="question">10. I ask probing questions to understand underlying interests.</p>
-          <div class="rating-scale">
-            <label><input type="radio" name="q10" value="1"> 1</label>
-            <label><input type="radio" name="q10" value="2"> 2</label>
-            <label><input type="radio" name="q10" value="3"> 3</label>
-            <label><input type="radio" name="q10" value="4"> 4</label>
-            <label><input type="radio" name="q10" value="5"> 5</label>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Additional question groups would continue here -->
-      
-      <div class="submit-section">
-        <button type="submit" class="btn btn-primary">Calculate My Style</button>
-      </div>
-    </form>
-  </div>
-</section>
-
-<section class="results-section" style="display: none;">
-  <div class="container">
-    <h2>Your Negotiation Style Profile</h2>
-    
-    <div class="results-overview">
-      <p>Based on your responses, here is your negotiation style profile:</p>
-      
-      <div class="style-chart">
-        <!-- Chart would be rendered here using JavaScript -->
-        <div class="chart-placeholder">
-          <p>Style chart will appear here after assessment completion</p>
-        </div>
-      </div>
-      
-      <div class="primary-style">
-        <h3>Your Primary Style: <span id="primary-style">--</span></h3>
-        <p id="primary-style-description"></p>
-      </div>
-      
-      <div class="secondary-style">
-        <h3>Your Secondary Style: <span id="secondary-style">--</span></h3>
-        <p id="secondary-style-description"></p>
-      </div>
-    </div>
-    
-    <div class="style-strengths">
-      <h3>Your Negotiation Strengths</h3>
-      <ul id="strengths-list">
-        <!-- Strengths will be populated here -->
-      </ul>
-    </div>
-    
-    <div class="style-challenges">
-      <h3>Potential Challenges</h3>
-      <ul id="challenges-list">
-        <!-- Challenges will be populated here -->
-      </ul>
-    </div>
-    
-    <div class="adaptation-strategies">
-      <h3>Adaptation Strategies</h3>
-      <p>
-        While your natural style has many strengths, effective negotiators can adapt their approach based on the situation. Consider these strategies for different contexts:
-      </p>
-      <div id="adaptation-strategies">
-        <!-- Adaptation strategies will be populated here -->
-      </div>
-    </div>
-    
-    <div class="development-plan">
-      <h3>Personal Development Plan</h3>
-      <p>
-        Based on your profile, here are recommended areas for development:
-      </p>
-      <div id="development-recommendations">
-        <!-- Development recommendations will be populated here -->
-      </div>
-      
-      <div class="development-actions">
-        <h4>Suggested Actions:</h4>
-        <ul id="development-actions">
-          <!-- Development actions will be populated here -->
-        </ul>
-      </div>
-    </div>
-    
-    <div class="save-results">
-      <button class="btn btn-secondary" id="save-results">Save My Results</button>
-      <button class="btn btn-outline" id="print-results">Print Results</button>
-    </div>
-  </div>
-</section>
-
-<section class="style-interactions">
-  <div class="container">
-    <h2>Negotiating with Different Styles</h2>
-    <p>
-      Understanding how different negotiation styles interact can help you adapt your approach and navigate potential conflicts more effectively.
-    </p>
-    
-    <div class="interaction-grid">
-      <div class="interaction-card">
-        <h3>When You Meet a Competing Style</h3>
-        <div class="interaction-content">
-          <h4>Characteristics You'll Notice:</h4>
-          <ul>
-            <li>Direct, assertive communication</li>
-            <li>Focus on their own goals and positions</li>
-            <li>Comfort with confrontation</li>
-            <li>Emphasis on winning</li>
-          </ul>
-          
-          <h4>Effective Strategies:</h4>
-          <ul>
-            <li>Be clear and direct about your own interests</li>
-            <li>Support your position with objective criteria</li>
-            <li>Don't yield to pressure tactics</li>
-            <li>Focus on problem-solving rather than competing</li>
-            <li>Take breaks if emotions escalate</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="interaction-card">
-        <h3>When You Meet an Accommodating Style</h3>
-        <div class="interaction-content">
-          <h4>Characteristics You'll Notice:</h4>
-          <ul>
-            <li>Focus on relationship preservation</li>
-            <li>Willingness to yield on substantive issues</li>
-            <li>Discomfort with conflict</li>
-            <li>Concern for others' needs</li>
-          </ul>
-          
-          <h4>Effective Strategies:</h4>
-          <ul>
-            <li>Build rapport and trust before addressing substantive issues</li>
-            <li>Show appreciation for their flexibility</li>
-            <li>Help them articulate their own interests</li>
-            <li>Be careful not to exploit their accommodating nature</li>
-            <li>Encourage them to share concerns they might be hesitant to express</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="interaction-card">
-        <h3>When You Meet an Avoiding Style</h3>
-        <div class="interaction-content">
-          <h4>Characteristics You'll Notice:</h4>
-          <ul>
-            <li>Reluctance to engage in direct negotiation</li>
-            <li>Changing the subject or postponing discussions</li>
-            <li>Physical or emotional withdrawal</li>
-            <li>Preference for communicating indirectly</li>
-          </ul>
-          
-          <h4>Effective Strategies:</h4>
-          <ul>
-            <li>Create a safe, low-pressure environment</li>
-            <li>Use indirect communication methods when appropriate (email for initial ideas)</li>
-            <li>Break complex issues into smaller, less threatening parts</li>
-            <li>Be patient and allow time for processing</li>
-            <li>Emphasize the benefits of resolution versus the costs of avoidance</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="interaction-card">
-        <h3>When You Meet a Collaborating Style</h3>
-        <div class="interaction-content">
-          <h4>Characteristics You'll Notice:</h4>
-          <ul>
-            <li>Interest in understanding all perspectives</li>
-            <li>Focus on creative problem-solving</li>
-            <li>Willingness to share information</li>
-            <li>Emphasis on mutual gains</li>
-          </ul>
-          
-          <h4>Effective Strategies:</h4>
-          <ul>
-            <li>Be prepared to engage in thorough discussion</li>
-            <li>Share your interests and concerns openly</li>
-            <li>Bring creative ideas to the table</li>
-            <li>Allow sufficient time for the process</li>
-            <li>Focus on long-term relationship building</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="interaction-card">
-        <h3>When You Meet a Compromising Style</h3>
-        <div class="interaction-content">
-          <h4>Characteristics You'll Notice:</h4>
-          <ul>
-            <li>Focus on finding middle ground</li>
-            <li>Pragmatic approach to negotiation</li>
-            <li>Willingness to "split the difference"</li>
-            <li>Emphasis on fairness and equality</li>
-          </ul>
-          
-          <h4>Effective Strategies:</h4>
-          <ul>
-            <li>Look for opportunities to create value before compromising</li>
-            <li>Use objective criteria to evaluate proposed compromises</li>
-            <li>Be prepared with fallback positions</li>
-            <li>Acknowledge their fairness orientation</li>
-            <li>Consider packaging issues together rather than handling them separately</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    
-    <div class="style-adaptation">
-      <h3>Becoming a Style-Flexible Negotiator</h3>
-      <p>
-        The most effective negotiators can adapt their style based on the situation and the other party's approach. Consider these general principles for adapting to different contexts:
-      </p>
-      
-      <div class="adaptation-principles">
-        <ul>
-          <li><strong>High stakes negotiations:</strong> Invest time in collaboration, especially when creativity and relationship are important</li>
-          <li><strong>Time pressure:</strong> Compromising may be more efficient when a quick resolution is needed</li>
-          <li><strong>Power imbalance:</strong> When you have less power, preparation and objective standards become even more crucial</li>
-          <li><strong>Cultural differences:</strong> Be aware that negotiation styles vary across cultures; adapt accordingly</li>
-          <li><strong>Emotional situations:</strong> Consider temporary avoidance to allow emotions to cool before re-engaging</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="module-conclusion">
-  <div class="container">
-    <h2>Conclusion</h2>
-    <p>
-      Understanding your negotiation style preferences is an important step toward becoming a more effective negotiator. By recognizing your natural tendencies and developing the ability to adapt your approach, you can navigate a wider range of negotiation scenarios successfully.
-    </p>
-    <p>
-      Remember that no single style is universally effective. The best approach depends on the specific context, relationship, and goals of each negotiation. Continue to reflect on your experiences and consciously practice different approaches to build your negotiation versatility over time.
-    </p>
-    
-    <div class="next-steps">
-      <h3>Next Steps</h3>
-      <p>
-        In the next module, we'll explore advanced techniques for handling difficult negotiations and managing challenging counterparts. You'll learn specific strategies for maintaining effectiveness even in high-pressure or adversarial situations.
-      </p>
-      <div class="navigation-buttons">
-        <a href="../nego-course/negotiation-tactics" class="btn btn-secondary">Previous Module</a>
-        <a href="../nego-course/difficult-negotiations" class="btn btn-primary">Next Module</a>
-      </div>
-    </div>
-  </div>
-</section>
-
+{/* Keep the inline script, ensure it targets updated elements if necessary */}
 <script is:inline>
-  // This script handles the assessment functionality
   document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('negotiation-style-form');
-    const resultsSection = document.querySelector('.results-section');
-    
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      // In a real implementation, this would calculate scores and determine styles
-      // For now, we'll just show the results section
-      resultsSection.style.display = 'block';
-      
-      // Scroll to results
-      resultsSection.scrollIntoView({ behavior: 'smooth' });
-    });
-    
-    // Additional functionality for saving/printing results would be implemented here
+    const resultsSection = document.getElementById('results-section'); // Use ID selector
+
+    // Placeholder data for results population
+    const styleData = {
+      Competing: { score: 0, desc: "Focuses on own goals, assertive.", strengths: ["Decisive", "Assertive"], challenges: ["Relationship strain", "Missed value"], adaptation: "Use for quick decisions or unimportant relationships.", development: ["Active listening", "Empathy"] },
+      Accommodating: { score: 0, desc: "Prioritizes relationships.", strengths: ["Builds rapport", "Flexible"], challenges: ["Sacrifices interests", "Can be exploited"], adaptation: "Use when issue is more important to other party.", development: ["Assertiveness", "Setting boundaries"] },
+      Avoiding: { score: 0, desc: "Postpones or sidesteps conflict.", strengths: ["Reduces tension", "Buys time"], challenges: ["Unresolved issues", "Frustration"], adaptation: "Use for trivial issues or high emotions.", development: ["Conflict engagement skills", "Assertiveness"] },
+      Collaborating: { score: 0, desc: "Seeks win-win solutions.", strengths: ["Creative solutions", "Builds strong relationships"], challenges: ["Time-consuming", "Requires trust"], adaptation: "Use for complex issues where relationship matters.", development: ["Time management", "Patience"] },
+      Compromising: { score: 0, desc: "Finds middle ground.", strengths: ["Efficient", "Fair-minded"], challenges: ["Suboptimal outcomes", "Focus on positions"], adaptation: "Use when time is limited or goals moderately important.", development: ["Value creation before compromising", "Interest-based negotiation"] },
+    };
+
+    if (form && resultsSection) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Basic validation: Check if all questions are answered
+        const totalQuestions = form.querySelectorAll('.question-item').length; // Adjust if needed
+        const formData = new FormData(form);
+        let answeredCount = 0;
+        for (let pair of formData.entries()) {
+             // Check if key starts with 'q' and value is present
+            if (pair[0].startsWith('q') && pair[1]) {
+                answeredCount++;
+            }
+        }
+        // Rough check - update if more questions are added
+        if (answeredCount < 10) {
+            alert('Please answer all questions before submitting.');
+            return;
+        }
+
+
+        // --- Scoring Logic Placeholder ---
+        // In a real app, calculate scores based on which questions map to which styles.
+        // Example: Q1, Q8 -> Avoiding; Q2, Q6 -> Competing, etc.
+        // Assign random-ish scores for demonstration:
+        Object.keys(styleData).forEach(key => {
+            styleData[key].score = Math.floor(Math.random() * 20) + 5; // Random score between 5-24
+        });
+        // --- End Placeholder ---
+
+        // Determine primary and secondary styles
+        const sortedStyles = Object.entries(styleData).sort(([,a], [,b]) => b.score - a.score);
+        const primaryStyle = sortedStyles[0][0];
+        const secondaryStyle = sortedStyles[1][0];
+
+        // Populate results section
+        document.getElementById('primary-style').textContent = primaryStyle;
+        document.getElementById('primary-style-description').textContent = styleData[primaryStyle].desc;
+        document.getElementById('secondary-style').textContent = secondaryStyle;
+        document.getElementById('secondary-style-description').textContent = styleData[secondaryStyle].desc;
+
+        // Populate strengths/challenges/etc. based on primary style
+        document.getElementById('strengths-list').innerHTML = styleData[primaryStyle].strengths.map(s => `<li>${s}</li>`).join('');
+        document.getElementById('challenges-list').innerHTML = styleData[primaryStyle].challenges.map(c => `<li>${c}</li>`).join('');
+        document.getElementById('adaptation-strategies').textContent = styleData[primaryStyle].adaptation;
+        document.getElementById('development-recommendations').textContent = `Focus on: ${styleData[primaryStyle].development.join(', ')}`;
+        document.getElementById('development-actions').innerHTML = styleData[primaryStyle].development.map(d => `<li>Practice ${d.toLowerCase()} techniques.</li>`).join('');
+
+        // Populate scores placeholder
+        document.getElementById('style-scores').innerHTML = sortedStyles.map(([name, data]) => `${name}: ${data.score}`).join('<br>');
+
+
+        // Show results and scroll
+        resultsSection.style.display = 'block';
+        resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
+
+    // Placeholder for Save/Print
+    const saveBtn = document.getElementById('save-results');
+    const printBtn = document.getElementById('print-results');
+    if(saveBtn) saveBtn.addEventListener('click', () => alert('Save functionality not implemented yet.'));
+    if(printBtn) printBtn.addEventListener('click', () => window.print());
+
   });
 </script>

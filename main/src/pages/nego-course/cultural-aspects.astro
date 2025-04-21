@@ -5,539 +5,132 @@ description: "Navigate cross-cultural negotiations with confidence across US, Ge
 moduleNumber: 4
 ---
 
+{/* Use standard container and spacing */}
+<div class="container mx-auto px-4 py-12 md:py-16 space-y-12 md:space-y-16">
+
 {/* Module Header */}
-<header class="space-y-6">
-  <h1 class="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-violet-200 to-purple-400">
+  <header class="text-center max-w-3xl mx-auto space-y-4">
+    <h1 class="text-4xl md:text-5xl font-serif font-semibold text-gray-900">
     {Astro.props.title}
   </h1>
-  <p class="text-xl text-gray-300 max-w-3xl">
+    <p class="text-lg md:text-xl text-gray-600">
     {Astro.props.description}
   </p>
 </header>
 
 {/* Introduction Section */}
-<section class="space-y-8">
-  <div class="bg-card rounded-xl p-8 space-y-6">
-    <h2 class="text-3xl font-semibold text-violet-200">Introduction</h2>
-    <div class="prose prose-invert max-w-none">
-      <p class="text-lg text-gray-300">
-        Understanding cultural differences is crucial for successful international negotiations...
+  <section class="bg-white p-6 md:p-8 rounded-lg shadow-sm border border-gray-200">
+    <h2 class="text-2xl font-serif font-semibold text-gray-800 mb-6">Introduction</h2>
+    <div class="prose prose-lg max-w-none text-gray-600 space-y-4">
+      <p>
+        Understanding cultural differences is crucial for successful international negotiations. How people communicate, build trust, perceive time, and make decisions varies significantly across cultures. This module explores key cultural dimensions impacting negotiation styles in major global contexts.
+      </p>
+      <p>
+        You'll learn to recognize distinct approaches in the US, Germany, China, Japan, and Southeast Asia, enabling you to adapt your strategy, build rapport effectively, and avoid common cross-cultural misunderstandings.
       </p>
     </div>
     
     {/* Learning Objectives */}
-    <div class="mt-8 space-y-4">
-      <h3 class="text-2xl font-semibold text-violet-200">Learning Objectives</h3>
-      <ul class="grid md:grid-cols-2 gap-4">
+    <div class="mt-8 pt-6 border-t border-gray-200">
+      <h3 class="text-xl font-serif font-semibold text-gray-700 mb-4">Learning Objectives</h3>
+      <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2">
+        {[
+          "Understand key cultural dimensions impacting negotiation",
+          "Recognize distinct styles (US, German, Chinese, Japanese, SE Asian)",
+          "Develop strategies for adapting your approach",
+          "Build effective relationships across cultural boundaries",
+          "Navigate common cross-cultural challenges"
+        ].map(text => (
         <li class="flex items-start gap-3">
-          <span class="text-violet-400 mt-1.5"><i class="fas fa-check-circle"></i></span>
-          <span class="text-gray-300">Understand key cultural dimensions that impact negotiation</span>
+            <i class="fas fa-check-circle text-purple-500 mt-1 flex-shrink-0"></i>
+            <span class="text-gray-600">{text}</span>
         </li>
-        <li class="flex items-start gap-3">
-          <span class="text-violet-400 mt-1.5"><i class="fas fa-check-circle"></i></span>
-          <span class="text-gray-300">Recognize distinct negotiation styles across US, German, Chinese, Japanese, and Southeast Asian contexts</span>
-        </li>
-        <li class="flex items-start gap-3">
-          <span class="text-violet-400 mt-1.5"><i class="fas fa-check-circle"></i></span>
-          <span class="text-gray-300">Develop strategies for adapting your approach to different cultural environments</span>
-        </li>
-        <li class="flex items-start gap-3">
-          <span class="text-violet-400 mt-1.5"><i class="fas fa-check-circle"></i></span>
-          <span class="text-gray-300">Build effective relationships across cultural boundaries</span>
-        </li>
-        <li class="flex items-start gap-3">
-          <span class="text-violet-400 mt-1.5"><i class="fas fa-check-circle"></i></span>
-          <span class="text-gray-300">Navigate common cross-cultural challenges and misunderstandings</span>
-        </li>
+        ))}
       </ul>
-    </div>
   </div>
 </section>
 
 {/* Cultural Dimensions Framework */}
 <section class="space-y-8">
-  <h2 class="text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-violet-200 to-purple-400">
-    Cultural Dimensions Framework
-  </h2>
-  
-  <div class="bg-card rounded-xl p-8">
-    <div class="grid md:grid-cols-2 gap-8">
-      {/* Dimension Cards */}
-      <div class="bg-slate-800/50 rounded-lg p-6 hover:bg-slate-800/70 transition-all">
-        <h3 class="text-xl font-semibold mb-4 text-violet-200">Communication Style</h3>
-        <div class="space-y-4">
-          <div class="relative">
-            <div class="flex items-center justify-between text-sm text-gray-400 mb-2">
-              <span>Direct</span>
-              <span>Indirect</span>
+    <h2 class="text-3xl font-serif font-semibold text-gray-900 text-center mb-10">Cultural Dimensions Framework</h2>
+
+    <div class="bg-white p-6 md:p-8 rounded-lg shadow-sm border border-gray-200">
+       <div class="prose prose-lg max-w-none text-gray-600 mb-8">
+           <p>Several frameworks help analyze cultural differences. Here, we focus on practical dimensions relevant to negotiation:</p>
             </div>
-            <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
-              <div class="spectrum-bar relative w-full h-full">
-                {/* Enhanced markers */}
-                <div class="spectrum-marker absolute top-0 h-2 w-2 rounded-full bg-blue-400 shadow-glow-blue" 
-                     style="left: 10%;" 
-                     title="United States">
-                  <div class="opacity-0 group-hover:opacity-100 absolute bottom-full mb-2 px-2 py-1 bg-blue-500 rounded text-xs whitespace-nowrap">
-                    United States
-                  </div>
-                </div>
-                <div class="spectrum-marker absolute top-0 h-2 w-2 rounded-full bg-red-400" style="left: 20%;" title="Germany"></div>
-                <div class="spectrum-marker absolute top-0 h-2 w-2 rounded-full bg-purple-400" style="left: 60%;" title="Southeast Asia"></div>
-                <div class="spectrum-marker absolute top-0 h-2 w-2 rounded-full bg-yellow-400" style="left: 75%;" title="China"></div>
-                <div class="spectrum-marker absolute top-0 h-2 w-2 rounded-full bg-green-400" style="left: 90%;" title="Japan"></div>
-              </div>
-            </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {[
+          { title: "Communication Style", range: "Direct ↔ Indirect", desc: "How explicitly information is conveyed; reliance on verbal vs. non-verbal cues." },
+          { title: "Relationship Orientation", range: "Task ↔ Relationship", desc: "Priority given to task completion vs. building personal rapport before business." },
+          { title: "Time Perception", range: "Strict ↔ Flexible", desc: "Adherence to schedules (monochronic) vs. handling multiple things fluidly (polychronic)." },
+          { title: "Decision-Making Structure", range: "Individual ↔ Consensus", desc: "How decisions are made; top-down authority vs. group agreement." }
+        ].map(item => (
+          <div class="bg-gray-50 p-5 rounded-md border border-gray-200 space-y-2">
+            <h3 class="text-lg font-serif font-semibold text-purple-700">{item.title}</h3>
+            <p class="text-sm font-medium text-gray-500">{item.range}</p>
+            <p class="text-sm text-gray-600">{item.desc}</p>
+            {/* Simplified visualization placeholder - Could add simple bar/markers if needed */}
           </div>
-          <p class="text-sm text-gray-300">How explicitly information is conveyed...</p>
-        </div>
+        ))}
       </div>
-      
-      <div class="bg-slate-800/50 rounded-lg p-6 hover:bg-slate-800/70 transition-all">
-        <h3 class="text-xl font-semibold mb-4 text-violet-200">Relationship Orientation</h3>
-        <div class="space-y-4">
-          <div class="relative">
-            <div class="flex items-center justify-between text-sm text-gray-400 mb-2">
-              <span>Task-focused</span>
-              <span>Relationship-focused</span>
-            </div>
-            <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
-              <div class="spectrum-bar relative w-full h-full">
-                <div class="spectrum-marker absolute top-0 h-2 w-2 rounded-full bg-red-400" style="left: 10%;" title="Germany"></div>
-                <div class="spectrum-marker absolute top-0 h-2 w-2 rounded-full bg-blue-400" style="left: 25%;" title="United States"></div>
-                <div class="spectrum-marker absolute top-0 h-2 w-2 rounded-full bg-purple-400" style="left: 55%;" title="Southeast Asia"></div>
-                <div class="spectrum-marker absolute top-0 h-2 w-2 rounded-full bg-yellow-400" style="left: 75%;" title="China"></div>
-                <div class="spectrum-marker absolute top-0 h-2 w-2 rounded-full bg-green-400" style="left: 90%;" title="Japan"></div>
-              </div>
-            </div>
-          </div>
-          <p class="text-sm text-gray-300">How relationships are prioritized...</p>
-        </div>
-      </div>
-      
-      <div class="bg-slate-800/50 rounded-lg p-6 hover:bg-slate-800/70 transition-all">
-        <h3 class="text-xl font-semibold mb-4 text-violet-200">Time Perception</h3>
-        <div class="space-y-4">
-          <div class="relative">
-            <div class="flex items-center justify-between text-sm text-gray-400 mb-2">
-              <span>Strict</span>
-              <span>Flexible</span>
-            </div>
-            <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
-              <div class="spectrum-bar relative w-full h-full">
-                <div class="spectrum-marker absolute top-0 h-2 w-2 rounded-full bg-red-400" style="left: 10%;" title="Germany"></div>
-                <div class="spectrum-marker absolute top-0 h-2 w-2 rounded-full bg-blue-400" style="left: 20%;" title="United States"></div>
-                <div class="spectrum-marker absolute top-0 h-2 w-2 rounded-full bg-green-400" style="left: 40%;" title="Japan"></div>
-                <div class="spectrum-marker absolute top-0 h-2 w-2 rounded-full bg-yellow-400" style="left: 65%;" title="China"></div>
-                <div class="spectrum-marker absolute top-0 h-2 w-2 rounded-full bg-purple-400" style="left: 85%;" title="Southeast Asia"></div>
-              </div>
-            </div>
-          </div>
-          <p class="text-sm text-gray-300">How time is perceived...</p>
-        </div>
-      </div>
-      
-      <div class="bg-slate-800/50 rounded-lg p-6 hover:bg-slate-800/70 transition-all">
-        <h3 class="text-xl font-semibold mb-4 text-violet-200">Decision-Making Structure</h3>
-        <div class="space-y-4">
-          <div class="relative">
-            <div class="flex items-center justify-between text-sm text-gray-400 mb-2">
-              <span>Individual</span>
-              <span>Consensus</span>
-            </div>
-            <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
-              <div class="spectrum-bar relative w-full h-full">
-                <div class="spectrum-marker absolute top-0 h-2 w-2 rounded-full bg-blue-400" style="left: 10%;" title="United States"></div>
-                <div class="spectrum-marker absolute top-0 h-2 w-2 rounded-full bg-red-400" style="left: 25%;" title="Germany"></div>
-                <div class="spectrum-marker absolute top-0 h-2 w-2 rounded-full bg-purple-400" style="left: 50%;" title="Southeast Asia"></div>
-                <div class="spectrum-marker absolute top-0 h-2 w-2 rounded-full bg-yellow-400" style="left: 70%;" title="China"></div>
-                <div class="spectrum-marker absolute top-0 h-2 w-2 rounded-full bg-green-400" style="left: 90%;" title="Japan"></div>
-              </div>
-            </div>
-          </div>
-          <p class="text-sm text-gray-300">How decisions are made...</p>
-        </div>
-      </div>
+       <div class="prose prose-lg max-w-none text-gray-600 mt-8">
+           <p>Understanding where different cultures fall on these spectrums helps anticipate negotiation behaviors.</p>
     </div>
   </div>
 </section>
 
 {/* Regional Profiles */}
 <section class="space-y-8">
-  <h2 class="text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-violet-200 to-purple-400">
-    Regional Negotiation Profiles
-  </h2>
-  
-  <div class="space-y-8">
-    {/* United States */}
-    <div class="bg-card rounded-xl p-8">
-      <h3 class="text-2xl font-semibold mb-6 text-violet-200">United States</h3>
-      <div class="grid md:grid-cols-2 gap-8">
-        <div class="culture-profile">
-          <div class="profile-section mb-6">
-            <h4 class="text-lg font-semibold mb-2 text-accent">Communication Style</h4>
-            <p class="mb-3 text-gray-300"><strong>Direct and explicit</strong> communication with clear, straightforward language. Americans value "getting to the point" and typically use detailed, comprehensive written agreements.</p>
-            {/* Example Box Styling */}
-            <div class="bg-dark p-3 rounded border border-gray-700 italic text-gray-400 text-sm">
-              <p>"This price is too high. We need a 10% reduction to move forward."</p>
-            </div>
-          </div>
-          
-          <div class="profile-section mb-6">
-            <h4 class="text-lg font-semibold mb-2 text-accent">Relationship vs. Task Orientation</h4>
-            <p class="text-gray-300"><strong>Primarily task-oriented</strong> with a "business first, relationship second" approach. Americans typically move quickly to substantive issues with limited small talk before negotiations.</p>
-          </div>
-          
-          <div class="profile-section mb-6">
-            <h4 class="text-lg font-semibold mb-2 text-accent">Decision-Making</h4>
-            <p class="text-gray-300"><strong>Relatively fast-paced</strong> with emphasis on efficiency and "time is money." Decision-makers often have significant autonomy, and legal contracts are binding and detailed.</p>
-          </div>
-          
-          <div class="profile-section mb-6">
-            <h4 class="text-lg font-semibold mb-2 text-accent">Negotiation Approach</h4>
-            <p class="text-gray-300">Competitive but problem-solving oriented with focus on facts, data, and logical arguments. ROI and bottom-line impact are persuasive, and Americans are comfortable with "win-win" framing.</p>
-          </div>
-          
-          <div class="profile-section mb-6">
-            <h4 class="text-lg font-semibold mb-2 text-accent">Persuasion Techniques</h4>
-            <ul class="list-disc list-inside space-y-1 text-gray-300">
-              <li>Use hard data, ROI metrics, and clear comparisons</li>
-              <li>Appeal to efficiency and innovation</li>
-              <li>Emphasize short-term gains and competitive advantage</li>
-              <li>Present multiple options and alternatives</li>
-            </ul>
-          </div>
-          
-          <div class="profile-section"> {/* No mb-6 on last item in card */}
-            <h4 class="text-lg font-semibold mb-2 text-accent">Key Considerations</h4>
-            <ul class="list-disc list-inside space-y-1 text-gray-300">
-              <li>Americans may seem impatient or overly direct to negotiators from relationship-focused cultures</li>
-              <li>Legal aspects of agreements are taken very seriously</li>
-              <li>Expect preparation and homework on the business case</li>
-              <li>Individual achievement and initiative are highly valued</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    {/* Germany */}
-    <div class="bg-card rounded-xl p-8">
-      <h3 class="text-2xl font-semibold mb-6 text-violet-200">Germany</h3>
-      <div class="culture-profile">
-        <div class="profile-section mb-6">
-          <h4 class="text-lg font-semibold mb-2 text-accent">Communication Style</h4>
-          <p class="mb-3 text-gray-300"><strong>Very direct and explicit</strong> communication with detailed, precise language and little ambiguity. Germans take a factual, analytical approach and provide thorough written documentation.</p>
-          <div class="bg-dark p-3 rounded border border-gray-700 italic text-gray-400 text-sm">
-            <p>"Your proposal does not meet our quality standards. We require ISO 9001 certification."</p>
-          </div>
-        </div>
-        <div class="profile-section mb-6">
-          <h4 class="text-lg font-semibold mb-2 text-accent">Relationship vs. Task Orientation</h4>
-          <p class="text-gray-300"><strong>Strongly task-oriented</strong> with formal business relationships. Germans typically maintain limited personal disclosure in business settings and clear separation between business and personal life.</p>
-        </div>
-        <div class="profile-section mb-6">
-          <h4 class="text-lg font-semibold mb-2 text-accent">Decision-Making</h4>
-          <p class="text-gray-300"><strong>Methodical and thorough</strong> with decisions based on analysis and expertise. There is respect for hierarchy but with input from experts, and careful planning before commitment.</p>
-        </div>
-        <div class="profile-section mb-6">
-          <h4 class="text-lg font-semibold mb-2 text-accent">Negotiation Approach</h4>
-          <p class="text-gray-300">Structured and systematic with strong emphasis on rules, procedures, and standards. Detailed preparation is expected, and Germans typically take a risk-averse approach to new proposals.</p>
-        </div>
-        <div class="profile-section mb-6">
-          <h4 class="text-lg font-semibold mb-2 text-accent">Persuasion Techniques</h4>
-          <ul class="list-disc list-inside space-y-1 text-gray-300">
-            <li>Present logical, well-structured arguments</li>
-            <li>Provide comprehensive technical specifications</li>
-            <li>Demonstrate adherence to quality standards and certifications</li>
-            <li>Show long-term reliability and stability</li>
-          </ul>
-        </div>
-        <div class="profile-section">
-          <h4 class="text-lg font-semibold mb-2 text-accent">Key Considerations</h4>
-          <ul class="list-disc list-inside space-y-1 text-gray-300">
-            <li>Germans value punctuality and precise scheduling</li>
-            <li>Titles and formal address are important</li>
-            <li>Humor is generally kept separate from business discussions</li>
-            <li>Thoroughness is valued over speed</li>
-            <li>Contracts are detailed and followed strictly</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+    <h2 class="text-3xl font-serif font-semibold text-gray-900 text-center mb-10">Regional Negotiation Profiles</h2>
 
-    {/* China */}
-    <div class="bg-card rounded-xl p-8">
-      <h3 class="text-2xl font-semibold mb-6 text-violet-200">China</h3>
-      <div class="culture-profile">
-        <div class="profile-section mb-6">
-          <h4 class="text-lg font-semibold mb-2 text-accent">Communication Style</h4>
-          <p class="mb-3 text-gray-300"><strong>Indirect and contextual</strong> communication where reading between the lines is essential. Face-saving is critical (avoid causing embarrassment), and non-verbal cues carry significant meaning.</p>
-          <div class="bg-dark p-3 rounded border border-gray-700 italic text-gray-400 text-sm space-y-1">
-            <p>"That might be difficult" (meaning "no")</p>
-            <p>"We will consider it" (often means "we disagree but don't want to say so directly")</p>
-          </div>
-        </div>
-        <div class="profile-section mb-6">
-          <h4 class="text-lg font-semibold mb-2 text-accent">Relationship vs. Task Orientation</h4>
-          <p class="text-gray-300"><strong>Strongly relationship-oriented</strong> (guanxi) with substantial time invested in relationship building. Trust development precedes substantive negotiations, and business and personal relationships often blend.</p>
-        </div>
-        <div class="profile-section mb-6">
-          <h4 class="text-lg font-semibold mb-2 text-accent">Decision-Making</h4>
-          <p class="text-gray-300"><strong>Hierarchical</strong> but with consultation. Senior leaders make final decisions, consensus building occurs within the hierarchy, and patience is required as decisions move up the chain.</p>
-        </div>
-        <div class="profile-section mb-6">
-          <h4 class="text-lg font-semibold mb-2 text-accent">Negotiation Approach</h4>
-          <p class="text-gray-300">Strategic and long-term oriented, potentially using delays and ambiguity as tactics. Multiple negotiators with specialized roles may be present, and Chinese negotiators are comfortable with silence and indirect refusals.</p>
-        </div>
-        <div class="profile-section mb-6">
-          <h4 class="text-lg font-semibold mb-2 text-accent">Persuasion Techniques</h4>
-          <ul class="list-disc list-inside space-y-1 text-gray-300">
-            <li>Emphasize long-term partnership potential</li>
-            <li>Highlight stability and security aspects</li>
-            <li>Reference successful relationships with similar organizations</li>
-            <li>Show respect for Chinese culture and achievements</li>
-          </ul>
-        </div>
-        <div class="profile-section">
-          <h4 class="text-lg font-semibold mb-2 text-accent">Key Considerations</h4>
-          <ul class="list-disc list-inside space-y-1 text-gray-300">
-            <li>Saving face is crucial—never cause public embarrassment</li>
-            <li>Intermediaries can help build trust and relationships</li>
-            <li>Contracts may be viewed as starting points rather than final agreements</li>
-            <li>Patience and relationship investment yield long-term rewards</li>
-            <li>Group harmony and collective interests are prioritized</li>
-          </ul>
+    {[
+      { region: "United States", content: `<div class="profile-grid"><div class="profile-point"><h4>Comm Style:</h4><p>Direct, explicit, task-focused.</p></div><div class="profile-point"><h4>Relationship:</h4><p>Business first, relationship second.</p></div><div class="profile-point"><h4>Decision Making:</h4><p>Fast, individual autonomy, data-driven.</p></div><div class="profile-point"><h4>Key Points:</h4><p>Value efficiency, ROI, legal contracts vital.</p></div></div>` },
+      { region: "Germany", content: `<div class="profile-grid"><div class="profile-point"><h4>Comm Style:</h4><p>Very direct, factual, detailed.</p></div><div class="profile-point"><h4>Relationship:</h4><p>Strongly task-oriented, formal.</p></div><div class="profile-point"><h4>Decision Making:</h4><p>Methodical, thorough, hierarchical input.</p></div><div class="profile-point"><h4>Key Points:</h4><p>Value punctuality, quality standards, planning.</p></div></div>` },
+      { region: "China", content: `<div class="profile-grid"><div class="profile-point"><h4>Comm Style:</h4><p>Indirect, contextual, face-saving crucial.</p></div><div class="profile-point"><h4>Relationship:</h4><p>Guanxi essential, trust before business.</p></div><div class="profile-point"><h4>Decision Making:</h4><p>Hierarchical, requires patience.</p></div><div class="profile-point"><h4>Key Points:</h4><p>Long-term view, group harmony, contracts may be starting points.</p></div></div>` },
+      { region: "Japan", content: `<div class="profile-grid"><div class="profile-point"><h4>Comm Style:</h4><p>Highly indirect, non-verbal cues vital, harmony (wa).</p></div><div class="profile-point"><h4>Relationship:</h4><p>Strongly relationship-oriented, formal etiquette.</p></div><div class="profile-point"><h4>Decision Making:</h4><p>Consensus-based (ringi), time-consuming.</p></div><div class="profile-point"><h4>Key Points:</h4><p>Patience essential, respect hierarchy, 'no' rarely direct.</p></div></div>` },
+      { region: "Southeast Asia", content: `<div class="profile-grid"><div class="profile-point"><h4>Comm Style:</h4><p>Generally indirect, polite, face-saving.</p></div><div class="profile-point"><h4>Relationship:</h4><p>Relationship-oriented, hospitality important.</p></div><div class="profile-point"><h4>Decision Making:</h4><p>Often hierarchical, varies by country.</p></div><div class="profile-point"><h4>Key Points:</h4><p>Respect customs/elders, build trust, regional variations exist.</p></div></div>` },
+    ].map(profile => (
+      <div class="bg-white p-6 md:p-8 rounded-lg shadow-sm border border-gray-200">
+        <h3 class="text-2xl font-serif font-semibold text-gray-800 mb-4">{profile.region}</h3>
+        <div class="prose max-w-none text-gray-600 space-y-4" set:html={profile.content}>
+          {/* Content is injected here */}
         </div>
       </div>
-    </div>
+    ))}
+  </section>
 
-    {/* Japan */}
-    <div class="bg-card rounded-xl p-8">
-      <h3 class="text-2xl font-semibold mb-6 text-violet-200">Japan</h3>
-      <div class="culture-profile">
-        <div class="profile-section mb-6">
-          <h4 class="text-lg font-semibold mb-2 text-accent">Communication Style</h4>
-          <p class="mb-3 text-gray-300"><strong>Highly indirect and contextual</strong> with emphasis on harmony (wa) and avoiding conflict. Non-verbal communication is crucial, and what is not said may be more important than what is said.</p>
-          <div class="bg-dark p-3 rounded border border-gray-700 italic text-gray-400 text-sm space-y-1">
-            <p>Silence, hesitation, or changing the subject often indicates disagreement</p>
-            <p>"We will need to examine this further" (likely means "no")</p>
-          </div>
-        </div>
-         <div class="profile-section mb-6">
-          <h4 class="text-lg font-semibold mb-2 text-accent">Relationship vs. Task Orientation</h4>
-          <p class="text-gray-300"><strong>Strongly relationship-oriented</strong> with extensive time devoted to relationship building. Group consensus is valued over individual positions, and formal business etiquette is essential.</p>
-        </div>
-         <div class="profile-section mb-6">
-          <h4 class="text-lg font-semibold mb-2 text-accent">Decision-Making</h4>
-          <p class="text-gray-300"><strong>Consensus-based</strong> (ringi system) with decisions requiring consultation at multiple levels. There is emphasis on group harmony, and the process can be time-consuming.</p>
-        </div>
-         <div class="profile-section mb-6">
-          <h4 class="text-lg font-semibold mb-2 text-accent">Negotiation Approach</h4>
-          <p class="text-gray-300">Patient and methodical with discomfort around confrontation or direct disagreement. Silence is used strategically, and detailed preparation and information gathering are expected.</p>
-        </div>
-         <div class="profile-section mb-6">
-          <h4 class="text-lg font-semibold mb-2 text-accent">Persuasion Techniques</h4>
-          <ul class="list-disc list-inside space-y-1 text-gray-300">
-            <li>Emphasize long-term stability and reliability</li>
-            <li>Show respect for tradition and hierarchy</li>
-            <li>Demonstrate commitment to quality and continuous improvement</li>
-            <li>Present information in detailed written form</li>
-          </ul>
-        </div>
-         <div class="profile-section">
-          <h4 class="text-lg font-semibold mb-2 text-accent">Key Considerations</h4>
-          <ul class="list-disc list-inside space-y-1 text-gray-300">
-            <li>Business cards (meishi) exchanged with great ceremony</li>
-            <li>Hierarchy and seniority are respected</li>
-            <li>Patience is essential—rushing decisions is counterproductive</li>
-            <li>"No" is rarely stated directly; listen for hesitation</li>
-            <li>Group decision-making takes precedence over individual authority</li>
-          </ul>
-        </div>
+  {/* Simulation Section Placeholder */}
+  <section class="bg-white p-6 md:p-8 rounded-lg shadow-sm border border-gray-200">
+    <h2 class="text-2xl font-serif font-semibold text-gray-800 mb-6">Cross-Cultural Negotiation Simulation</h2>
+    <p class="text-gray-600 mb-6">Practice adapting your approach in simulated scenarios (Interactive feature coming soon).</p>
+    <div class="bg-gray-100 p-6 rounded-md border border-gray-200 text-center text-gray-500">
+      <i class="fas fa-cogs text-4xl mb-4 text-gray-400"></i>
+      <p>Simulation Area Placeholder</p>
+      <p class="text-sm mt-2">Select a counterpart culture and navigate the negotiation!</p>
+      {/* Basic button placeholders */}
+      <div class="mt-6 flex flex-wrap justify-center gap-3">
+           <button class="btn btn-secondary" disabled>Germany</button>
+           <button class="btn btn-secondary" disabled>China</button>
+           <button class="btn btn-secondary" disabled>Japan</button>
+           {/* ... other buttons */}
       </div>
+       <button class="btn btn-primary mt-4" disabled>Start Simulation</button>
     </div>
+  </section>
 
-    {/* Southeast Asia */}
-    <div class="bg-card rounded-xl p-8">
-      <h3 class="text-2xl font-semibold mb-6 text-violet-200">Southeast Asia</h3>
-      <p class="mb-6 text-gray-300">While Southeast Asian countries have distinct cultures, some common patterns exist across Thailand, Vietnam, Indonesia, and Malaysia:</p>
-      
-      <div class="culture-profile">
-        <div class="profile-section mb-6">
-          <h4 class="text-lg font-semibold mb-2 text-accent">Communication Style</h4>
-          <p class="mb-3 text-gray-300"><strong>Generally indirect and contextual</strong> with high-context communication requiring interpretation. Politeness and face-saving are important, and relationship-building communication often precedes business talk.</p>
-          <div class="bg-dark p-3 rounded border border-gray-700 italic text-gray-400 text-sm space-y-1">
-            <p>"Maybe we can discuss this later" (may indicate disagreement)</p>
-            <p>Avoiding direct eye contact can signal respect or disagreement depending on context.</p>
-          </div>
-        </div>
-        <div class="profile-section mb-6">
-          <h4 class="text-lg font-semibold mb-2 text-accent">Relationship vs. Task Orientation</h4>
-          <p class="text-gray-300"><strong>Predominantly relationship-oriented</strong> where personal connections and trust are fundamental. Hospitality and social activities are often integral to business, and family/community connections matter.</p>
-        </div>
-        <div class="profile-section mb-6">
-          <h4 class="text-lg font-semibold mb-2 text-accent">Decision-Making</h4>
-          <p class="text-gray-300">Often <strong>hierarchical</strong> with respect for authority, but varies. It can range from centralized (e.g., Vietnam) to more consultative (e.g., Indonesia). Family structures influence decisions in family businesses, and cultural/religious values play a role.</p>
-        </div>
-        <div class="profile-section mb-6">
-          <h4 class="text-lg font-semibold mb-2 text-accent">Negotiation Approach</h4>
-          <p class="text-gray-300">Preference for harmony and compromise, with discomfort around direct confrontation. Patience and relationship-building are rewarded, often leading to more flexibility on terms and implementation later.</p>
-        </div>
-         <div class="profile-section mb-6">
-          <h4 class="text-lg font-semibold mb-2 text-accent">Persuasion Techniques</h4>
-          <ul class="list-disc list-inside space-y-1 text-gray-300">
-            <li>Show respect for local customs, hierarchy, and elders</li>
-            <li>Emphasize mutual benefits, harmony, and community impact</li>
-            <li>Demonstrate long-term commitment to the relationship and region</li>
-            <li>Build rapport through social interaction</li>
-            <li>Adapt to local business practices and expectations</li>
-          </ul>
-        </div>
-         <div class="profile-section">
-          <h4 class="text-lg font-semibold mb-2 text-accent">Key Regional Variations & Considerations</h4>
-          <ul class="list-disc list-inside space-y-1 text-gray-300">
-            <li><strong>Thailand:</strong> Strong respect for hierarchy, conflict avoidance ("kreng jai"), Buddhist influences.</li>
-            <li><strong>Vietnam:</strong> Can be more direct than others in the region, hierarchical, importance of relationship-building through shared meals.</li>
-            <li><strong>Indonesia:</strong> Value placed on consensus ("musyawarah"), religious considerations (Islam), indirect communication for harmony.</li>
-            <li><strong>Malaysia:</strong> Multicultural influences (Malay, Chinese, Indian), relationship-oriented but adapting Western practices, religious considerations (Islam), respect for age/position.</li>
-            <li>Across the region, face-saving is important; avoid causing embarrassment.</li>
-            <li>Building personal trust is key before diving deep into business specifics.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+   {/* Conclusion/Navigation */}
+   <section class="text-center mt-12">
+     <div class="flex flex-wrap justify-between gap-4">
+       <a href="/nego-course/behavioral-tactics" class="btn btn-secondary">← Previous Module</a>
+       <a href="/nego-course/assessment" class="btn btn-primary">Next Module →</a>
   </div>
 </section>
 
-{/* Simulation Section */}
-<section class="space-y-8">
-  <div class="bg-card rounded-xl p-8">
-    <h2 class="text-2xl font-semibold mb-6 text-violet-200">Cross-Cultural Negotiation Simulation</h2>
-    <p class="mb-6 text-gray-300">Test your knowledge by navigating a negotiation scenario.</p>
-
-    {/* Country Selection */}
-    <div id="country-selector">
-      <h3 class="text-xl font-semibold mb-3 text-white">Choose a Counterpart Culture:</h3>
-      <p class="mb-4 text-gray-300">Select the culture you want to negotiate with:</p>
-      {/* Buttons will be added by JS. Style them here or via JS */}
-      <div class="flex flex-wrap gap-3 mb-4">
-          {/* Example of how JS might add buttons - Add class 'country-button' in JS */}
-          {/* <button class="country-button bg-dark hover:bg-gray-700 text-white px-4 py-2 rounded transition-colors">Germany</button> */}
-      </div>
-      <button id="start-simulation-button" class="bg-accent hover:opacity-90 text-white font-semibold px-6 py-2 rounded transition-opacity disabled:opacity-50 disabled:cursor-not-allowed" disabled>Start Simulation</button>
     </div>
 
-    {/* Simulation Area */}
-    <div id="simulation-container" style="display: none;">
-        <div id="progress-indicator" class="text-sm text-gray-400 mb-4 italic">
-            {/* JS content */}
-        </div>
-        <hr class="border-gray-700 my-4">
-        <div id="scenario-container" class="mb-4">
-            <h4 class="text-lg font-semibold mb-2 text-accent">Scenario:</h4>
-            <p class="mb-3 text-gray-300">{/* Scenario text */}</p>
-            <h5 class="text-lg font-semibold mb-2 text-accent">Question:</h5>
-            <p class="text-gray-300">{/* Question text */}</p>
-        </div>
-        <hr class="border-gray-700 my-4">
-        <div id="options-container" class="mb-4">
-             <h5 class="text-lg font-semibold mb-3 text-white">Choose your response:</h5>
-             <div class="flex flex-col space-y-3">
-                  {/* Option buttons added by JS. Style them here or via JS */}
-                  {/* Example: <button class="option-button w-full text-left bg-dark hover:bg-gray-700 text-white px-4 py-2 rounded transition-colors disabled:opacity-70">Option text...</button> */}
-             </div>
-        </div>
-        <hr class="border-gray-700 my-4">
-        <div id="feedback-container" class="bg-dark p-4 rounded border border-gray-700 mb-4" style="display: none;">
-             <h4 class="text-lg font-semibold mb-2 text-accent">Feedback:</h4>
-             <p class="text-gray-300">{/* Feedback text */}</p>
-        </div>
-        <button id="next-button" class="bg-accent hover:opacity-90 text-white font-semibold px-6 py-2 rounded transition-opacity" style="display: none;">Next Scenario</button>
-    </div>
-
-    {/* Results Area */}
-    <div id="results-container" class="mt-6" style="display: none;">
-      <h3 class="text-xl md:text-2xl font-semibold mb-4 text-white">Simulation Results</h3>
-      {/* Results details added by JS. Style list/paragraphs here or via JS */}
-      {/* Example: <ul class="list-disc list-inside space-y-1 text-gray-300 mb-4"><li>...</li></ul> */}
-      {/* Example: <p class="text-gray-300 mb-4">Overall feedback...</p> */}
-      {/* Example: <button class="bg-dark hover:bg-gray-700 text-white px-4 py-2 rounded transition-colors">Restart Simulation</button> */}
-    </div>
-  </div>
-</section>
-
-<style>
-  /* Enhanced card hover effects */
-  .bg-card {
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  
-  .bg-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-  }
-  
-  /* Spectrum markers */
-  .spectrum-marker {
-    transition: all 0.2s ease;
-  }
-  
-  .spectrum-marker:hover {
-    transform: scale(1.5);
-    z-index: 10;
-  }
-  
-  /* Gradient text enhancement */
-  .text-gradient {
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-  }
-
-  /* Content-specific overrides */
-  .culture-profile {
-    display: grid;
-    gap: 2rem;
-  }
-
-  .profile-section h4 {
-    color: rgb(var(--color-primary));
-    margin-bottom: 0.75rem;
-  }
-
-  .profile-section p {
-    color: rgb(var(--color-text-muted));
-    margin-bottom: 1rem;
-    line-height: 1.7;
-  }
-
-  /* Better list spacing */
-  .profile-section ul {
-    padding-left: 1.25rem;
-    margin: 0.75rem 0;
-  }
-
-  .profile-section li {
-    margin-bottom: 0.5rem;
-    position: relative;
-    padding-left: 1.5rem;
-  }
-
-  .profile-section li::before {
-    content: '•';
-    color: rgb(var(--color-primary));
-    position: absolute;
-    left: 0;
-  }
-
-  /* Scoped to course layout */
-  .course-layout .culture-profile {
-    display: grid;
-    gap: 2rem;
-  }
-
-  .course-layout .profile-section h4 {
-    color: #c4b5fd; /* Using direct value instead of var */
-    margin-bottom: 0.75rem;
-  }
+<style is:global>
+  /* Scoped styles for content injected via set:html */
+  .profile-grid { @apply grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4; }
+  .profile-point h4 { @apply text-sm font-semibold text-purple-700 mb-1; }
+  .profile-point p { @apply text-sm text-gray-600 leading-relaxed; }
 </style>

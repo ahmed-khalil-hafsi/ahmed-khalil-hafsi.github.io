@@ -1,155 +1,247 @@
 ---
 // src/layouts/CourseLayout.astro
-import Header from '../components/nego-course/Header.astro'; // Adjust path if needed
-import Footer from '../components/nego-course/Footer.astro'; // Adjust path if needed
+// import { Icon } from 'astro-icon';
 
 // Props passed from the page using this layout
-const { title, description, breadcrumb } = Astro.props;
+const { title, description, breadcrumb, metaImage = "/images/nego-course-social.jpg" } = Astro.props;
+
+// Dynamic navigation for course pages
+const courseNav = [
+  { name: "Overview", href: "/nego-course", active: Astro.url.pathname === "/nego-course/" || Astro.url.pathname === "/nego-course" },
+  { name: "Behavioral Tactics", href: "/nego-course/behavioral-tactics", active: Astro.url.pathname.includes("/behavioral-tactics") },
+  { name: "Cultural Aspects", href: "/nego-course/cultural-aspects", active: Astro.url.pathname.includes("/cultural-aspects") },
+  { name: "Harvard Framework", href: "/nego-course/harvard-framework", active: Astro.url.pathname.includes("/harvard-framework") },
+  { name: "Assessment", href: "/nego-course/assessment", active: Astro.url.pathname.includes("/assessment") },
+];
 ---
-<html lang="en" class="bg-slate-900">
+
+<!doctype html>
+<html lang="en" class="bg-white">
 <head>
   <meta charset="utf-8" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <meta name="viewport" content="width=device-width" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
   <meta name="generator" content={Astro.generator} />
-  <title>{title || 'Negotiation Course'}</title>
-  <meta name="description" content={description} />
+  
+  <!-- Primary Meta Tags -->
+  <title>{title || 'Negotiation Mastery Course'}</title>
+  <meta name="title" content={title || 'Negotiation Mastery Course'} />
+  <meta name="description" content={description || 'Master the art and science of negotiation with advanced techniques and strategic frameworks.'} />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={Astro.url} />
+  <meta property="og:title" content={title || 'Negotiation Mastery Course'} />
+  <meta property="og:description" content={description || 'Master the art and science of negotiation with advanced techniques and strategic frameworks.'} />
+  <meta property="og:image" content={new URL(metaImage, Astro.url)} />
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content={Astro.url} />
+  <meta property="twitter:title" content={title || 'Negotiation Mastery Course'} />
+  <meta property="twitter:description" content={description || 'Master the art and science of negotiation with advanced techniques and strategic frameworks.'} />
+  <meta property="twitter:image" content={new URL(metaImage, Astro.url)} />
+  
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
-  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Crimson+Pro:wght@500;600&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-<body class="course-layout min-h-screen text-white">
+
+<body class="min-h-screen bg-gray-50 text-gray-900 antialiased">
   <div class="flex flex-col min-h-screen">
-    <Header breadcrumb={breadcrumb} />
-    <main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div class="max-w-6xl mx-auto space-y-12">
-        <slot />
+    <!-- Navigation Bar - Simplified -->
+    <header class="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
+      <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center h-16">
+          <!-- Logo -->
+          <a href="/" class="text-xl font-semibold text-gray-900">
+            Ahmed K. Hafsi
+          </a>
+          
+          <!-- Desktop Navigation -->
+          <nav class="hidden md:flex space-x-1">
+            {courseNav.map(item => (
+              <a 
+                href={item.href} 
+                class={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${
+                  item.active 
+                    ? 'bg-gray-100 text-gray-900' 
+                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                }`}
+              >
+                {item.name}
+              </a>
+            ))}
+          </nav>
+
+          <!-- CTA Button -->
+          <a
+            href="/nego-course/assessment"
+            class="hidden sm:inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-purple-600 hover:bg-purple-700 rounded-md transition-colors"
+          >
+            Take Assessment
+          </a>
+        </div>
       </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow">
+      <slot />
     </main>
-    <Footer />
+
+    <!-- Footer - Simplified -->
+    <footer class="bg-gray-50 border-t border-gray-200">
+      <div class="container mx-auto px-4 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- About -->
+          <div>
+            <h3 class="text-sm font-semibold text-gray-900 uppercase tracking-wider">About the Author</h3>
+            <p class="mt-4 text-gray-600">
+              Ahmed K. Hafsi is a negotiation strategist with extensive experience advising Fortune 500 companies and executives.
+            </p>
+          </div>
+          
+          <!-- Quick Links -->
+          <div>
+            <h3 class="text-sm font-semibold text-gray-900 uppercase tracking-wider">Course Navigation</h3>
+            <ul class="mt-4 space-y-2">
+              {courseNav.map(item => (
+                <li>
+                  <a href={item.href} class="text-gray-600 hover:text-gray-900 text-sm">
+                    {item.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          
+          <!-- Contact -->
+          <div>
+            <h3 class="text-sm font-semibold text-gray-900 uppercase tracking-wider">Get Started</h3>
+            <p class="mt-4 text-gray-600">
+              Start your journey to becoming a more effective negotiator with our comprehensive course.
+            </p>
+            <a
+              href="/nego-course/assessment"
+              class="mt-4 inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-purple-600 hover:bg-purple-700 rounded-md transition-colors"
+            >
+              Take the Assessment
+            </a>
+          </div>
+        </div>
+        
+        <!-- Copyright -->
+        <div class="mt-8 pt-8 border-t border-gray-200">
+          <p class="text-sm text-gray-500 text-center">
+            © {new Date().getFullYear()} Ahmed K. Hafsi. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
   </div>
 </body>
 </html>
 
 <style is:global>
-  /* ====== CSS Variables ====== */
   :root {
-    --color-primary: 196 181 253;    /* #c4b5fd */
-    --color-secondary: 165 180 252;  /* #a5b4fc */
-    --color-bg: 15 23 42;            /* #0f172a (slate-900) */
-    --color-card: 30 30 45;
-    --color-card-border: 255 255 255 / 0.1;
-    --color-text: 255 255 255;
-    --color-text-muted: 148 163 184; /* slate-400 */
+    /* Core colors - Updated primary to Purple */
+    --color-primary: 147 51 234;   /* Purple-600 */
+    --color-text: 17 24 39;        /* Gray-900 */
+    --color-text-light: 75 85 99;  /* Gray-600 */
+    --color-bg: 255 255 255;       /* White */
+    --color-bg-alt: 249 250 251;   /* Gray-50 */
+    --color-border: 229 231 235;   /* Gray-200 */
+    
+    /* Typography */
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-serif: 'Crimson Pro', Georgia, serif;
   }
 
-  /* ====== Base Reset ====== */
+  /* Base styles */
   html {
-    background-color: rgb(var(--color-bg));
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
-    line-height: 1.6;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth; /* Add smooth scroll */
   }
 
-  body {
-    color: rgb(var(--color-text));
-    background: linear-gradient(
-      to bottom right,
-      rgb(var(--color-bg)),
-      rgb(76 29 149 / 0.4),  /* purple-900 with opacity */
-      rgb(var(--color-bg))
-    );
-  }
-
-  /* ====== Typography Hierarchy ====== */
+  /* Typography */
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Source Serif Pro', serif;
-    font-weight: 600;
+    font-family: var(--font-serif);
+    color: rgb(var(--color-text));
     line-height: 1.2;
-    margin: 1.5em 0 0.75em;
   }
 
-  h1 { font-size: 2.5rem; }
-  h2 { font-size: 2rem; }
-  h3 { font-size: 1.75rem; }
-
-  /* ====== Card System ====== */
-  .bg-card {
-    background: rgb(var(--color-card) / 0.95);
-    border: 1px solid rgb(var(--color-card-border));
-    backdrop-filter: blur(8px);
-    border-radius: 0.75rem;
-    box-shadow: 0 4px 12px rgb(0 0 0 / 0.2);
+  /* Container */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
   }
 
-  .bg-card:hover {
-    box-shadow: 0 8px 24px rgb(0 0 0 / 0.3);
-    transform: translateY(-2px);
+  /* Links */
+  a {
+    text-decoration: none;
+    transition: color 0.2s;
   }
 
-  /* ====== Interactive Elements ====== */
-  button, .button {
+  /* Focus styles */
+  a:focus, button:focus {
+    outline: 2px solid rgb(var(--color-primary));
+    outline-offset: 2px;
+  }
+
+  /* Buttons */
+  .btn {
     display: inline-flex;
     align-items: center;
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.5rem;
-    font-weight: 600;
-    transition: all 0.2s ease;
-    background: rgb(var(--color-primary) / 0.9);
-    color: rgb(var(--color-bg));
+    justify-content: center;
+    padding: 0.625rem 1.25rem; /* Slightly adjusted padding */
+    font-weight: 500;
+    font-size: 0.875rem; /* text-sm */
+    border-radius: 0.375rem; /* rounded-md */
+    transition: all 0.2s ease-in-out;
+    text-decoration: none; /* Ensure no underline */
   }
 
-  button:hover:not(:disabled) {
-    background: rgb(var(--color-primary));
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgb(var(--color-primary) / 0.2);
+  .btn-primary {
+    background-color: rgb(var(--color-primary));
+    color: white;
+    border: 1px solid transparent;
   }
 
-  /* ====== Responsive Overrides ====== */
+  .btn-primary:hover {
+    background-color: rgb(var(--color-primary) / 0.9);
+    box-shadow: 0 4px 6px -1px rgb(var(--color-primary) / 0.2), 0 2px 4px -2px rgb(var(--color-primary) / 0.2); /* Add subtle shadow on hover */
+  }
+
+  .btn-secondary {
+    background-color: transparent;
+    color: rgb(var(--color-primary));
+    /* Make border slightly darker initially */
+    border: 1px solid rgb(var(--color-primary) / 0.3);
+  }
+
+  .btn-secondary:hover {
+    /* Increase background and border opacity on hover */
+    background-color: rgb(var(--color-primary) / 0.05);
+    border-color: rgb(var(--color-primary) / 0.5);
+  }
+
+  /* Focus styles for accessibility */
+  a:focus-visible, button:focus-visible, input:focus-visible {
+    outline: 2px solid rgb(var(--color-primary));
+    outline-offset: 2px;
+  }
+
+  /* Responsive text */
   @media (max-width: 640px) {
-    html { font-size: 14px; }
-    
-    .bg-card {
-      padding: 1.5rem;
-      margin-left: -1rem;
-      margin-right: -1rem;
-      border-radius: 0;
-      border-left: none;
-      border-right: none;
+    html {
+      font-size: 14px;
     }
-  }
-
-  /* ====== Utility Classes ====== */
-  .text-accent { color: rgb(var(--color-primary)) }
-  .text-muted { color: rgb(var(--color-text-muted)) }
-
-  /* Target only elements within course layout */
-  .course-layout {
-    background: linear-gradient(
-      to bottom right,
-      #0f172a,  /* slate-900 */
-      rgba(76, 29, 149, 0.4),  /* purple-900 with opacity */
-      #0f172a
-    );
-  }
-
-  .course-layout .bg-card {
-    background: rgba(30, 30, 45, 0.95);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(8px);
-  }
-
-  .course-layout h1,
-  .course-layout h2,
-  .course-layout h3 {
-    font-family: 'Source Serif Pro', serif;
-    font-weight: 600;
-    line-height: 1.2;
-  }
-
-  .course-layout .text-accent {
-    color: #c4b5fd;
   }
 </style>
