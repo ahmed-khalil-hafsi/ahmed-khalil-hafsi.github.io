@@ -14,19 +14,15 @@ const { title = "Ahmed K. Hafsi - Negotiation Strategist" } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		
 		
 		<!-- preload the fonts -->
 
 		<link rel="preload" href="/fonts/inter/inter-v18-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
-		<link rel="preload" href="https://fonts.gstatic.com/s/sourceserifpro/v12/neIQzD-0qpwxpaWvjeD0X88SAOeauXk.woff2" as="font" type="font/woff2" crossorigin>
-
-		<!-- Preload the stylesheet -->
-		<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
-
-		<link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+		<link rel="preload" href="/fonts/inter/inter-v18-latin-500.woff2" as="font" type="font/woff2" crossorigin>
+		<link rel="preload" href="/fonts/source-serif-pro/source-serif-pro-600.woff2" as="font" type="font/woff2" crossorigin>
 		
+
 		<!-- SEO Meta Tags -->
 		<meta name="description" content="Ahmed K. Hafsi - Expert in game theory and negotiation strategy with over a decade of experience in global procurement and sales negotiations." />
 		<meta name="keywords" content="game theory, negotiation, strategic advisory, procurement, behavioral economics, Ahmed Hafsi" />
@@ -293,6 +289,22 @@ const { title = "Ahmed K. Hafsi - Negotiation Strategist" } = Astro.props;
   font-style: normal;
   font-weight: 700;
   src: url('/fonts/inter/inter-v18-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+@font-face {
+  font-family: 'Source Serif Pro';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/source-serif-pro/source-serif-pro-600.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Source Serif Pro';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/source-serif-pro/source-serif-pro-700.woff2') format('woff2');
 }
 
 </style>
