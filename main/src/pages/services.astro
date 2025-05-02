@@ -140,23 +140,6 @@ import Hero from '../components/Hero.astro';
       </div>
     </div>
 
-    <!-- Dynamic visual separator -->
-    <div class="relative h-10 mb-12">
-      <!-- Center line -->
-      <div class="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-accent/40 to-transparent"></div>
-      
-      <!-- Pulsing glow effect -->
-      <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-accent/10 rounded-full blur-xl animate-pulse"></div>
-      
-      <!-- Center dot with subtle animation -->
-      <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-accent rounded-full animate-ping opacity-75"></div>
-      <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-accent rounded-full"></div>
-      
-      <!-- Horizontal accent lines -->
-      <div class="absolute left-1/2 top-1/2 -translate-y-1/2 w-8 md:w-16 h-px bg-gradient-to-r from-accent/80 to-transparent -translate-x-full"></div>
-      <div class="absolute left-1/2 top-1/2 -translate-y-1/2 w-8 md:w-16 h-px bg-gradient-to-l from-accent/80 to-transparent translate-x-0"></div>
-    </div>
-
     <div class="text-center mb-12">
       <h2 class="text-4xl font-serif font-semibold text-white mb-6 relative inline-block">
         <span class="relative z-10">How can I help?</span>
@@ -167,7 +150,7 @@ import Hero from '../components/Hero.astro';
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 px-0">
+    <div class="grid grid-cols-1 gap-8 mb-16 px-0">
       <!-- Service Card 1 -->
       <div class="animate-on-load delay-100 bg-card p-8 rounded-xl border border-gray-700 shadow-xl hover:shadow-accent/20 transition-all duration-500 flex flex-col group relative overflow-hidden">
         <div class="absolute top-0 right-0 w-32 h-32 bg-accent/10 rounded-full blur-3xl -mr-16 -mt-16 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
@@ -187,36 +170,6 @@ import Hero from '../components/Hero.astro';
           <li class="flex items-start">
             <span class="text-accent mr-2 text-xl">•</span>
             <span>Reduce Risk: Build a supply chain that's bulletproof, not brittle, so you're never blindsided by a supplier meltdown.</span>
-          </li>
-        </ul>
-        <div class="mt-auto">
-          <a href="/contact" class="text-accent hover:text-white transition-colors inline-flex items-center group-hover:translate-x-1 transition-transform duration-300">
-            Learn more <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 group-hover:ml-2 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </a>
-        </div>
-      </div>
-      
-      <!-- Service Card 2 -->
-      <div class="animate-on-load delay-200 bg-card p-8 rounded-xl border border-gray-700 shadow-xl hover:shadow-accent/20 transition-all duration-500 flex flex-col group relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-32 h-32 bg-accent/10 rounded-full blur-3xl -mr-16 -mt-16 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-        <h3 class="text-2xl font-semibold mb-4 font-serif text-white group-hover:text-accent transition-colors duration-300">Team Training Programs</h3>
-        <p class="text-gray-300 mb-6">
-          Arm Your Crew to Dominate. Your team shouldn't just survive negotiations—they should crush them. My training gives them the edge they need.
-        </p>
-        <ul class="space-y-3 text-gray-300 mb-8 flex-grow">
-          <li class="flex items-start">
-            <span class="text-accent mr-2 text-xl">•</span>
-            <span>Behavioral Science Edge: Techniques to read the room, build trust, and get suppliers to bend your way.</span>
-          </li>
-          <li class="flex items-start">
-            <span class="text-accent mr-2 text-xl">•</span>
-            <span>Game Theory Playbook: Proven strategies to outmaneuver opponents and close deals faster.</span>
-          </li>
-          <li class="flex items-start">
-            <span class="text-accent mr-2 text-xl">•</span>
-            <span>Real-World Drills: Hands-on practice tailored to the chaos of electronics and automotive supply chains.</span>
           </li>
         </ul>
         <div class="mt-auto">
@@ -354,5 +307,7 @@ import Hero from '../components/Hero.astro';
         </div>
       </div>
     </div>
+
+    
   </div>
-</Layout> 
+</Layout>
