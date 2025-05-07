@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://ahmedhafsi.com/sitemap.xml
+Sitemap: https://ahmedhafsi.com/sitemap-0.xml
