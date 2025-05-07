@@ -1,9 +1,31 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
+
+
+const meta = {
+  title: "Services - Ahmed K. Hafsi",
+  description: "Strategic negotiation services for manufacturing companies. Expert in procurement, supplier management, and sales negotiations. Based in Singapore.",
+  canonicalURL: "https://yourdomain.com/services"
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Manufacturing Negotiation Services",
+  "description": "Strategic negotiation services for manufacturing companies",
+  "provider": {
+    "@type": "Person",
+    "name": "Ahmed K. Hafsi",
+    "location": "Singapore"
+  },
+  "areaServed": ["Asia Pacific", "North America"],
+  "serviceType": ["Strategic Advisory", "Negotiation Coaching"]
+};
 ---
 
-<Layout title="Services - Ahmed K. Hafsi">
+<Layout title={meta.title} description={meta.description} canonicalURL={meta.canonicalURL}>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   
   <div class="w-full max-w-6xl mx-auto mt-8 md:mt-20 px-4 md:px-6">
     <!-- Service Introduction -->

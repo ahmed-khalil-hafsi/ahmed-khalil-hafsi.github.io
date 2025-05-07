@@ -37,6 +37,8 @@ const { title = "Ahmed K. Hafsi - Negotiation Strategist" } = Astro.props;
 
 		<!-- Umami Analytics -->
 		<script defer src="https://cloud.umami.is/script.js" data-website-id="c38fb1f4-0eda-4784-8957-2792fb2474ba"></script>
+
+		<link rel="canonical" href={`https://ahmedhafsi.com${Astro.url.pathname}`} />
 	</head>
 	<body class="bg-dark text-white font-sans min-h-screen flex flex-col">
 		<header class="w-full py-6 px-4 md:px-8 bg-dark border-b border-gray-800">
@@ -74,6 +76,7 @@ const { title = "Ahmed K. Hafsi - Negotiation Strategist" } = Astro.props;
 			</div>
 		</header>
 		<main class="flex-grow max-w-6xl mx-auto w-full p-4 md:p-8">
+			
 			<slot />
 		</main>
 		<footer class="py-8 px-4 mt-12 bg-dark border-t border-gray-800">
