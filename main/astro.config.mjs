@@ -9,9 +9,7 @@ export default defineConfig({
   site: 'https://ahmedhafsi.com',
   integrations: [
     tailwind({
-      config: {
-        applyBaseStyles: true,
-      },
+      applyBaseStyles: true,
     }),
     mdx(),
     sitemap({

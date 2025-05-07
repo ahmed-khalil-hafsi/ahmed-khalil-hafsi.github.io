@@ -149,7 +149,7 @@ const { title = "Ahmed K. Hafsi - Negotiation Strategist" } = Astro.props;
 				
 				// Add hover intent for desktop view
 				if (window.innerWidth >= 768 && servicesGroup && servicesDropdown) {
-					let timeout;
+					let timeout: ReturnType<typeof setTimeout>;
 					
 					servicesGroup.addEventListener('mouseenter', () => {
 						clearTimeout(timeout);
