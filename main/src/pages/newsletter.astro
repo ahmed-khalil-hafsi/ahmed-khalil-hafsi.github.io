@@ -4,114 +4,92 @@ import Hero from '../components/Hero.astro';
 import { Image } from 'astro:assets';
 import newsletterHeader from '../assets/Newsletter_head.webp';
 
-
+const articles = [
+  {
+    title: "How to Negotiate with Trump: 3 Game Theory Strategies That Shift the Power Balance",
+    blurb: "Three strategic insights world leaders can use to shift the power balance in high-stakes deals: credible commitments, exit strategies, and strategic signaling.",
+    url: "https://negotiations.substack.com/p/how-to-negotiate-with-trump-game-theory",
+    img: "https://substackcdn.com/image/fetch/w_320,h_213,c_fill,f_webp,q_auto:good,fl_progressive:steep,g_center/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0953a487-33d4-4556-aa74-d6fdef87ba06_1920x1382.jpeg",
+  },
+  {
+    title: "Solving Complexity in Global Diplomacy: The Iran Nuclear Negotiations",
+    blurb: "A deep dive into the Iran nuclear negotiations and how embracing complexity, rather than fighting it, leads to durable diplomatic outcomes.",
+    url: "https://negotiations.substack.com/p/solving-complexity-in-global-diplomacy",
+    img: "https://substackcdn.com/image/fetch/w_320,h_213,c_fill,f_webp,q_auto:good,fl_progressive:steep,g_center/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb69b2482-4453-4b03-93c8-5bbcf1075c0c_2048x1307.jpeg",
+  },
+  {
+    title: "Dancing with Game Theory: Choreographing Global Cooperation on Climate Change",
+    blurb: "Commitment devices and other strategies to encourage collaboration on climate change, seen through the lens of game theory.",
+    url: "https://negotiations.substack.com/p/dancing-with-game-theory-choreographing",
+    img: "https://substackcdn.com/image/fetch/w_320,h_213,c_fill,f_webp,q_auto:good,fl_progressive:steep,g_center/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9ea738aa-af44-4e56-ba01-9b97a0679d51_1920x1459.jpeg",
+  },
+];
 ---
 
-<Layout title="Newsletter - Games & Negotiations by Ahmed K. Hafsi">
-  <!-- Newsletter Header Image -->
-  <div class="max-w-md mx-auto mt-4 md:mt-6 mb-2 px-4">
-    <Image 
-      src={newsletterHeader} 
-      alt="Games & Negotiations Newsletter" 
-      class="w-full rounded-lg"
-      width={800}
-      height={400}
-      quality={90}
-    />
-  </div>
+<Layout
+  title="Newsletter - Games & Negotiations by Ahmed K. Hafsi"
+  description="Games & Negotiations: essays by Ahmed K. Hafsi on negotiation, game theory, technology, and geopolitics."
+>
+  <div class="max-w-3xl mx-auto px-4 sm:px-6">
+    <!-- Newsletter Header Image -->
+    <div class="max-w-md mx-auto pt-10 md:pt-12 mb-2">
+      <Image
+        src={newsletterHeader}
+        alt="Games & Negotiations Newsletter"
+        class="w-full rounded-lg border border-rule"
+        width={800}
+        height={400}
+        quality={90}
+      />
+    </div>
 
-  <Hero 
-    title="Games & Negotiations" 
-    subtitle="Thoughts on negotiation, game theory, technology, geopolitics & everything in between." 
-  />
-  
-  <div class="text-center -mt-6 md:-mt-8 mb-6 px-4">
-    <p class="text-gray-300 mb-4">By <span class="font-medium">Ahmed K. Hafsi</span> · Join over 1,000 other subscribers</p>
-    <a href="https://negotiations.substack.com/subscribe" class="inline-block bg-accent text-white px-6 py-2 rounded-md hover:bg-accent/90 transition-colors font-medium" target="_blank" rel="noopener noreferrer">
-      Get Insights
-    </a>
-  </div>
-  
-  <div class="max-w-4xl mx-auto mt-0 px-4">
-    <div class="grid grid-cols-1 gap-6 md:gap-8">
-      <div>
-        
-        
-        
-        <!-- Featured Articles Section -->
-        <div class="mt-12 mb-10">
-          <h2 class="text-2xl font-semibold mb-6 font-serif">Featured Articles</h2>
-          
-          <div class="grid grid-cols-1 gap-6">
-            <!-- Article 1 -->
-            <a href="https://negotiations.substack.com/p/how-to-negotiate-with-trump-game-theory" 
-               class="block bg-gray-900 p-6 rounded-lg border border-gray-800 flex flex-col md:flex-row gap-6 hover:bg-gray-800 transition-colors">
-              <div class="md:w-2/3">
-                <h3 class="text-xl font-semibold mb-3 font-serif">How to Negotiate with Trump: 3 Game Theory Strategies That Shift the Power Balance</h3>
-                <p class="text-gray-300 mb-4">
-                  3 strategic insights that world leaders can use to shift the power balance in high-stakes deals. Learn about credible commitments, exit strategies, and strategic signaling.
-                </p>
-                <span class="text-accent">Read full article →</span>
-              </div>
-              <div class="md:w-1/3">
-                <img 
-                  src="https://substackcdn.com/image/fetch/w_320,h_213,c_fill,f_webp,q_auto:good,fl_progressive:steep,g_center/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0953a487-33d4-4556-aa74-d6fdef87ba06_1920x1382.jpeg" 
-                  alt="How to Negotiate with Trump" 
-                  class="w-full h-full object-cover rounded-lg"
-                  onerror="this.onerror=null; this.src='/placeholder-article.webp';"
-                />
-              </div>
-            </a>
-            
-            <!-- Article 2 -->
-            <a href="https://negotiations.substack.com/p/solving-complexity-in-global-diplomacy" 
-               class="block bg-gray-900 p-6 rounded-lg border border-gray-800 flex flex-col md:flex-row gap-6 hover:bg-gray-800 transition-colors">
-              <div class="md:w-2/3">
-                <h3 class="text-xl font-semibold mb-3 font-serif">Solving Complexity in Global Diplomacy: The Iran Nuclear Negotiations</h3>
-                <p class="text-gray-300 mb-4">
-                  A deep dive into the intricacies of the Iran nuclear negotiations and how embracing complexity can lead to successful diplomatic outcomes.
-                </p>
-                <span class="text-accent">Read full article →</span>
-              </div>
-              <div class="md:w-1/3">
-                <img 
-                  src="https://substackcdn.com/image/fetch/w_320,h_213,c_fill,f_webp,q_auto:good,fl_progressive:steep,g_center/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb69b2482-4453-4b03-93c8-5bbcf1075c0c_2048x1307.jpeg" 
-                  alt="Solving Complexity in Global Diplomacy" 
-                  class="w-full h-full object-cover rounded-lg"
-                  onerror="this.onerror=null; this.src='/placeholder-article.webp';"
-                />
-              </div>
-            </a>
-            
-            <!-- Article 3 -->
-            <a href="https://negotiations.substack.com/p/dancing-with-game-theory-choreographing" 
-               class="block bg-gray-900 p-6 rounded-lg border border-gray-800 flex flex-col md:flex-row gap-6 hover:bg-gray-800 transition-colors">
-              <div class="md:w-2/3">
-                <h3 class="text-xl font-semibold mb-3 font-serif">Dancing with Game Theory: Choreographing Global Cooperation on Climate Change</h3>
-                <p class="text-gray-300 mb-4">
-                  Exploring commitment devices and other strategies to encourage collaboration in climate change mitigation through the lens of game theory.
-                </p>
-                <span class="text-accent">Read full article →</span>
-              </div>
-              <div class="md:w-1/3">
-                <img 
-                  src="https://substackcdn.com/image/fetch/w_320,h_213,c_fill,f_webp,q_auto:good,fl_progressive:steep,g_center/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9ea738aa-af44-4e56-ba01-9b97a0679d51_1920x1459.jpeg" 
-                  alt="Dancing with Game Theory" 
-                  class="w-full h-full object-cover rounded-lg"
-                  onerror="this.onerror=null; this.src='/placeholder-article.webp';"
-                />
-              </div>
-            </a>
-          </div>
-        </div>
-        
-        <div class="text-center">
-          <a href="https://negotiations.substack.com" class="inline-block bg-accent text-white px-6 py-3 rounded-md hover:bg-accent/90 transition-colors">
-            View All Articles
+    <Hero
+      title="Games & Negotiations"
+      subtitle="Essays on negotiation, game theory, technology, geopolitics & everything in between."
+    />
+
+    <div class="text-center -mt-4 md:-mt-6 mb-2">
+      <p class="text-muted mb-4">By <span class="font-medium text-ink">Ahmed K. Hafsi</span> · Join 1,000+ subscribers</p>
+      <a href="https://negotiations.substack.com/subscribe" class="inline-block bg-accent text-paper px-6 py-2.5 rounded-md hover:bg-accentDark transition-colors font-medium" target="_blank" rel="noopener noreferrer">
+        Subscribe
+      </a>
+    </div>
+
+    <!-- Featured Articles -->
+    <div class="mt-12 mb-10">
+      <h2 class="text-2xl md:text-3xl font-semibold mb-6 font-display text-ink">Featured essays</h2>
+
+      <div class="grid grid-cols-1 gap-6">
+        {articles.map((a) => (
+          <a
+            href={a.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block bg-card p-6 rounded-lg border border-rule flex flex-col md:flex-row gap-6 hover:border-accent transition-colors"
+          >
+            <div class="md:w-2/3">
+              <h3 class="text-xl font-semibold mb-3 font-display text-ink">{a.title}</h3>
+              <p class="text-muted mb-4">{a.blurb}</p>
+              <span class="text-accent">Read full essay →</span>
+            </div>
+            <div class="md:w-1/3">
+              <img
+                src={a.img}
+                alt={a.title}
+                loading="lazy"
+                class="w-full h-full object-cover rounded-lg"
+                onerror="this.onerror=null; this.style.display='none';"
+              />
+            </div>
           </a>
-        </div>
+        ))}
       </div>
     </div>
+
+    <div class="text-center mb-4">
+      <a href="https://negotiations.substack.com" target="_blank" rel="noopener noreferrer" class="inline-block bg-accent text-paper px-6 py-3 rounded-md hover:bg-accentDark transition-colors font-medium">
+        View all essays
+      </a>
+    </div>
   </div>
-  
-</Layout> 
+</Layout>

@@ -1,29 +1,47 @@
-// import fetch from 'node-fetch';
+import { readFile } from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
+import { dirname, resolve } from 'node:path';
 import { parseStringPromise } from 'xml2js';
 
-// Simple in-memory cache
+// Resolve the Substack RSS export that ships in public/ relative to this module,
+// so the lookup works regardless of the build's working directory.
+const FEED_PATH = resolve(
+  dirname(fileURLToPath(import.meta.url)),
+  '../../public/substack_feed.xml'
+);
+
+// Simple in-memory cache so multiple consumers in one build don't re-parse.
 let cachedArticles = null;
-let lastFetchTime = null;
-const CACHE_DURATION = 3600000; // 1 hour in milliseconds
 
 export async function getSubstackArticles() {
+  if (cachedArticles) {
+    return cachedArticles;
+  }
+
   try {
-    // Fetch the static JSON file
-    const response = await fetch('/data/substack-articles.json');
-    
-    if (!response.ok) {
-      throw new Error(`Failed to fetch articles: ${response.status} ${response.statusText}`);
-    }
-    
-    const articles = await response.json();
-    
-    // Convert date strings back to Date objects
-    return articles.map(article => ({
-      ...article,
-      date: new Date(article.date)
-    }));
+    const xml = await readFile(FEED_PATH, 'utf-8');
+    const parsed = await parseStringPromise(xml, {
+      explicitArray: false,
+      trim: true,
+    });
+
+    const channel = parsed?.rss?.channel;
+    const rawItems = channel?.item ?? [];
+    const items = Array.isArray(rawItems) ? rawItems : [rawItems];
+
+    cachedArticles = items
+      .map((item) => ({
+        title: item.title ?? '',
+        excerpt: item.description ?? '',
+        url: item.link ?? '',
+        date: item.pubDate ? new Date(item.pubDate) : new Date(),
+      }))
+      // Newest first.
+      .sort((a, b) => b.date - a.date);
+
+    return cachedArticles;
   } catch (error) {
-    console.error('Error fetching articles:', error);
+    console.error('Error reading Substack feed:', error);
     return []; // Return empty array on error
   }
-} 
+}

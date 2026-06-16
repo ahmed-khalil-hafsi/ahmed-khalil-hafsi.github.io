@@ -14,8 +14,8 @@ export default defineConfig({
     mdx(),
     sitemap({
       filter: (page) => {
-        // Exclude drafts and nego-course pages
-        return !page.includes('/drafts/') && !page.includes('/nego-course/');
+        // Exclude any draft pages from the sitemap
+        return !page.includes('/drafts/');
       }
     })
   ],

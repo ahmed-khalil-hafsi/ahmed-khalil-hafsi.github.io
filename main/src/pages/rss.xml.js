@@ -1,7 +1,7 @@
 import rss from '@astrojs/rss';
 import { getSubstackArticles } from '../utils/substack.js';
 
-export async function get(context) {
+export async function GET(context) {
   // Get articles using our utility function
   const articles = await getSubstackArticles();
   

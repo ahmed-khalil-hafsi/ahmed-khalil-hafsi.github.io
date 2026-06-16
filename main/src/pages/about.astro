@@ -2,49 +2,111 @@
 import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 import profileImage from '../assets/profile.webp';
+
+const experience = [
+	{ role: "Senior Manager, Negotiation Excellence", org: "Infineon Technologies", years: "2023–present", note: "High-stakes deals across Asia, including foundry, OSAT, and strategic suppliers." },
+	{ role: "Senior Manager, Negotiation Excellence", org: "Dyson", years: "2020–2023", note: "Architected and led the global Negotiation Excellence capability: governance, KPIs, tooling, and renegotiation campaigns." },
+	{ role: "Senior Management Consultant, Negotiation & Game Theory", org: "TWS Partners · Munich & London", years: "2014–2019", note: "Advised industrial clients on negotiation strategy and applied game theory." },
+];
+
+const education = [
+	{ title: "Karlsruhe Institute of Technology (KIT)", detail: "Electrical Engineering & Information Technology", years: "2008–2014" },
+	{ title: "Harvard Law School · Program on Negotiation", detail: "Negotiation Master Class: Advanced Strategies for Experienced Negotiators", years: "2021" },
+	{ title: "Wharton Executive Education", detail: "Executive Presence and Influence", years: "2024" },
+];
 ---
 
-<Layout title="About - Ahmed K. Hafsi">
-  
-  
-  <div class="max-w-3xl mx-auto mt-6 md:mt-10 px-4 space-y-6">
-    <div class="flex flex-col items-center gap-6 md:gap-8 mb-8">
-      <div class="w-48 h-48 flex-shrink-0">
-				<Image 
-					src={profileImage} 
-					alt="Ahmed K. Hafsi" 
-					class="w-full h-full object-cover rounded-full border-2 border-accent"
-					width={192}
-					height={192}
-					quality={80}
-					loading="eager"
-				/>
-			</div>
-      <div class="prose prose-invert prose-sm md:prose-base lg:prose-lg">
-        <p>
-          I’m Ahmed K. Hafsi, a negotiation and supply chain specialist with over a decade of experience helping manufacturing companies strengthen their procurement and sales. My approach combines game theory, behavioral insights, and data to deliver practical results—lower costs, reliable suppliers, faster deals, and lasting customer relationships.
-        </p>
-        
-        <p>
-          I’ve worked across three continents and speak four languages, giving me a broad view of global manufacturing challenges. My career spans management consulting in Germany and the UK, leading negotiations for a major consumer electronics firm, and now driving strategy at a top semiconductor company. This mix lets me tackle complex issues with clarity and confidence.
-        </p>
-        
-        <h3 class="text-xl font-semibold mt-8 mb-4">What I Do</h3>
-        
-        <p>
-          I rethink how manufacturing businesses approach procurement and sales, using what I call a Barbell Strategy. It’s about balancing bold moves with smart protection—cutting supplier costs and securing rock-solid terms while speeding up sales and locking in customers. With game theory and human behavior as my tools, I turn scattered negotiations into a unified plan that drives value across your whole operation.
-        </p>
-        
-        <h3 class="text-xl font-semibold mt-8 mb-4">Where I’m At</h3>
-        
-        <p>
-          Today, I’m a senior manager at a leading semiconductor firm, focused on solving tough negotiation puzzles with fresh ideas. I also write about what I’ve learned—game theory tips, procurement hacks, and sales tactics—on my <a href="https://negotiations.substack.com" class="text-accent hover:underline">Substack newsletter</a>. It’s a place for execs to pick up real-world insights they can use.
-        </p>
-        
-        <p class="text-sm text-gray-400 mt-8">
-          <em>My take here and on Substack is my own, rooted in a drive to get things right and make a difference.</em>
-        </p>
-      </div>
-    </div>
-  </div>
+<Layout
+	title="About - Ahmed K. Hafsi"
+	description="Ahmed K. Hafsi works on negotiation and applied game theory, using behavioral science and data to understand how leverage, incentives, and constraints decide who captures value."
+>
+	<div class="max-w-3xl mx-auto px-4 sm:px-6 pt-12 md:pt-16">
+		<div class="flex items-center gap-5 mb-10">
+			<Image
+				src={profileImage}
+				alt="Ahmed K. Hafsi"
+				class="w-24 h-24 md:w-28 md:h-28 object-cover rounded-full border border-rule flex-shrink-0"
+				width={256}
+				height={256}
+				quality={88}
+				loading="eager"
+			/>
+			<h1 class="font-display text-4xl md:text-5xl font-bold text-ink tracking-tight">About</h1>
+		</div>
+
+		<div class="prose prose-lg max-w-none">
+			<p class="text-xl md:text-2xl font-display leading-snug text-ink">
+				I'm Ahmed K. Hafsi. I work on negotiation and applied game theory, focused on the structures that decide who captures value.
+			</p>
+
+			<p>
+				I'm based in the Asia-Pacific (Singapore), and my focus is industrials across the region, from automotive and semiconductors to consumer tech and chemicals. Singapore is my launch pad, and I work all over APAC, from Japan to Indonesia.
+			</p>
+			<p>
+				I build and run a negotiation operating model that delivers verifiable value through commercial terms: pricing, indexation, and governance. My focus is outcomes that show up in the P&amp;L and cash metrics. Commercial improvements are finance-validated and realized in gross margin, EBITDA, and working-capital impact.
+			</p>
+			<p>
+				At <strong>Infineon</strong> I support senior procurement and business leaders on high-stakes deals across the Asia-Pacific, including foundry, OSAT, and strategic suppliers. I stay close to execution, aligning stakeholders from factory-floor constraints to boardroom approvals so deals close and results hold.
+			</p>
+			<p>
+				Before Infineon I architected and led <strong>Dyson's</strong> global Negotiation Excellence capability, building governance, KPIs, and tooling and driving renegotiation campaigns across major spend categories. Earlier I advised industrial clients on negotiation and game theory at <strong>TWS Partners</strong> in Munich and London. I trained as an engineer at the Karlsruhe Institute of Technology, have lived and worked on three continents, and operate in four languages.
+			</p>
+
+			<h2>Negotiation as structure</h2>
+			<p>
+				Every negotiation sits inside a system of interests, constraints, and expectations. The outcome is largely set before anyone says a word: by who holds leverage, what each side genuinely needs, and how their incentives line up under pressure and incomplete information. Anchoring and mirroring have their place, and they work best once the structure is clear. So my work starts upstream. I map the ecosystem, find where real leverage lives, and then decide what to say.
+			</p>
+			<p>
+				I am especially interested in the <em>architecture</em> of a deal: how its pricing, indexation, and terms allocate value and risk across the entire life of a relationship. A price is a single number on one day; the terms govern for years. Most value is won or lost in that structure, quietly, long after everyone has shaken hands.
+			</p>
+
+			<blockquote>
+				Get the structure right and the tactics take care of themselves.
+			</blockquote>
+
+			<h2>Game theory and behavioral science</h2>
+			<p>
+				Game theory is a discipline for asking the right questions about a messy, emotional situation. Who are the real players, including the ones not in the room? What are their payoffs? Which threats and promises are <strong>credible</strong>? Where can a credible commitment, a visible exit option, or careful signaling move the equilibrium?
+			</p>
+			<p>
+				Behavioral science supplies the other half. People decide under framing, loss aversion, time pressure, and status, and those forces bend outcomes in predictable ways. Put the two together and negotiation becomes legible and closer to engineering. You shape the game itself.
+			</p>
+
+			<h2>Negotiating in the age of AI</h2>
+			<p>
+				Technology is rewriting the table. Lately I have been writing about AI and large language models, both as tools that transform how we prepare and as <em>negotiating actors</em> in their own right. What does it mean to bargain against a counterparty that runs on probability? When should an autonomous agent stay silent? The next decade of strategy will favor whoever understands these systems first, and I use the newsletter to work through the questions in public.
+			</p>
+
+			<h2>Experience</h2>
+		</div>
+
+		<ul class="mt-6 space-y-6 not-prose">
+			{experience.map((e) => (
+				<li class="border-l-2 border-rule pl-5">
+					<p class="font-display text-lg text-ink">{e.role}</p>
+					<p class="text-muted text-sm mb-1">{e.org} · {e.years}</p>
+					<p class="text-muted">{e.note}</p>
+				</li>
+			))}
+		</ul>
+
+		<h2 class="font-display text-2xl font-semibold text-ink mt-12 mb-6">Education &amp; training</h2>
+		<ul class="space-y-5 not-prose">
+			{education.map((ed) => (
+				<li class="border-l-2 border-rule pl-5">
+					<p class="font-display text-lg text-ink">{ed.title} <span class="text-muted text-sm">· {ed.years}</span></p>
+					<p class="text-muted">{ed.detail}</p>
+				</li>
+			))}
+		</ul>
+
+		<div class="prose prose-lg max-w-none mt-12">
+			<p>
+				I publish my thinking on <a href="https://negotiations.substack.com" target="_blank" rel="noopener noreferrer">Games &amp; Negotiations</a>, where I explore how power, incentives, and strategy shape outcomes in business, politics, and geopolitics. I also build <a href="https://github.com/ahmed-khalil-hafsi" target="_blank" rel="noopener noreferrer">open-source tools</a> that bring the same rigor to procurement and decision-making.
+			</p>
+			<p class="text-sm text-subtle">
+				<em>The views here and on Substack are entirely my own.</em>
+			</p>
+		</div>
+	</div>
 </Layout>
