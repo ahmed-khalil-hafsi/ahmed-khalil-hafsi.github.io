@@ -17,6 +17,13 @@ const channels = [
 ];
 
 const topics = ["Negotiation", "Game Theory", "Behavioral Economics", "Procurement Strategy", "Supply Chain", "Geopolitics"];
+
+// Web3Forms access key. Get a free key at https://web3forms.com (enter your
+// email, they send you a key) and paste it below. The key is public by design;
+// it only routes submissions to your inbox, so it is safe to commit.
+const WEB3FORMS_ACCESS_KEY = "8dd122f8-111e-4636-b691-deec928bec3d";
+
+const inputClass = "w-full px-3 py-2 bg-paper border border-rule rounded-md text-ink placeholder:text-subtle focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors";
 ---
 
 <Layout
@@ -62,15 +69,71 @@ const topics = ["Negotiation", "Game Theory", "Behavioral Economics", "Procureme
         <h2 class="text-xl md:text-2xl font-semibold mb-4 md:mb-6 font-display text-ink">Send a message</h2>
         <p class="text-muted mb-4">Fill out the form below and I'll respond personally.</p>
 
-        <div class="rounded-xl overflow-hidden border border-rule bg-card">
-          <iframe
-            src="https://app.formbricks.com/s/cm9jem8c72mrzuc01c6ve7uf1"
-            title="Contact form"
-            class="w-full"
-            style="height: 620px; border: none; background-color: #faf8f3;">
-          </iframe>
-        </div>
+        <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" class="space-y-4">
+          <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
+          <input type="hidden" name="subject" value="New message from ahmedhafsi.com" />
+          <input type="hidden" name="from_name" value="ahmedhafsi.com contact form" />
+          <!-- Honeypot: bots fill this hidden field; real users never see it -->
+          <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true" />
+
+          <div>
+            <label for="name" class="block text-sm text-muted mb-1">Name</label>
+            <input id="name" name="name" type="text" required autocomplete="name" class={inputClass} />
+          </div>
+          <div>
+            <label for="email" class="block text-sm text-muted mb-1">Email</label>
+            <input id="email" name="email" type="email" required autocomplete="email" class={inputClass} />
+          </div>
+          <div>
+            <label for="message" class="block text-sm text-muted mb-1">Message</label>
+            <textarea id="message" name="message" rows="6" required class={inputClass}></textarea>
+          </div>
+
+          <button type="submit" class="px-6 py-2.5 bg-accent text-paper rounded-md hover:bg-accentDark transition-colors font-medium disabled:opacity-60 disabled:cursor-not-allowed">
+            Send message
+          </button>
+          <p id="form-status" class="text-sm mt-2" role="status" aria-live="polite"></p>
+        </form>
       </div>
     </div>
   </div>
+
+  <script>
+    const form = document.getElementById('contact-form') as HTMLFormElement | null;
+    const status = document.getElementById('form-status');
+    if (form && status) {
+      const button = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const original = button.textContent;
+        button.disabled = true;
+        button.textContent = 'Sending...';
+        status.className = 'text-sm mt-2 text-muted';
+        status.textContent = '';
+
+        try {
+          const response = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { Accept: 'application/json' },
+          });
+          const data = await response.json();
+          if (response.ok) {
+            form.reset();
+            status.className = 'text-sm mt-2 text-accent';
+            status.textContent = "Thanks, your message is on its way. I'll get back to you personally.";
+          } else {
+            status.className = 'text-sm mt-2 text-red-700';
+            status.textContent = data.message || 'Something went wrong. Please email me directly instead.';
+          }
+        } catch {
+          status.className = 'text-sm mt-2 text-red-700';
+          status.textContent = 'Network error. Please email me directly instead.';
+        } finally {
+          button.disabled = false;
+          button.textContent = original;
+        }
+      });
+    }
+  </script>
 </Layout>
