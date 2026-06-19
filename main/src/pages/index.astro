@@ -29,12 +29,14 @@ const essays = [
 const tools = [
 	{
 		name: "P2Predict",
-		blurb: "Machine-learning command-line tool for advanced procurement price prediction.",
+		blurb: "Parametric price benchmarking for engineering and procurement trade-offs. Agentic first, runs on your data, stays on your machine.",
+		license: "Source-available under the PolyForm Noncommercial License 1.0.0",
 		url: "https://github.com/ahmed-khalil-hafsi/P2Predict",
 	},
 	{
 		name: "P2CLPFD",
-		blurb: "A dynamic-programming framework for supplier allocation problems (GPLv3).",
+		blurb: "A dynamic-programming framework for supplier allocation problems.",
+		license: "GPLv3",
 		url: "https://github.com/ahmed-khalil-hafsi/P2CLPFD",
 	},
 ];
@@ -125,6 +127,7 @@ const tools = [
 							{t.name}
 						</a>
 						<p class="text-muted mt-1">{t.blurb}</p>
+						{t.license && <p class="text-subtle text-sm mt-1">{t.license}</p>}
 					</li>
 				))}
 			</ul>
