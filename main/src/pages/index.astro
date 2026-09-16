@@ -32,12 +32,14 @@ const tools = [
 		blurb: "Parametric price benchmarking for engineering and procurement trade-offs. Agentic first, runs on your data, stays on your machine.",
 		license: "Source-available under the PolyForm Noncommercial License 1.0.0",
 		url: "https://p2predict.com",
+		repo: "https://github.com/ahmed-khalil-hafsi/P2Predict",
 	},
 	{
 		name: "P2CLPFD",
-		blurb: "P2CLPFD is an agentic-first, open source, dynamic programming framework that enables decisions on complex supplier allocation problems.",
+		blurb: "A procurement allocation optimizer: the lowest-TCO award across your suppliers under capacity, MOQ, share caps and dual-sourcing rules, with the reasoning you can show in the room.",
 		license: "GPLv3",
-		url: "https://github.com/ahmed-khalil-hafsi/P2CLPFD",
+		url: "/p2clpfd",
+		repo: "https://github.com/ahmed-khalil-hafsi/P2CLPFD",
 	},
 ];
 ---
@@ -121,15 +123,28 @@ const tools = [
 			<h2 class="font-display text-2xl md:text-3xl font-semibold text-ink mb-3">Open-source tools</h2>
 			<p class="text-muted mb-5">Bringing game-theoretic thinking and data science to procurement and supply-chain decisions.</p>
 			<ul class="space-y-5">
-				{tools.map((t) => (
-					<li>
-						<a href={t.url} target="_blank" rel="noopener noreferrer" class="font-display text-lg text-ink hover:text-accent transition-colors">
-							{t.name}
-						</a>
-						<p class="text-muted mt-1">{t.blurb}</p>
-						{t.license && <p class="text-subtle text-sm mt-1">{t.license}</p>}
-					</li>
-				))}
+				{tools.map((t) => {
+					const external = t.url.startsWith("http");
+					return (
+						<li>
+							<a
+								href={t.url}
+								target={external ? "_blank" : undefined}
+								rel={external ? "noopener noreferrer" : undefined}
+								class="font-display text-lg text-ink hover:text-accent transition-colors"
+							>
+								{t.name}
+							</a>
+							<p class="text-muted mt-1">{t.blurb}</p>
+							{t.license && <p class="text-subtle text-sm mt-1">{t.license}</p>}
+							{t.repo !== t.url && (
+								<p class="text-subtle text-sm mt-1">
+									<a href={t.repo} target="_blank" rel="noopener noreferrer" class="hover:text-accent transition-colors">Source on GitHub</a>
+								</p>
+							)}
+						</li>
+					);
+				})}
 			</ul>
 		</section>
 

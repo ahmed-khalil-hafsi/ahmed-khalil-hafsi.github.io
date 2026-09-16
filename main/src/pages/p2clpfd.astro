@@ -1,0 +1,164 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const repoURL = "https://github.com/ahmed-khalil-hafsi/P2CLPFD";
+const pypiURL = "https://pypi.org/project/p2clpfd/";
+
+const rules = [
+	{ rule: "Demand", example: "part1 needs 250 units in total" },
+	{ rule: "Capacity", example: "supplier2 can only make 150 of part1" },
+	{ rule: "MOQ", example: "supplier2 won't take an order below 75 units" },
+	{ rule: "Share bounds", example: "supplier2 must hold 30–70% of part1" },
+	{ rule: "Volume discount", example: "supplier1 charges $100 under 40 units, $40 above" },
+	{ rule: "Fixed cost", example: "supplier1 needs $2,000 of tooling if awarded" },
+	{ rule: "Dual-source", example: "part1 must come from at least 2 suppliers" },
+	{ rule: "Supply base cap", example: "part2 from at most 2 suppliers" },
+	{ rule: "Global share", example: "no supplier above 40% of total volume" },
+	{ rule: "Quality", example: "supplier2 carries a +3 logistics penalty per unit" },
+];
+
+const jsonLd = {
+	"@context": "https://schema.org",
+	"@type": "SoftwareApplication",
+	name: "P2CLPFD",
+	alternateName: "P2CLPFD Procurement Allocation Optimizer",
+	applicationCategory: "BusinessApplication",
+	operatingSystem: "Linux, macOS, Windows",
+	description:
+		"P2CLPFD is an open-source procurement allocation optimizer. It splits demand across suppliers at the lowest total cost of ownership while enforcing capacity, MOQ, share caps, dual-sourcing, volume discounts and fixed costs — and shows why each constraint closed the door on a cheaper award.",
+	url: "https://ahmedhafsi.com/p2clpfd/",
+	codeRepository: repoURL,
+	downloadUrl: pypiURL,
+	license: "https://www.gnu.org/licenses/gpl-3.0.html",
+	programmingLanguage: ["Prolog", "Python"],
+	isAccessibleForFree: true,
+	offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+	author: {
+		"@type": "Person",
+		name: "Ahmed Khalil Hafsi",
+		url: "https://ahmedhafsi.com",
+	},
+};
+---
+
+<Layout
+	title="P2CLPFD — Open-Source Procurement Allocation Optimizer"
+	description="P2CLPFD is a free, open-source supplier allocation optimizer: it finds the lowest-TCO award across suppliers under capacity, MOQ, share caps, dual-sourcing and volume-discount rules, and explains why. Built on constraint logic programming (CLP(FD))."
+>
+	<div class="max-w-3xl mx-auto px-4 sm:px-6 pt-12 md:pt-16">
+		<h1 class="font-display text-4xl md:text-5xl font-bold text-ink tracking-tight">P2CLPFD</h1>
+		<p class="text-muted mt-2 text-base md:text-lg">
+			Open-source procurement allocation optimizer · GPLv3
+		</p>
+
+		<p class="text-xl md:text-2xl font-display leading-snug text-ink mt-8">
+			You have parts to buy and suppliers to buy them from. P2CLPFD returns the single
+			cost-optimal award that satisfies every one of your sourcing rules — and the argument
+			for it, in a buyer's language.
+		</p>
+
+		<div class="mt-8 flex flex-wrap gap-x-6 gap-y-2">
+			<a href={repoURL} target="_blank" rel="noopener noreferrer" class="font-display text-ink hover:text-accent transition-colors">
+				P2CLPFD on GitHub →
+			</a>
+			<a href={pypiURL} target="_blank" rel="noopener noreferrer" class="font-display text-ink hover:text-accent transition-colors">
+				p2clpfd on PyPI →
+			</a>
+		</div>
+
+		<div class="prose prose-lg max-w-none mt-10">
+			<h2>What P2CLPFD does</h2>
+			<p>
+				Supplier allocation is the problem of deciding how much of each part each supplier
+				should win. Some suppliers are cheap but too small. Some want a volume commitment
+				before they discount. Some cannot go beyond 500 units. You need two sources on the
+				safety-critical parts, and nobody should hold more than 40% of the spend.
+			</p>
+			<p>
+				Give P2CLPFD your demand, your supplier quotes and your business rules as a single
+				CSV, and it returns the award with the lowest total cost of ownership that breaks
+				none of them. No heuristics and no approximations: the result is mathematically
+				guaranteed to be the best legal split, and the solver can prove that no cheaper one
+				exists.
+			</p>
+
+			<h2>Why a defensible award matters more than a fast one</h2>
+			<p>
+				Finding the cheapest legal award is the easy part — a purpose-built solver will do
+				it faster. The hard part comes after, when the award is contested by the suppliers
+				who lost, by the stakeholder who wanted their incumbent, by legal, or by an auditor
+				a year later.
+			</p>
+			<p>
+				P2CLPFD is built for that second part. Every constraint is a declarative rule you
+				write down rather than a formula you assemble, so what you signed off on is what
+				ran. The tracer replays the decision rule by rule — before capacity, supplier2 could
+				take anything between 0 and 250 units; after the MOQ and the share floor, only 75 to
+				150 remain — so when someone asks why supplier2 could not have more, you can show
+				them the exact rule that closed the door. And the judgment layer reads the result
+				back: whether the data was fit to decide on, whether one supplier just took 76% of
+				your spend, which constraint is the one worth a phone call.
+			</p>
+			<p>
+				The trade is plain. Speed is where P2CLPFD loses. "Prove it and explain it to a
+				human" is where it wins — which is the right trade only for decisions that get
+				questioned.
+			</p>
+
+			<h2>How the optimum is found</h2>
+			<p>
+				P2CLPFD is built on <strong>CLP(FD)</strong> — constraint logic programming over
+				finite domains. Think of a Sudoku solver: it does not try every combination, it uses
+				the constraints to eliminate impossible values until the answer remains. P2CLPFD
+				does the same with procurement rules, propagating them to strike out impossible
+				quantities and then searching what is left for the lowest-TCO award. A heuristic
+				finds a good split; constraint solving finds the best one.
+			</p>
+
+			<h2>The rules it enforces</h2>
+			<table>
+				<thead>
+					<tr><th>Rule</th><th>Example</th></tr>
+				</thead>
+				<tbody>
+					{rules.map((r) => (
+						<tr><td><strong>{r.rule}</strong></td><td>{r.example}</td></tr>
+					))}
+				</tbody>
+			</table>
+
+			<h2>Where it is used</h2>
+			<ul>
+				<li><strong>Automotive:</strong> thousands of part numbers across dozens of suppliers, dual-sourcing on safety-critical parts, discount tiers, and a cap on any one supplier's share of spend.</li>
+				<li><strong>Pharmaceuticals:</strong> active ingredients across qualified manufacturers, quality scores folded into the effective unit cost, at least two sources per API.</li>
+				<li><strong>Electronics:</strong> components sourced across regions with different logistics costs, tiered pricing, and a minimum number of suppliers on critical parts.</li>
+				<li><strong>Construction and CAPEX:</strong> line items with several bidders each, mobilization charges, and a manageable supply base per category.</li>
+				<li><strong>Beyond procurement:</strong> the engine is domain-agnostic — production split across factories, marketing spend across channels, staffing across shifts.</li>
+			</ul>
+
+			<h2>Getting started</h2>
+			<p>
+				P2CLPFD is free and open source under the GPLv3, installs from PyPI as
+				<code>p2clpfd</code>, and runs on your own machine — your quotes never leave it. It
+				also speaks the Model Context Protocol, so you can put the solver behind the AI
+				agent you already use and ask for an award in plain language.
+			</p>
+			<p>
+				The full documentation, the constraint reference, the benchmarks and the source live
+				in the <a href={repoURL} target="_blank" rel="noopener noreferrer">P2CLPFD repository on GitHub</a>.
+			</p>
+		</div>
+
+		<hr class="my-12 border-rule" />
+
+		<section class="pb-4">
+			<p class="text-ink/90">
+				P2CLPFD is built and maintained by <a href="/about">Ahmed K. Hafsi</a>. For a
+				commercial conversation, a pilot, or a sourcing dataset to test it on, use the
+				<a href="/contact">contact page</a>.
+			</p>
+		</section>
+	</div>
+
+	<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />
+</Layout>
