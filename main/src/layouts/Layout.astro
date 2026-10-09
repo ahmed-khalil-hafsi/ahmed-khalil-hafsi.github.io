@@ -168,6 +168,19 @@ const path = Astro.url.pathname;
 		margin: 0;
 		width: 100%;
 	}
+
+	/* Inline text links: oxblood + underline so they read as links */
+	p a:not([class]),
+	li a:not([class]) {
+		color: #7b2d26;
+		text-decoration: underline;
+		text-decoration-thickness: 1px;
+		text-underline-offset: 3px;
+	}
+	p a:not([class]):hover,
+	li a:not([class]):hover {
+		color: #5e211c;
+	}
 	h1, h2, h3, h4, h5, h6 {
 		font-family: 'Source Serif Pro', Georgia, serif;
 		line-height: 1.2;
